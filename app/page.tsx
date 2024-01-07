@@ -17,7 +17,7 @@ export default function Home() {
           >
             {' '}
             <Image
-              src="/vercel.svg"
+              src="/papafeiji.svg"
               alt="papafeiji Logo"
               className="dark:invert"
               width={100}
