@@ -62,7 +62,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            通过这些技巧与窍门，让爬爬飞记更好用
+            使用这些技巧与窍门，让爬爬飞记更加好用
           </p>
         </a>
 
@@ -79,7 +79,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            加入我们的用户社群，分享您的观点
+            加入我们的用户社群，提出您的问题与建议
           </p>
         </a>
 
@@ -96,7 +96,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            我们尊重您的隐私，不会与第三方共享您的数据
+           我们尊重您的隐私,只有您允许后 AI 助手才能访问它们
           </p>
         </a>
       </div>
