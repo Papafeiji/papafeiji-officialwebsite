@@ -17,7 +17,7 @@ export default function Home() {
           >
             By{' '}
             <Image
-              src="/papafeiji.png"
+              src="/papafeiji.svg"
               alt="papafeiji Logo"
               className="dark:invert"
               width={100}
@@ -33,8 +33,8 @@ export default function Home() {
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           src="/1-1.png"
           alt="一月 Logo"
-          width={180}
-          height={37}
+          width={1800}
+          height={1024}
           priority
         />
       </div>
