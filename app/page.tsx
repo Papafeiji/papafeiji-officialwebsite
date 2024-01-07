@@ -96,7 +96,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-           我们尊重您的隐私,只有您允许后 AI 助手才能访问它们
+           我们尊重您的隐私，只有您允许后 LLM 模型才能访问数据
           </p>
         </a>
       </div>
