@@ -33,8 +33,8 @@ export default function Home() {
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           src="/1-1.png"
           alt="一月 Logo"
-          width={1800}
-          height={1024}
+          width={900}
+          height={500}
           priority
         />
       </div>
