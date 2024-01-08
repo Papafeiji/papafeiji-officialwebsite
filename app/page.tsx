@@ -5,8 +5,8 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30">
-           爬爬飞记&nbsp;
-           <code className="font-mono font-bold">可以记录你生活中发生的一切，当你的完美记忆助手</code>
+           &nbsp;
+           <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
