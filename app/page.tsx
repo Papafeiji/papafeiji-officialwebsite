@@ -58,7 +58,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://www.papafeiji.cn/"
+          href="https://www.xiaohongshu.com/user/profile/62f09aef000000001f0076d3"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
@@ -92,7 +92,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://www.papafeiji.cn/"
+          href="https://mp.weixin.qq.com/s/q38HwnPuV1U9Us0WBa7efQ"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
