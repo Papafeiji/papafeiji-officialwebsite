@@ -3,8 +3,28 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"> */
-    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex text-center"> {/* 添加了 text-center 类 */}
+
+
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex text-center"> {/* 添加了 text-center 类 */}
+        <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30 text-center"> {/* 添加了 text-center 类 */}
+           &nbsp;
+           <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
+        </p>
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+          <a
+            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+            href="https://www.papafeiji.cn/" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {' '}
+          </a>
+        </div>
+      </div>
+
+
+/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"> 
+    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex text-center"> 
         <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30">
            &nbsp;
            <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
@@ -20,7 +40,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-
+*/ 
 
       {/* 添加一个空行 */}
       <div style={{ height: '10px', margin: '0 0 1rem 0' }} />
