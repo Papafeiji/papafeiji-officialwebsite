@@ -3,7 +3,8 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"> */
+    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex text-center"> {/* 添加了 text-center 类 */}
         <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30">
            &nbsp;
            <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
@@ -19,6 +20,11 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+
+      {/* 添加一个空行 */}
+      <div style={{ height: '10px', margin: '0 0 1rem 0' }} />
+
 
 <div className="relative flex place-items-center 
     before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] 
