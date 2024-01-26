@@ -49,7 +49,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            从微信小程序、AppStore、各大安卓商店下载
+            从微信小程序、AppStore 与安卓应用商店下载
           </p>
         </a>
         <a
