@@ -7,7 +7,7 @@ export default function Home() {
            爬爬飞记&nbsp;
            <code className="font-mono font-bold">可以记录你生活中发生的一切，当你的完美记忆助手</code>
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+     {/*   <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
             href="https://www.papafeiji.cn/"
@@ -16,7 +16,7 @@ export default function Home() {
           >
             {' '}
           </a>
-        </div>
+        </div>*/}
       </div>
 <div className="relative flex place-items-center 
     before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] 
