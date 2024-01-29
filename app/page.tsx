@@ -54,7 +54,7 @@ export default function Home() {
         </a>
         <a
           href="https://www.xiaohongshu.com/user/profile/60ac3cfa0000000001003edf"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -65,12 +65,12 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            使用这些技巧与窍门，让爬爬飞记更加好用
+            了解如何更好的让爬爬飞记成为你的记忆助手
           </p>
         </a>
         <a
           href="https://news.papafeiji.cn/about"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -86,7 +86,7 @@ export default function Home() {
         </a>
         <a
           href="https://news.papafeiji.cn/privacy-police"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -97,7 +97,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-           我们尊重您的隐私，只有您允许后 LLM 模型才能访问数据
+           只有您允许后，大语言模型才能访问您的数据
           </p>
         </a>
       </div>
