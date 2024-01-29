@@ -65,7 +65,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            了解如何更好的让爬爬飞记成为你的记忆助手
+            了解如何使用，让爬爬飞记更好的记录您的生活
           </p>
         </a>
         <a
