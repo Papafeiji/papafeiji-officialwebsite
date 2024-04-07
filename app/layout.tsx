@@ -16,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}
+        <footer className="global-footer">
+          <a href='https://beian.miit.gov.cn/'>Copyright © 杭州爬爬飞记科技有限公司  浙 ICP 备 2023038455 号</a>
+        </footer>
+      </body>
     </html>
   )
 }

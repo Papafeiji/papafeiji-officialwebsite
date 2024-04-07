@@ -18,3 +18,10 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-color)); /* 使用纯色 */
 }
+
+.global-footer {
+  font-size: 14px;
+  color: #5f6464;
+  margin: 12px;
+  text-align: center;
+}
