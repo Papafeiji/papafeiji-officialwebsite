@@ -10,7 +10,9 @@ export default function Home() {
   const [isLogin, setIsLogin] = useState(token ? true : false)
   const logout = async () => {
     request.get('/logout/officialLogout')
-    clearToken()
+    setTimeout(() => {
+      clearToken()
+    }, 100);
     setIsLogin(false)
   }
 

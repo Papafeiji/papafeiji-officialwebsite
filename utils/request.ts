@@ -15,7 +15,6 @@ export const getToken = () => {
 export const setToken = (token: string) => {
   localStorage.setItem('token', JSON.stringify(token));
 };
-setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0b2tlbiIsInN5c1R5cGUiOiJwYyIsIm1vYmlsZSI6InRQTkpVYUhSdlVzTkE1WGJpam1CQ2c9PSIsInVzZXJJZCI6IjZhYWEwMjg3ODE4YjRmMTBiYWI5OGYxNDczZjA0ZGQxIn0.es0t5UM3RAZA9TDkqDwJDE0mLtC6rmAG_pq5yuqDngw')
 
 /**
  * 清除token

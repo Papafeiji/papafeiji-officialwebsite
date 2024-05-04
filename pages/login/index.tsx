@@ -51,7 +51,7 @@ export default function Login() {
     try {
       const { data } = await request.post('/auth/officialLogin', {
         phone: sm4Encryption(phoneNumber),
-        code,
+        phoneCode: code,
       })
       setToken(data)
       Router.push('/')
