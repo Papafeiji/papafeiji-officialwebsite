@@ -1,0 +1,76 @@
+body {
+  background-color: #fff;
+}
+.login-page {
+  padding: 38px;
+  height: 100vh;
+  display: flex;
+}
+.login-page .left {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 1;
+}
+.login-page .left .login-img {
+  height: 100%;
+  width: auto;
+}
+.login-page .right {
+  width: 50%;
+  min-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-page .right .main {
+  width: 435px;
+  height: 460px;
+}
+.login-page .right .main .title {
+  font-size: 36px;
+  color: #553217;
+  line-height: 50px;
+  margin-bottom: 48px;
+}
+.login-page .right .main .item {
+  margin-bottom: 30px;
+}
+.login-page .right .main .item .label {
+  margin-bottom: 14px;
+  color: #543116;
+  font-size: 16px;
+}
+.login-page .right .main .item .input {
+  font-size: 16px;
+  width: 435px;
+  height: 54px;
+  border: 1px solid #b58d5e;
+  border-radius: 27px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  outline: none;
+}
+.login-page .right .main .item .input input {
+  flex: 1;
+  height: 100%;
+  outline: none;
+}
+.login-page .right .main .item .input button {
+  font-size: 16px;
+  color: #543116;
+}
+.login-page .right .main .btn {
+  width: 232px;
+  height: 50px;
+  background-color: #b58d5e;
+  font-size: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  border-radius: 25px;
+  cursor: pointer;
+}
