@@ -3,11 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
 import request, { download as downloadRequest, getToken, clearToken } from '@/utils/request'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const token = getToken()
-  const [isLogin, setIsLogin] = useState(token ? true : false)
+  const [isLogin, setIsLogin] = useState(false)
+
+  useEffect(() => {
+    const token = getToken()
+    setIsLogin(token ? true : false)
+  }, []);
+
   const logout = async () => {
     request.get('/logout/officialLogout')
     setTimeout(() => {
@@ -22,7 +27,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <div className='pt-[40px] pr-[40px] flex justify-end items-center'>
+      <div className='lg:flex pt-[40px] pr-[40px] hidden justify-end items-center'>
         {isLogin ? (<> <div onClick={download} className='text-[#fff] w-[108px] h-[48px] flex justify-center items-center bg-[#B58D5E] rounded-[24px] cursor-pointer'>下载日记</div>
           <div onClick={logout} className='text-[#543116] ml-[38px] size-[20px] cursor-pointer'>退出登录</div></>) : <Link href={'/login'} className='text-[#fff] w-[108px] h-[48px] flex justify-center items-center bg-[#B58D5E] rounded-[24px] cursor-pointer'>登录</Link>}
 
