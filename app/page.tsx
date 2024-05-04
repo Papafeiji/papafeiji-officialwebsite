@@ -32,7 +32,7 @@ export default function Home() {
           <div onClick={logout} className='text-[#543116] ml-[38px] size-[20px] cursor-pointer'>退出登录</div></>) : <Link href={'/login'} className='text-[#fff] w-[108px] h-[48px] flex justify-center items-center bg-[#B58D5E] rounded-[24px] cursor-pointer'>登录</Link>}
 
       </div>
-      <div className='flex-1 flex flex-col items-center justify-between p-24 pt-8'>
+      <div className='flex-1 flex flex-col items-center justify-between p-24 lg:pt-8'>
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30">
             &nbsp;
