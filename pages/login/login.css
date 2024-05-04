@@ -51,6 +51,7 @@ body {
   display: flex;
   align-items: center;
   outline: none;
+  color: #000;
 }
 .login-page .right .main .item .input input {
   flex: 1;
