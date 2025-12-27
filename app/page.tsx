@@ -34,7 +34,7 @@ export default function Home() {
       </div>
       <div className='flex-1 flex flex-col items-center justify-between p-24 lg:pt-8'>
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <p style={{ backgroundColor: '#B58D5E' }} className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30">
+          <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30 bg-[#B58D5E]">
             &nbsp;
             <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
           </p>
@@ -58,7 +58,7 @@ export default function Home() {
     after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40
     */}
           <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] filter blur-10px"
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] filter blur-md"
             src="/papafeiji.png"
             alt="Logo"
             width={300}

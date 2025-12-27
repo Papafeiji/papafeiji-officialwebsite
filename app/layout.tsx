@@ -7,6 +7,21 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: '爬爬飞记',
   description: '爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手',
+  openGraph: {
+    title: '爬爬飞记',
+    description: '爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手',
+    url: 'https://www.papafeiji.cn',
+    siteName: '爬爬飞记',
+    images: [
+      {
+        url: 'https://www.papafeiji.cn/papafeiji.png',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'zh_CN',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
@@ -15,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body className={inter.className}>{children}
         <footer className="global-footer">
           <a href='https://beian.miit.gov.cn/'>Copyright © 杭州爬爬飞记科技有限公司  浙 ICP 备 2024085343号-2</a>

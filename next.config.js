@@ -6,11 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async rewrites() { 
-    return [ 
-      { source: '/api/:path*', destination: `https://pro.papafeiji.cn/api/prod/:path*` }, 
-    ]
-  },
 }
 
 module.exports = nextConfig
