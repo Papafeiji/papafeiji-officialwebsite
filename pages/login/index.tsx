@@ -90,7 +90,7 @@ export default function Login() {
         </div>
       </main>
       <footer className="global-footer">
-        <a href='https://beian.miit.gov.cn/'>Copyright © 杭州爬爬飞记科技有限公司  浙 ICP 备 2024085343号-2</a>
+        <a href='https://beian.miit.gov.cn/'>Copyright © 杭州陈乐乐科技有限公司  浙 ICP 备 2024085343号-2</a>
       </footer>
     </>
   )

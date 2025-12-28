@@ -36,7 +36,7 @@ export default function Home() {
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 lg:static lg:w-auto lg:rounded-xl lg:border lg:p-4 lg:dark:bg-zinc-800/30 bg-[#B58D5E]">
             &nbsp;
-            <code className="font-mono font-bold">爬爬飞记可以记录你生活中发生的一切，当你的完美记忆助手</code>
+            <code className="font-mono font-bold">记录你生活中发生的一切，当你的完美记忆助手</code>
           </p>
           {/*   <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
@@ -58,7 +58,7 @@ export default function Home() {
     after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40
     */}
           <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] filter blur-md"
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] filter blur-10px"
             src="/papafeiji.png"
             alt="Logo"
             width={300}
@@ -68,19 +68,19 @@ export default function Home() {
         </div>
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
           <a
-            href="https://news.papafeiji.cn/homes/mobile-app"
+            href="https://news.papafeiji.cn/"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
-              下载应用{' '}
+              立即体验{' '}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              从微信小程序、AppStore 与安卓应用商店下载
+              微信关注“爬爬记忆助手”公众号立即使用
             </p>
           </a>
           <a
@@ -96,11 +96,11 @@ export default function Home() {
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              了解如何使用，让爬爬飞记更好的记录您的生活
+              了解如何使用，更好的记录您的生活
             </p>
           </a>
           <a
-            href="https://news.papafeiji.cn/about"
+            href="https://w1.f2z.cn/uGSrXB"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
             target="_blank"
             rel="noopener noreferrer"
@@ -128,7 +128,7 @@ export default function Home() {
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              只有您允许后，大语言模型才能访问您的数据
+              我们如何保护您的隐私数据
             </p>
           </a>
         </div>
