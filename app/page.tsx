@@ -96,11 +96,11 @@ export default function Home() {
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              了解如何使用，更好的记录您的生活
+              了解如何使用爬爬助手记录您的生活
             </p>
           </a>
           <a
-            href="https://w1.f2z.cn/uGSrXB"
+            href="https://news.papafeiji.cn/about/"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-4f331b hover:bg-af8f65 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
             target="_blank"
             rel="noopener noreferrer"
