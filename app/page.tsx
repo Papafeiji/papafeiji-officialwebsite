@@ -80,7 +80,7 @@ export default function Home() {
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              微信关注“爬爬记忆助手”公众号立即使用
+              关注“爬爬记忆助手”公众号立即使用
             </p>
           </a>
           <a
@@ -96,7 +96,7 @@ export default function Home() {
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              了解如何使用爬爬助手记录您的生活
+              了解如何使用，更好的记录您的生活
             </p>
           </a>
           <a
