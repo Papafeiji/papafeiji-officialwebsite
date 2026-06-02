@@ -1,0 +1,68 @@
+---
+import ScrollReveal from './ScrollReveal.tsx';
+
+const features = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    title: "自动轨迹记录",
+    desc: "基于地理位置自动记录你的物理世界行程。去过哪里、停留多久，全部自动归档到日记中。"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>`,
+    title: "AI 长期记忆",
+    desc: "将全量日记注入 AI 对话上下文。AI 记得你上周的约会、上个月的旅行、去年的重要决定。"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
+    title: "跨模型记忆共享",
+    desc: "通过 MCP 协议和 API Key，让豆包、Kimi、千问、ChatGPT 共享同一套记忆库，打破平台壁垒。"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: "家庭共享",
+    desc: "与家人共享日记和记忆，打造家庭共同记忆库。孩子的成长足迹、家庭的旅行回忆，全部集中管理。"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: "私有化部署",
+    desc: "开源代码，支持 SQLite / PostgreSQL 双数据库。数据完全存储在你的服务器上，隐私零担忧。"
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
+    title: "标准开源",
+    desc: "采用标准开源协议发布，可自由二次修改和商用。社区驱动，持续迭代。"
+  }
+];
+---
+
+<section id="features" class="relative py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <ScrollReveal client:visible>
+      <div class="text-center mb-20">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] mb-10">
+          <span class="text-sm text-brand-gold font-medium">功能特性</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+          为 AI 打造的<span class="gradient-text">记忆基础设施</span>
+        </h2>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+          不只是日记，更是连接物理世界与数字智能的记忆桥梁
+        </p>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((f, i) => (
+        <ScrollReveal client:visible delay={i * 100}>
+          <div class="group h-full p-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-gold/30 hover:bg-white/[0.02] transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold/20 transition-colors">
+              <Fragment set:html={f.icon} />
+            </div>
+            <h3 class="text-xl font-semibold text-text-primary mb-3">{f.title}</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>

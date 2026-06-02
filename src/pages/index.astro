@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Solution from '../components/Solution.astro';
+import Features from '../components/Features.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Integrations from '../components/Integrations.astro';
+import OpenSource from '../components/OpenSource.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>爬爬记忆助手 · 跨 AI 的外挂记忆库</title>
+  <meta name="description" content="爬爬记忆助手是一款开源的 AI 记忆基础设施。自动记录物理世界行程，为豆包、Kimi、千问等主流大模型提供持久记忆能力。" />
+  <meta property="og:title" content="爬爬记忆助手 · 跨 AI 的外挂记忆库" />
+  <meta property="og:description" content="自动记录物理世界行程，为豆包、Kimi、千问等主流大模型提供持久记忆能力。" />
+  <meta property="og:url" content="https://papafeiji.cn" />
+  <meta property="og:site_name" content="爬爬记忆助手" />
+  <meta property="og:image" content="https://papafeiji.cn/papafeiji.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <link rel="icon" type="image/png" href="/papafeiji.png" />
+</head>
+<body>
+  <Navbar />
+  <main>
+    <Hero />
+    <Problem />
+    <Solution />
+    <Features />
+    <HowItWorks />
+    <Integrations />
+    <OpenSource />
+  </main>
+  <Footer />
+</body>
+</html>

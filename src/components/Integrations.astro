@@ -1,0 +1,53 @@
+---
+import ScrollReveal from './ScrollReveal.tsx';
+
+const platforms = [
+  { name: "豆包", color: "#3B82F6", initial: "豆" },
+  { name: "Kimi", color: "#10B981", initial: "K" },
+  { name: "通义千问", color: "#8B5CF6", initial: "千" },
+  { name: "ChatGPT", color: "#F97316", initial: "C" },
+  { name: "Claude", color: "#D97706", initial: "Cl" },
+  { name: "文心一言", color: "#EC4899", initial: "文" },
+  { name: "DeepSeek", color: "#06B6D4", initial: "D" },
+  { name: "Gemini", color: "#6366F1", initial: "G" }
+];
+---
+
+<section id="integrations" class="relative py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <ScrollReveal client:visible>
+      <div class="text-center mb-20">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] mb-10">
+          <span class="text-sm text-brand-gold font-medium">接入平台</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+          一个记忆库，<span class="gradient-text">全平台通用</span>
+        </h2>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+          通过 MCP 协议和标准 API，无缝接入你正在使用的所有大模型
+        </p>
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal client:visible delay={200}>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {platforms.map((p) => (
+          <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-white/[0.1] transition-all">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-bold text-white transition-transform group-hover:scale-110" style={`background: ${p.color}20; color: ${p.color};`}>
+              {p.initial}
+            </div>
+            <span class="text-sm text-text-secondary font-medium">{p.name}</span>
+          </div>
+        ))}
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal client:visible delay={400}>
+      <div class="mt-12 p-6 rounded-2xl bg-bg-card border border-border-subtle text-center">
+        <p class="text-text-secondary text-sm">
+          支持任何兼容 <span class="text-brand-gold font-medium">MCP 协议</span> 或可通过 <span class="text-brand-gold font-medium">API Key</span> 接入的 AI 客户端
+        </p>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>
