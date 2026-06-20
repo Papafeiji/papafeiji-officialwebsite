@@ -1,0 +1,50 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: '爬爬记忆助手',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+
+      {
+        text: '关注公众号使用',
+        type: 'button',
+        onclick: "navigator.clipboard.writeText('爬爬记忆助手').then(()=>alert('“爬爬记忆助手”已复制到剪贴板，快去微信搜索使用吧！')).catch(()=>{const i=document.createElement('input');i.value='爬爬记忆助手';document.body.appendChild(i);i.select();document.execCommand('copy');document.body.removeChild(i);alert('已复制“爬爬记忆助手”，快去微信搜索关注吧！');})",
+        style: {
+          backgroundColor: '#B58C5F', 
+          color: 'white',
+        }
+      },
+
+      /* 小程序按钮暂时隐藏
+      { text: '访问小程序', 
+        href: 'weixin://dl/business/?appid=wx179ae36324c7c502&path=pages/index/index&env_version=release' 
+      },
+     */
+ 
+    ]}
+    image={{ src: '~/assets/images/welcome.png', alt: 'papafeiji logo' }}
+  >
+    <Fragment slot="title">
+      立即体验 <span class="hidden xl:inline"></span>
+      <span class="text-accent dark:text-white highlight"></span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold"></span> 记录你生活中发生的一切，当你的完美记忆助手</span>
+      <span class="block mb-1 sm:hidden font-bold text-blue-600"></span>
+    </Fragment>
+  </Hero>
+
+</Layout>
