@@ -18,7 +18,7 @@ const posts = (await fetchPosts()).filter((p) => p.slug.startsWith('tutorial'));
       {posts.map((post) => (
         <a
           href={post.permalink}
-          class="block group p-6 rounded-xl border border-white/[0.06] bg-bg-card hover:border-brand-gold/30 hover:bg-bg-elevated transition-all"
+          class="block group p-6 rounded-xl border border-surface-06 bg-bg-card hover:border-brand-gold/30 hover:bg-bg-elevated transition-all"
         >
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <h2 class="text-xl font-bold text-text-primary group-hover:text-brand-gold transition-colors">

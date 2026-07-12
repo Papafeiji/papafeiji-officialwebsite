@@ -58,7 +58,9 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
 const load = async (): Promise<Post[]> => {
   const posts = await getCollection('post');
-  const normalizedPosts = posts.map((post) => getNormalizedPost(post));
+  const normalizedPosts = posts
+    .filter((post) => !post.id.startsWith('en/'))  // exclude English posts from Chinese routes
+    .map((post) => getNormalizedPost(post));
   const results = (await Promise.all(normalizedPosts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
     .filter((post) => !post.draft);

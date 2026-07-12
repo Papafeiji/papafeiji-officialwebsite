@@ -39,7 +39,7 @@ const features = [
   <div class="max-w-6xl mx-auto">
     <ScrollReveal client:visible>
       <div class="text-center mb-20">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
           <span class="text-sm text-brand-gold font-medium">功能特性</span>
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
@@ -54,7 +54,7 @@ const features = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {features.map((f, i) => (
         <ScrollReveal client:visible delay={i * 100}>
-          <div class="group h-full p-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-gold/30 hover:bg-white/[0.02] transition-all duration-300">
+          <div class="group h-full p-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-gold/30 hover:bg-surface-02 transition-all duration-300">
             <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold/20 transition-colors">
               <Fragment set:html={f.icon} />
             </div>

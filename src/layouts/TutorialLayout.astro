@@ -23,22 +23,45 @@ const { title, description } = Astro.props;
   <link rel="icon" type="image/png" href="/papafeiji.png" />
 </head>
 <body>
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#0a0a0f]/80 backdrop-blur-xl">
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-surface-06 bg-nav-bg backdrop-blur-xl">
     <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3 text-text-primary no-underline">
         <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg" />
         <span class="font-bold text-lg tracking-tight">爬爬记忆助手</span>
       </a>
-      <div class="flex items-center gap-4">
+      <!-- Desktop -->
+      <div class="hidden md:flex items-center gap-4">
         <a href="/" class="text-sm text-text-secondary hover:text-text-primary transition-colors">首页</a>
         <a href="/tutorial" class="text-sm text-brand-gold">教程</a>
+        <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="切换主题">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
+      <!-- Mobile: <details> menu -->
+      <details class="md:hidden">
+        <summary class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer list-none marker:hidden">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </summary>
+        <div class="absolute right-0 top-16 w-48 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex flex-col gap-1">
+          <a href="/" class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">首页</a>
+          <a href="/tutorial" class="block px-4 py-3 rounded-lg text-base text-brand-gold">教程</a>
+          <hr class="border-surface-06 my-2" />
+          <div class="flex items-center gap-2 px-4 py-2">
+            <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <span class="text-sm text-text-secondary">Theme</span>
+          </div>
+        </div>
+      </details>
     </div>
   </header>
   <main class="pt-16">
     <slot />
   </main>
-  <footer class="border-t border-white/[0.06] py-12 px-6 mt-16">
+  <footer class="border-t border-surface-06 py-12 px-6 mt-16">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
         <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg opacity-60" />

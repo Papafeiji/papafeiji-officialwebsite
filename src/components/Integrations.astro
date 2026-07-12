@@ -17,7 +17,7 @@ const platforms = [
   <div class="max-w-5xl mx-auto">
     <ScrollReveal client:visible>
       <div class="text-center mb-20">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
           <span class="text-sm text-brand-gold font-medium">接入平台</span>
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
@@ -32,7 +32,7 @@ const platforms = [
     <ScrollReveal client:visible delay={200}>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         {platforms.map((p) => (
-          <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-white/[0.1] transition-all">
+          <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-surface-10 transition-all">
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-bold text-white transition-transform group-hover:scale-110" style={`background: ${p.color}20; color: ${p.color};`}>
               {p.initial}
             </div>
