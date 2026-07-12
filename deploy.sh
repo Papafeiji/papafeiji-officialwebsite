@@ -1,5 +1,5 @@
 #!/bin/bash
-# 部署脚本：papafeiji-officialwebsite (官网) + papafeiji-news (news 博客站)
+# 部署脚本：papafeiji-officialwebsite (官网)
 # 支持：首次全新部署 与 后续版本更新
 # 用法：bash deploy.sh
 
@@ -15,14 +15,8 @@ LOCAL_DIR="$(dirname "$(readlink -f "$0")")"
 # 官网
 REMOTE_DIR="/var/www/papafeiji-officialwebsite"
 DOMAIN="papafeiji.cn"
-NEWS_DOMAIN="news.${DOMAIN}"
-SERVER_NAME="${DOMAIN} ${NEWS_DOMAIN}"
 EXPECTED_IP="47.98.121.243"
 SSL_EMAIL="admin@papafeiji.cn"
-
-# news 站点
-NEWS_LOCAL_DIR="${LOCAL_DIR}/papafeiji-news"
-NEWS_REMOTE_DIR="/var/www/papafeiji-news"
 
 # FRP 服务端配置
 FRPS_VERSION="0.69.1"
@@ -60,7 +54,7 @@ run_remote() {
 
 # 检测是否为首次部署
 is_first_deploy() {
-  if run_remote "test -f ${REMOTE_DIR}/index.html && test -f ${NEWS_REMOTE_DIR}/index.html" >/dev/null 2>&1; then
+  if run_remote "test -f ${REMOTE_DIR}/index.html" >/dev/null 2>&1; then
     return 1
   else
     return 0
@@ -157,23 +151,6 @@ build_main() {
   fi
 }
 
-build_news() {
-  log_step "本地构建 news 站点"
-  if [ ! -d "${NEWS_LOCAL_DIR}" ]; then
-    log_error "未找到 news 项目目录 ${NEWS_LOCAL_DIR}"
-    exit 1
-  fi
-
-  cd "${NEWS_LOCAL_DIR}"
-  npm install
-  npm run build
-
-  if [ ! -d "${NEWS_LOCAL_DIR}/dist" ]; then
-    log_error "构建后未找到 ${NEWS_LOCAL_DIR}/dist 目录"
-    exit 1
-  fi
-}
-
 # ═══════════════════════════════════════════
 # nginx 管理
 # ═══════════════════════════════════════════
@@ -204,14 +181,6 @@ sync_main() {
   log_info "官网产物已同步到 ${REMOTE_DIR}"
 }
 
-sync_news() {
-  log_step "同步 news 构建产物到服务器"
-  sshpass -p "${PASSWORD}" rsync -avz --delete \
-    -e "ssh ${SSH_OPTS}" \
-    "${NEWS_LOCAL_DIR}/dist/" "${SERVER}:${NEWS_REMOTE_DIR}/"
-  log_info "news 产物已同步到 ${NEWS_REMOTE_DIR}"
-}
-
 ensure_nginx_config() {
   log_step "检查/创建 nginx 配置"
 
@@ -224,21 +193,11 @@ ensure_nginx_config() {
   "
 
   if [ "${first_deploy}" = "true" ]; then
-    # 首次部署：写 HTTP 配置，后续由 certbot 负责 HTTPS
     run_remote "cat > /etc/nginx/sites-available/papafeiji-officialwebsite << 'NGINX_EOF'
 server {
     listen 80;
     server_name ${DOMAIN};
     root ${REMOTE_DIR};
-    index index.html;
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-server {
-    listen 80;
-    server_name ${NEWS_DOMAIN};
-    root ${NEWS_REMOTE_DIR};
     index index.html;
     location / {
         try_files \$uri \$uri/ =404;
@@ -248,7 +207,6 @@ NGINX_EOF
 ln -sf /etc/nginx/sites-available/papafeiji-officialwebsite /etc/nginx/sites-enabled/papafeiji-officialwebsite
 nginx -t && systemctl reload nginx"
   else
-    # 更新部署：直接写完整 HTTPS 配置，不调用 certbot
     run_remote "cat > /etc/nginx/sites-available/papafeiji-officialwebsite << 'NGINX_EOF'
 server {
     listen 443 ssl;
@@ -264,21 +222,8 @@ server {
     }
 }
 server {
-    listen 443 ssl;
-    server_name ${NEWS_DOMAIN};
-    root ${NEWS_REMOTE_DIR};
-    index index.html;
-    ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-server {
     listen 80;
-    server_name ${DOMAIN} ${NEWS_DOMAIN};
+    server_name ${DOMAIN};
     return 301 https://\$host\$request_uri;
 }
 NGINX_EOF
@@ -303,7 +248,7 @@ ensure_ssl() {
 
   log_info "首次申请 SSL 证书..."
   run_remote "
-    certbot --nginx -d ${DOMAIN} -d ${NEWS_DOMAIN} --non-interactive --agree-tos -m ${SSL_EMAIL} --redirect
+    certbot --nginx -d ${DOMAIN} --non-interactive --agree-tos -m ${SSL_EMAIL} --redirect
     systemctl enable certbot.timer 2>/dev/null || true
     systemctl start certbot.timer 2>/dev/null || true
     nginx -t && systemctl reload nginx
@@ -476,7 +421,7 @@ FRP_EOF
 # ═══════════════════════════════════════════
 verify_access() {
   log_step "验证访问"
-  local http_code news_http_code tutorial_code
+  local http_code tutorial_code
 
   http_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${DOMAIN}/" || echo "000")
   if [ "${http_code}" = "200" ]; then
@@ -485,18 +430,11 @@ verify_access() {
     log_warn "https://${DOMAIN}/ 验证请求返回 ${http_code}，请手动检查"
   fi
 
-  news_http_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${NEWS_DOMAIN}/" || echo "000")
-  if [ "${news_http_code}" = "200" ]; then
-    log_info "验证成功：https://${NEWS_DOMAIN}/ 返回 200"
-  else
-    log_warn "https://${NEWS_DOMAIN}/ 验证请求返回 ${news_http_code}，请手动检查"
-  fi
-
-  tutorial_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${NEWS_DOMAIN}/tutorial0/" || echo "000")
+  tutorial_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${DOMAIN}/tutorial/" || echo "000")
   if [ "${tutorial_code}" = "200" ]; then
-    log_info "验证成功：https://${NEWS_DOMAIN}/tutorial0/ 返回 200"
+    log_info "验证成功：https://${DOMAIN}/tutorial/ 返回 200"
   else
-    log_warn "https://${NEWS_DOMAIN}/tutorial0/ 验证请求返回 ${tutorial_code}，请手动检查"
+    log_warn "https://${DOMAIN}/tutorial/ 验证请求返回 ${tutorial_code}，请手动检查"
   fi
 }
 
@@ -516,10 +454,8 @@ main() {
   check_dns
   check_ssh
   build_main
-  build_news
   ensure_nginx
   sync_main
-  sync_news
   ensure_nginx_config
   if [ "${first_deploy}" = "true" ]; then
     ensure_ssl
@@ -530,8 +466,8 @@ main() {
   echo ""
   echo "=== 部署完成 ==="
   echo "官网访问地址: https://${DOMAIN}"
-  echo "news 访问地址: https://${NEWS_DOMAIN}"
-  echo "证书覆盖域名: ${DOMAIN}, ${NEWS_DOMAIN}"
+  echo "教程页面: https://${DOMAIN}/tutorial/"
+  echo "证书覆盖域名: ${DOMAIN}"
   echo "FRP 服务端: ${SERVER}:${FRPS_BIND_PORT}"
 }
 

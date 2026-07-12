@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths } from 'astro';
+import TutorialLayout from '../../layouts/TutorialLayout.astro';
+import { getStaticPathsTutorialPost } from '../../utils/blog';
+
+export const getStaticPaths = (async () => {
+  return await getStaticPathsTutorialPost();
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+
+<TutorialLayout title={post.title} description={post.excerpt}>
+  <article class="max-w-3xl mx-auto px-6 py-12 sm:py-16 lg:py-20">
+    <header class="mb-8">
+      <div class="flex items-center gap-3 text-sm text-text-muted mb-4">
+        <time>{new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}</time>
+        {post.author && (
+          <>
+            <span>·</span>
+            <span>{post.author}</span>
+          </>
+        )}
+        {post.readingTime && (
+          <>
+            <span>·</span>
+            <span>{post.readingTime} 分钟阅读</span>
+          </>
+        )}
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight gradient-text">{post.title}</h1>
+      {post.excerpt && (
+        <p class="mt-4 text-text-secondary text-lg">{post.excerpt}</p>
+      )}
+    </header>
+
+    <div class="prose-custom">
+      {Content && <Content />}
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/[0.06]">
+      <a
+        href="/tutorial"
+        class="inline-flex items-center gap-2 text-sm text-brand-gold hover:text-brand-warm transition-colors"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回教程列表
+      </a>
+    </div>
+  </article>
+</TutorialLayout>

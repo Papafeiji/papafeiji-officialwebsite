@@ -1,0 +1,26 @@
+---
+publishDate: 2026-05-01T00:00:00Z
+author: Proton
+title: 收集工作记忆
+metadata:
+  canonical: https://papafeiji.cn
+---
+
+您可以把在电脑上的办公行为（如日常工作咨询、PPT/文档制作）作为"工作记忆"保存下来，系统会自动将它们与您的生活日记一起管理，AI 助手也能基于这些信息提供更个性化的回答。
+
+在小程序中，您可以通过以下方式创建工作记忆：
+1. 长按"新增"按钮（将"新增"按钮按住 1 秒以上）
+2. 在弹出的窗口中输入您的工作记忆
+3. 点击"保存"，记忆即保存成功
+![工作记忆功能](https://papafeiji.cn/tutorial5-1.png)
+
+对接外部 AI 助手【进阶推荐，全自动化记录】：
+工作记忆可通过 MCP/API 被 OpenClaw 龙虾、ChatGPT、Claude、WorkBuddy 等 AI助手读取或写入，您使用这些桌面助手产生的记忆将自动同步到记忆库中。
+
+设置路径：个人中心 → 我的记忆
+- 点击"生成 API 密钥"获取专属密钥
+- 通过密钥调用接口读写您的记忆与日记
+- 支持 MCP 协议，可直接在 OpenClaw 龙虾、ChatGPT、Claude、WorkBuddy 等客户端中配置使用
+![工作记忆功能](https://papafeiji.cn/tutorial5-2.png)
+
+具体对接使用说明可在"我的记忆"页面中查看，也可关注客服咨询更多。

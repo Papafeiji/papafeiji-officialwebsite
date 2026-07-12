@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · 爬爬记忆助手</title>
+  {description && <meta name="description" content={description} />}
+  <meta property="og:title" content={`${title} · 爬爬记忆助手`} />
+  {description && <meta property="og:description" content={description} />}
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:site_name" content="爬爬记忆助手" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="/papafeiji.png" />
+</head>
+<body>
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#0a0a0f]/80 backdrop-blur-xl">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-text-primary no-underline">
+        <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg" />
+        <span class="font-bold text-lg tracking-tight">爬爬记忆助手</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="/" class="text-sm text-text-secondary hover:text-text-primary transition-colors">首页</a>
+        <a href="/tutorial" class="text-sm text-brand-gold">教程</a>
+      </div>
+    </div>
+  </header>
+  <main class="pt-16">
+    <slot />
+  </main>
+  <footer class="border-t border-white/[0.06] py-12 px-6 mt-16">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg opacity-60" />
+        <span class="text-text-muted text-sm">爬爬记忆助手 · 跨 AI 的外挂记忆库</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-text-muted">
+        <a href="/tutorial" class="hover:text-text-secondary transition-colors">教程</a>
+        <a href="https://github.com/papafeiji/papafeiji-saas" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">GitHub</a>
+      </div>
+      <div class="text-xs text-text-muted text-center md:text-right">
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">
+          Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

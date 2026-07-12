@@ -1,0 +1,38 @@
+---
+import TutorialLayout from '../../layouts/TutorialLayout.astro';
+import { fetchPosts } from '../../utils/blog';
+
+const posts = (await fetchPosts()).filter((p) => p.slug.startsWith('tutorial'));
+---
+
+<TutorialLayout title="教程" description="爬爬记忆助手使用教程">
+  <section class="max-w-4xl mx-auto px-6 py-12 sm:py-16 lg:py-20">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+        <span class="gradient-text">使用教程</span>
+      </h1>
+      <p class="mt-4 text-text-secondary text-lg">了解爬爬记忆助手的各项功能</p>
+    </header>
+
+    <div class="space-y-6">
+      {posts.map((post) => (
+        <a
+          href={post.permalink}
+          class="block group p-6 rounded-xl border border-white/[0.06] bg-bg-card hover:border-brand-gold/30 hover:bg-bg-elevated transition-all"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-brand-gold transition-colors">
+              {post.title}
+            </h2>
+            <time class="text-sm text-text-muted whitespace-nowrap">
+              {new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}
+            </time>
+          </div>
+          {post.excerpt && (
+            <p class="mt-2 text-text-secondary text-sm line-clamp-2">{post.excerpt}</p>
+          )}
+        </a>
+      ))}
+    </div>
+  </section>
+</TutorialLayout>
