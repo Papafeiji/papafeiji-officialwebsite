@@ -1,23 +1,26 @@
 ---
-import ScrollReveal from './ScrollReveal.tsx';
+import { t } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = (key: any) => t(lang, key as any);
 
 const steps = [
   {
     num: "01",
-    title: "一键部署",
-    desc: "通过 Docker 或安装脚本，在几分钟内完成私有化部署。支持 SQLite 和 PostgreSQL。",
+    title: 'how.step1.title',
+    desc: 'how.step1.desc',
     cmd: "curl -fsSL https://papafeiji.cn/install.sh | bash"
   },
   {
     num: "02",
-    title: "自动记录",
-    desc: "打开微信小程序，授权位置权限。系统自动追踪你的行程，生成每日日记。",
+    title: 'how.step2.title',
+    desc: 'how.step2.desc',
     cmd: null
   },
   {
     num: "03",
-    title: "接入 AI",
-    desc: "在爬爬记忆助手后台生成 API Key，将其配置到豆包、Kimi、ChatGPT 等支持 MCP 的 AI 客户端。",
+    title: 'how.step3.title',
+    desc: 'how.step3.desc',
     cmd: null
   }
 ];
@@ -27,30 +30,30 @@ const steps = [
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_50%,rgba(181,141,94,0.06),transparent)]"></div>
 
   <div class="relative max-w-5xl mx-auto">
-    <ScrollReveal client:visible>
+    
       <div class="text-center mb-20">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
-          <span class="text-sm text-brand-gold font-medium">快速开始</span>
+          <span class="text-sm text-brand-gold font-medium">{_('how.badge')}</span>
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-          三步拥有<span class="gradient-text">持久记忆</span>
+          {_('how.title.1')}<span class="gradient-text">{_('how.title.2')}</span>
         </h2>
         <p class="text-xl text-text-secondary max-w-2xl mx-auto">
-          从零开始，让你的 AI 在 5 分钟内获得真实世界的记忆能力
+          {_('how.subtitle')}
         </p>
       </div>
-    </ScrollReveal>
+    
 
     <div class="space-y-8">
       {steps.map((step, i) => (
-        <ScrollReveal client:visible delay={i * 150}>
+        
           <div class="flex flex-col md:flex-row gap-8 items-start p-8 rounded-2xl bg-bg-card border border-border-subtle">
             <div class="flex-shrink-0">
               <span class="text-5xl font-bold text-brand-gold/20">{step.num}</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-2xl font-semibold text-text-primary mb-3">{step.title}</h3>
-              <p class="text-text-secondary leading-relaxed mb-4">{step.desc}</p>
+              <h3 class="text-2xl font-semibold text-text-primary mb-3">{_(step.title)}</h3>
+              <p class="text-text-secondary leading-relaxed mb-4">{_(step.desc)}</p>
               {step.cmd && (
                 <div class="code-block">
                   <div class="code-header">
@@ -66,7 +69,7 @@ const steps = [
               )}
             </div>
           </div>
-        </ScrollReveal>
+        
       ))}
     </div>
   </div>

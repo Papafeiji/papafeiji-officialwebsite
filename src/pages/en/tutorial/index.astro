@@ -1,13 +1,13 @@
 ---
-import TutorialLayout from '../../layouts/TutorialLayout.astro';
-import { fetchPosts } from '../../utils/blog';
-import { t } from '../../i18n/translations';
+import TutorialLayout from '../../../layouts/TutorialLayout.astro';
+import { fetchPostsEn } from '../../../utils/blog';
+import { t } from '../../../i18n/translations';
 
-const posts = (await fetchPosts()).filter((p) => p.slug.startsWith('tutorial'));
-const _ = (key: any) => t('zh', key as any);
+const posts = (await fetchPostsEn()).filter((p) => p.slug.startsWith('tutorial'));
+const _ = (key: any) => t('en', key as any);
 ---
 
-<TutorialLayout title={_('tutorial.list.title')} description={_('tutorial.list.subtitle')} lang="zh">
+<TutorialLayout title={_('tutorial.list.title')} description={_('tutorial.list.subtitle')} lang="en">
   <section class="max-w-4xl mx-auto px-6 py-12 sm:py-16 lg:py-20">
     <header class="mb-12 text-center">
       <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
@@ -27,7 +27,7 @@ const _ = (key: any) => t('zh', key as any);
               {post.title}
             </h2>
             <time class="text-sm text-text-muted whitespace-nowrap">
-              {new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}
+              {new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}
             </time>
           </div>
           {post.excerpt && (

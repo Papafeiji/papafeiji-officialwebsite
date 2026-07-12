@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/papafeiji.png', ogType = 'website' } = Astro.props;
+const isEn = lang === 'en';
+const htmlLang = isEn ? 'en' : 'zh-CN';
+const siteName = isEn ? 'PathMemo' : '爬爬记忆助手';
+---
+
+<!DOCTYPE html>
+<html lang={htmlLang} class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · {siteName}</title>
+  {description && <meta name="description" content={description} />}
+  <meta property="og:title" content={`${title} · ${siteName}`} />
+  {description && <meta property="og:description" content={description} />}
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
+  <link rel="icon" type="image/png" href="/papafeiji.png" />
+  <script is:inline>
+    (function(){var t=localStorage.getItem('theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.remove('dark');var l=localStorage.getItem('lang');if(!l&&navigator.language){var n=navigator.language.toLowerCase();var e=/^zh\b/.test(n);var u=window.location.pathname;if(e&&u.startsWith('/en/')){window.location.href=u.replace(/^\/en/,'')||'/'}else if(!e&&!u.startsWith('/en/')){window.location.href='/en'+u}}})();
+  </script>
+</head>
+<body>
+  <Navbar lang={lang} />
+  <main class="pt-16">
+    <slot />
+  </main>
+</body>
+</html>

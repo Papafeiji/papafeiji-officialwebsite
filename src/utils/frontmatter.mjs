@@ -21,7 +21,6 @@ export function responsiveTablesRehypePlugin() {
           properties: { style: 'overflow:auto' },
           children: [child],
         };
-        i++;
       }
     }
   };

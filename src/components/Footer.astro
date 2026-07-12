@@ -1,21 +1,25 @@
 ---
+import { t } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = (key: any) => t(lang, key as any);
 ---
 <footer class="border-t border-surface-06 py-12 px-6">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
     <div class="flex items-center gap-3">
-      <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg opacity-60" />
-      <span class="text-text-muted text-sm">爬爬记忆助手 · 跨 AI 的外挂记忆库</span>
+      <img src="/papafeiji.png" alt={_('site.name')} class="w-8 h-8 rounded-lg opacity-60" />
+      <span class="text-text-muted text-sm">{_('site.name')} · {_('site.tagline')}</span>
     </div>
 
     <div class="flex items-center gap-6 text-sm text-text-muted">
-      <a href="/tutorial/privacy-police" class="hover:text-text-secondary transition-colors">隐私政策</a>
-      <a href="/tutorial" class="hover:text-text-secondary transition-colors">教程</a>
+      <a href={lang === 'en' ? '/en/privacy-police' : '/tutorial/privacy-police'} class="hover:text-text-secondary transition-colors">{_('footer.privacy')}</a>
+      <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="hover:text-text-secondary transition-colors">{_('footer.tutorial')}</a>
       <a href="https://github.com/papafeiji/papafeiji-saas" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">GitHub</a>
     </div>
 
     <div class="text-xs text-text-muted text-center md:text-right">
       <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">
-        Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2
+        {_('site.copyright')}
       </a>
     </div>
   </div>

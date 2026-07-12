@@ -1,51 +1,39 @@
 ---
-import '../styles/global.css';
+import Layout from './Layout.astro';
+import { t } from '../i18n/translations';
 
 export interface Props {
   title: string;
   description?: string;
+  lang?: string;
 }
-const { title, description } = Astro.props;
+
+const { title, description, lang = 'zh' } = Astro.props;
+const _ = (key: any) => t(lang as any, key as any);
 ---
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} · 爬爬记忆助手</title>
-  {description && <meta name="description" content={description} />}
-  <meta property="og:title" content={`${title} · 爬爬记忆助手`} />
-  {description && <meta property="og:description" content={description} />}
-  <meta property="og:url" content={Astro.url.href} />
-  <meta property="og:site_name" content="爬爬记忆助手" />
-  <meta property="og:type" content="article" />
-  <link rel="icon" type="image/png" href="/papafeiji.png" />
-</head>
-<body>
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-surface-06 bg-nav-bg backdrop-blur-xl">
+<Layout title={title} description={description} lang={lang} ogType="article">
+  <header class="border-b border-surface-06 bg-bg-card">
     <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 text-text-primary no-underline">
-        <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg" />
-        <span class="font-bold text-lg tracking-tight">爬爬记忆助手</span>
+      <a href={lang === 'en' ? '/en' : '/'} class="flex items-center gap-3 text-text-primary no-underline">
+        <img src="/papafeiji.png" alt={_('site.name')} class="w-8 h-8 rounded-lg" />
+        <span class="font-bold text-lg tracking-tight">{_('site.name')}</span>
       </a>
-      <!-- Desktop -->
       <div class="hidden md:flex items-center gap-4">
-        <a href="/" class="text-sm text-text-secondary hover:text-text-primary transition-colors">首页</a>
-        <a href="/tutorial" class="text-sm text-brand-gold">教程</a>
-        <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="切换主题">
+        <a href={lang === 'en' ? '/en' : '/'} class="text-sm text-text-secondary hover:text-text-primary transition-colors">{_('tutorial.home')}</a>
+        <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="text-sm text-brand-gold">{_('nav.tutorial')}</a>
+        <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </div>
-      <!-- Mobile: <details> menu -->
       <details class="md:hidden">
         <summary class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer list-none marker:hidden">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </summary>
         <div class="absolute right-0 top-16 w-48 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex flex-col gap-1">
-          <a href="/" class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">首页</a>
-          <a href="/tutorial" class="block px-4 py-3 rounded-lg text-base text-brand-gold">教程</a>
+          <a href={lang === 'en' ? '/en' : '/'} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('tutorial.home')}</a>
+          <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="block px-4 py-3 rounded-lg text-base text-brand-gold">{_('nav.tutorial')}</a>
           <hr class="border-surface-06 my-2" />
           <div class="flex items-center gap-2 px-4 py-2">
             <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
@@ -58,25 +46,22 @@ const { title, description } = Astro.props;
       </details>
     </div>
   </header>
-  <main class="pt-16">
-    <slot />
-  </main>
+  <slot />
   <footer class="border-t border-surface-06 py-12 px-6 mt-16">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <img src="/papafeiji.png" alt="爬爬记忆助手" class="w-8 h-8 rounded-lg opacity-60" />
-        <span class="text-text-muted text-sm">爬爬记忆助手 · 跨 AI 的外挂记忆库</span>
+        <img src="/papafeiji.png" alt={_('site.name')} class="w-8 h-8 rounded-lg opacity-60" />
+        <span class="text-text-muted text-sm">{_('site.name')} · {_('site.tagline')}</span>
       </div>
       <div class="flex items-center gap-6 text-sm text-text-muted">
-        <a href="/tutorial" class="hover:text-text-secondary transition-colors">教程</a>
+        <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="hover:text-text-secondary transition-colors">{_('footer.tutorial')}</a>
         <a href="https://github.com/papafeiji/papafeiji-saas" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">GitHub</a>
       </div>
       <div class="text-xs text-text-muted text-center md:text-right">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">
-          Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2
+          {_('site.copyright')}
         </a>
       </div>
     </div>
   </footer>
-</body>
-</html>
+</Layout>

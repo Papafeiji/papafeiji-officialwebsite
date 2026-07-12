@@ -1,5 +1,8 @@
 ---
-import ScrollReveal from './ScrollReveal.tsx';
+import { t } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = (key: any) => t(lang, key as any);
 
 const platforms = [
   { name: "豆包", color: "#3B82F6", initial: "豆" },
@@ -15,21 +18,21 @@ const platforms = [
 
 <section id="integrations" class="relative py-32 px-6">
   <div class="max-w-5xl mx-auto">
-    <ScrollReveal client:visible>
+    
       <div class="text-center mb-20">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
-          <span class="text-sm text-brand-gold font-medium">接入平台</span>
+          <span class="text-sm text-brand-gold font-medium">{_('integrations.badge')}</span>
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-          一个记忆库，<span class="gradient-text">全平台通用</span>
+          {_('integrations.title.1')}<span class="gradient-text">{_('integrations.title.2')}</span>
         </h2>
         <p class="text-xl text-text-secondary max-w-2xl mx-auto">
-          通过 MCP 协议和标准 API，无缝接入你正在使用的所有大模型
+          {_('integrations.subtitle')}
         </p>
       </div>
-    </ScrollReveal>
+    
 
-    <ScrollReveal client:visible delay={200}>
+    
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         {platforms.map((p) => (
           <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-surface-10 transition-all">
@@ -40,14 +43,12 @@ const platforms = [
           </div>
         ))}
       </div>
-    </ScrollReveal>
+    
 
-    <ScrollReveal client:visible delay={400}>
+    
       <div class="mt-12 p-6 rounded-2xl bg-bg-card border border-border-subtle text-center">
-        <p class="text-text-secondary text-sm">
-          支持任何兼容 <span class="text-brand-gold font-medium">MCP 协议</span> 或可通过 <span class="text-brand-gold font-medium">API Key</span> 接入的 AI 客户端
-        </p>
+        <p class="text-text-secondary text-sm" set:html={_('integrations.note')} />
       </div>
-    </ScrollReveal>
+    
   </div>
 </section>

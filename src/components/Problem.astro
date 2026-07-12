@@ -1,58 +1,60 @@
 ---
-import ScrollReveal from './ScrollReveal.tsx';
+import { t } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = (key: any) => t(lang, key as any);
 ---
 <section class="relative py-32 px-6">
   <div class="max-w-4xl mx-auto text-center">
-    <ScrollReveal client:visible>
+    
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
-        <span class="text-sm text-brand-gold font-medium">核心痛点</span>
+        <span class="text-sm text-brand-gold font-medium">{_('problem.badge')}</span>
       </div>
-    </ScrollReveal>
+    
 
-    <ScrollReveal client:visible delay={100}>
+    
       <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight">
-        豆包、Kimi、千问……<br />
-        <span class="text-text-muted">为何总是</span><span class="gradient-text">"失忆"</span><span class="text-text-muted">？</span>
+        {_('problem.title.1')}<br />
+        <span class="text-text-muted">{_('problem.title.2')}</span><span class="gradient-text">{_('problem.title.3')}</span><span class="text-text-muted">{_('problem.title.4')}</span>
       </h2>
-    </ScrollReveal>
+    
 
-    <ScrollReveal client:visible delay={200}>
+    
       <p class="text-xl text-text-secondary max-w-2xl mx-auto mb-16 leading-relaxed">
-        每次打开大模型 App，它都不记得你是谁、你做过什么、你喜欢什么。<br class="hidden md:block" />
-        对话一旦结束，记忆就像沙滩上的脚印，被潮水冲刷得一干二净。
+        {_('problem.subtitle')}
       </p>
-    </ScrollReveal>
+    
 
     <div class="grid md:grid-cols-3 gap-6">
-      <ScrollReveal client:visible delay={300}>
+      
         <div class="p-8 rounded-2xl bg-bg-card border border-border-subtle text-left">
           <div class="w-12 h-12 rounded-xl bg-surface-04 flex items-center justify-center mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gold"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
           </div>
-          <h3 class="text-lg font-semibold text-text-primary mb-2">没有长期记忆</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">每次对话都是全新的开始，AI 记不住你的偏好、习惯和过往经历。</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">{_('problem.card1.title')}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{_('problem.card1.desc')}</p>
         </div>
-      </ScrollReveal>
+      
 
-      <ScrollReveal client:visible delay={400}>
+      
         <div class="p-8 rounded-2xl bg-bg-card border border-border-subtle text-left">
           <div class="w-12 h-12 rounded-xl bg-surface-04 flex items-center justify-center mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gold"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <h3 class="text-lg font-semibold text-text-primary mb-2">无法感知真实世界</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">AI 被困在屏幕里，不知道你今天去了哪里、见了什么人、经历了什么。</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">{_('problem.card2.title')}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{_('problem.card2.desc')}</p>
         </div>
-      </ScrollReveal>
+      
 
-      <ScrollReveal client:visible delay={500}>
+      
         <div class="p-8 rounded-2xl bg-bg-card border border-border-subtle text-left">
           <div class="w-12 h-12 rounded-xl bg-surface-04 flex items-center justify-center mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gold"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 class="text-lg font-semibold text-text-primary mb-2">各平台记忆孤岛</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">豆包的记忆 Kimi 读不到，ChatGPT 的记忆文心一言看不到，数据互不流通。</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">{_('problem.card3.title')}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{_('problem.card3.desc')}</p>
         </div>
-      </ScrollReveal>
+      
     </div>
   </div>
 </section>

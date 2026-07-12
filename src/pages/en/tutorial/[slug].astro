@@ -1,23 +1,23 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import TutorialLayout from '../../layouts/TutorialLayout.astro';
-import { getStaticPathsTutorialPost } from '../../utils/blog';
-import { t } from '../../i18n/translations';
+import TutorialLayout from '../../../layouts/TutorialLayout.astro';
+import { getStaticPathsTutorialPostEn } from '../../../utils/blog';
+import { t } from '../../../i18n/translations';
 
 export const getStaticPaths = (async () => {
-  return await getStaticPathsTutorialPost();
+  return await getStaticPathsTutorialPostEn();
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
 const { Content } = post;
-const _ = (key: any) => t('zh', key as any);
+const _ = (key: any) => t('en', key as any);
 ---
 
-<TutorialLayout title={post.title} description={post.excerpt} lang="zh">
+<TutorialLayout title={post.title} description={post.excerpt} lang="en">
   <article class="max-w-3xl mx-auto px-6 py-12 sm:py-16 lg:py-20">
     <header class="mb-8">
       <div class="flex items-center gap-3 text-sm text-text-muted mb-4">
-        <time>{new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}</time>
+        <time>{new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.publishDate)}</time>
         {post.author && (
           <>
             <span>·</span>
@@ -43,7 +43,7 @@ const _ = (key: any) => t('zh', key as any);
 
     <div class="mt-12 pt-8 border-t border-surface-06">
       <a
-        href="/tutorial"
+        href="/en/tutorial"
         class="inline-flex items-center gap-2 text-sm text-brand-gold hover:text-brand-warm transition-colors"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
