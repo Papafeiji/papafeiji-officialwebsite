@@ -18,12 +18,6 @@ DOMAIN="papafeiji.cn"
 EXPECTED_IP="47.98.121.243"
 SSL_EMAIL="admin@papafeiji.cn"
 
-# FRP 服务端配置
-FRPS_VERSION="0.69.1"
-FRPS_BIND_PORT=7000
-FRPS_TOKEN="jiuyueyun12724"
-FRPS_LOCAL_TARBALL="${LOCAL_DIR}/frp_${FRPS_VERSION}_linux_amd64.tar.gz"
-
 # SSH 连接选项（为自动化部署忽略 known_hosts 检查，并抑制非错误日志）
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -o LogLevel=ERROR"
 
@@ -256,167 +250,6 @@ ensure_ssl() {
 }
 
 # ═══════════════════════════════════════════
-# FRP 服务端管理
-# ═══════════════════════════════════════════
-ensure_frp() {
-  log_step "部署/更新 FRP 服务端 (frps)"
-
-  local needs_restart=false
-  local frps_arch
-  case "$(uname -m)" in
-    x86_64) frps_arch="amd64" ;;
-    aarch64|arm64) frps_arch="arm64" ;;
-    armv7l) frps_arch="arm" ;;
-    *)
-      log_warn "不支持的本地架构 $(uname -m)，跳过 frps 部署"
-      return 0
-      ;;
-  esac
-
-  local frps_tarball_name="frp_${FRPS_VERSION}_linux_${frps_arch}"
-  local frps_tarball="${frps_tarball_name}.tar.gz"
-  local frps_temp_dir
-  frps_temp_dir=$(mktemp -d)
-
-  # 准备本地安装包
-  if [ -f "$FRPS_LOCAL_TARBALL" ]; then
-    log_info "使用本地 frp 安装包：$FRPS_LOCAL_TARBALL"
-    cp "$FRPS_LOCAL_TARBALL" "${frps_temp_dir}/${frps_tarball}"
-  else
-    log_info "本地未找到安装包，尝试从 GitHub 下载..."
-    local frps_download_url="https://github.com/fatedier/frp/releases/download/v${FRPS_VERSION}/${frps_tarball}"
-    if ! curl -L --connect-timeout 30 --max-time 300 -o "${frps_temp_dir}/${frps_tarball}" "$frps_download_url"; then
-      log_error "下载 frp 安装包失败，跳过 frps 部署"
-      rm -rf "$frps_temp_dir"
-      return 0
-    fi
-  fi
-
-  # 校验压缩包
-  if ! tar -tzf "${frps_temp_dir}/${frps_tarball}" >/dev/null 2>&1; then
-    log_error "frp 安装包损坏，跳过 frps 部署"
-    rm -rf "$frps_temp_dir"
-    return 0
-  fi
-
-  # 生成 frps.toml
-  cat > "${frps_temp_dir}/frps.toml" << FRP_EOF
-bindPort = ${FRPS_BIND_PORT}
-auth.method = "token"
-auth.token = "${FRPS_TOKEN}"
-log.to = "/var/log/frps.log"
-log.level = "info"
-log.maxDays = 30
-FRP_EOF
-
-  # 生成 systemd service
-  cat > "${frps_temp_dir}/frps.service" << FRP_EOF
-[Unit]
-Description=Frp Server Service
-After=network.target
-
-[Service]
-Type=simple
-User=root
-Restart=on-failure
-RestartSec=5s
-ExecStart=/usr/local/bin/frps -c /etc/frp/frps.toml
-LimitNOFILE=1048576
-
-[Install]
-WantedBy=multi-user.target
-FRP_EOF
-
-  # 确保远程目录存在
-  run_remote "mkdir -p /etc/frp"
-
-  # 检查远程二进制版本
-  local remote_version
-  remote_version=$(run_remote "frps --version 2>/dev/null || echo none")
-
-  if [ "${remote_version}" != "${FRPS_VERSION}" ]; then
-    log_info "frps 二进制不存在或版本不匹配（远程：${remote_version}，期望：${FRPS_VERSION}），重新安装..."
-    sshpass -p "${PASSWORD}" scp ${SSH_OPTS} "${frps_temp_dir}/${frps_tarball}" "${SERVER}:/tmp/${frps_tarball}"
-    run_remote "
-      set -e
-      cd /tmp
-      tar -xzf ${frps_tarball}
-      cp ${frps_tarball_name}/frps /usr/local/bin/frps
-      chmod +x /usr/local/bin/frps
-      rm -rf /tmp/${frps_tarball_name} /tmp/${frps_tarball}
-    "
-    needs_restart=true
-  else
-    log_info "frps 二进制版本已匹配 ${FRPS_VERSION}"
-  fi
-
-  # 上传配置文件
-  sshpass -p "${PASSWORD}" scp ${SSH_OPTS} "${frps_temp_dir}/frps.toml" "${SERVER}:/etc/frp/frps.toml.new"
-  sshpass -p "${PASSWORD}" scp ${SSH_OPTS} "${frps_temp_dir}/frps.service" "${SERVER}:/etc/systemd/system/frps.service.new"
-
-  # 通过 cmp 判断配置是否变更
-  local config_changed
-  config_changed=$(run_remote "
-    if [ ! -f /etc/frp/frps.toml ] || [ ! -f /etc/frp/frps.toml.new ] || ! cmp -s /etc/frp/frps.toml /etc/frp/frps.toml.new; then
-      echo yes
-    else
-      echo no
-    fi
-  ")
-
-  local service_changed
-  service_changed=$(run_remote "
-    if [ ! -f /etc/systemd/system/frps.service ] || [ ! -f /etc/systemd/system/frps.service.new ] || ! cmp -s /etc/systemd/system/frps.service /etc/systemd/system/frps.service.new; then
-      echo yes
-    else
-      echo no
-    fi
-  ")
-
-  if [ "${config_changed}" = "yes" ] || [ "${service_changed}" = "yes" ]; then
-    run_remote "
-      set -e
-      mv /etc/frp/frps.toml.new /etc/frp/frps.toml
-      mv /etc/systemd/system/frps.service.new /etc/systemd/system/frps.service
-    "
-    needs_restart=true
-    log_info "frps 配置已更新"
-  else
-    run_remote "
-      rm -f /etc/frp/frps.toml.new /etc/systemd/system/frps.service.new
-    "
-    log_info "frps 配置未变更"
-  fi
-
-  run_remote "systemctl daemon-reload && systemctl enable frps"
-
-  # 防火墙放行（仅在防火墙实际启用时操作）
-  run_remote "
-    if command -v ufw >/dev/null 2>&1 && ufw status | grep -q 'Status: active'; then
-      ufw allow ${FRPS_BIND_PORT}/tcp || true
-      ufw reload || true
-    elif command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state >/dev/null 2>&1; then
-      firewall-cmd --permanent --add-port=${FRPS_BIND_PORT}/tcp || true
-      firewall-cmd --reload || true
-    elif command -v iptables >/dev/null 2>&1; then
-      iptables -I INPUT -p tcp --dport ${FRPS_BIND_PORT} -j ACCEPT || true
-    fi
-  "
-
-  # 启动或重启服务
-  if [ "${needs_restart}" = "true" ]; then
-    log_info "重启 frps 服务..."
-    run_remote "systemctl restart frps"
-  else
-    log_info "启动/保持 frps 服务..."
-    run_remote "systemctl start frps"
-  fi
-
-  rm -rf "$frps_temp_dir"
-  log_info "frps 部署完成：${SERVER}:${FRPS_BIND_PORT}"
-}
-
-# ═══════════════════════════════════════════
 # 访问验证
 # ═══════════════════════════════════════════
 verify_access() {
@@ -460,7 +293,6 @@ main() {
   if [ "${first_deploy}" = "true" ]; then
     ensure_ssl
   fi
-  ensure_frp
   verify_access
 
   echo ""
@@ -468,7 +300,6 @@ main() {
   echo "官网访问地址: https://${DOMAIN}"
   echo "教程页面: https://${DOMAIN}/tutorial/"
   echo "证书覆盖域名: ${DOMAIN}"
-  echo "FRP 服务端: ${SERVER}:${FRPS_BIND_PORT}"
 }
 
 main "$@"

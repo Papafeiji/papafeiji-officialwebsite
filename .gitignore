@@ -34,9 +34,6 @@ yarn-error.log*
 # build cache
 .astro/
 
-# frp binary
-frp_*.tar.gz
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
