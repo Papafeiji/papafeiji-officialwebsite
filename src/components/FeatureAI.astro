@@ -1,0 +1,81 @@
+---
+import { createT } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = createT(lang);
+const isEn = lang === 'en';
+---
+<section id="ai" class="relative py-32 px-6 overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(181,141,94,0.06),transparent)]"></div>
+  <div class="relative max-w-5xl mx-auto">
+
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
+        <span class="text-sm text-brand-gold font-medium">{_('ai.badge')}</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+        {_('ai.title.1')}<span class="gradient-text">{_('ai.title.2')}</span>
+      </h2>
+      <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+        {_('ai.subtitle')}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Mini Program AI -->
+      <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text-primary">{isEn ? 'Mini Program AI Chat' : '小程序内 AI 对话'}</h3>
+        </div>
+        <ul class="space-y-3 text-text-secondary text-sm leading-relaxed">
+          {isEn ? <>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Open the AI drawer on the diary homepage to chat freely anytime</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> AI reads your last 90 days of personal and family diaries as context for precise, date-and-location-aware answers</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Streaming output for a smooth, natural chat experience like mainstream AI tools</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Responses include embedded date links — tap to jump directly to that day's diary</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Typical use: query past records ("What did I eat last Wednesday?"), review travel history, summarize monthly family outings</li>
+          </> : <>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 在日记首页打开 AI 抽屉面板，即可随时与 AI 自由对话交互</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> AI 默认读取近 90 天个人日记与家庭记录作为背景知识，回答精准关联日期和地点</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 支持流式逐字输出，交互体验与主流 AI 聊天工具一致</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 回答内容自动嵌入日记日期链接，点击即可跳转对应日记详情页</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 典型场景：查询过往记录（如「上周三中午吃了什么」）、复盘出行轨迹、总结全家出行</li>
+          </>}
+        </ul>
+      </div>
+
+      <!-- Official Account AI -->
+      <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text-primary">{isEn ? 'WeChat Official Account Chat' : '微信服务号对话'}</h3>
+        </div>
+        <ul class="space-y-3 text-text-secondary text-sm leading-relaxed">
+          {isEn ? <>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Bind the WeChat Official Account to use (self-hosted requires manual config) — send text or voice in the chat to trigger AI</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Voice messages are auto-recognized, processed by AI, and responded via customer service messages — no need to open the Mini Program</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Mini Program and Official Account share the same diary data and conversation quota — data flows both ways</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> Great for fragmented moments — quickly record or review memories when opening the Mini Program is inconvenient</li>
+          </> : <>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 绑定微信服务号即可使用（开源版需自行配置），微信聊天框发送文字、语音即可触发 AI 服务</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 语音消息自动智能识别，AI 处理后以客服消息形式推送回复，无需打开小程序</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 小程序与服务号共用同一套日记数据、对话额度，聊天记录双向互通</li>
+            <li class="flex gap-2"><span class="text-brand-gold mt-1 shrink-0">&#9679;</span> 适配碎片化场景，不方便打开小程序时，可快速记录内容、回顾过往回忆</li>
+          </>}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Model support note -->
+    <div class="mt-8 p-6 rounded-2xl bg-bg-card border border-surface-06 text-center">
+      <p class="text-text-secondary text-sm">
+        {isEn ? 'Model support: compatible with DeepSeek, OpenAI, and other mainstream API-compatible AI models. Configure via environment variables.' : '模型适配：支持接入 DeepSeek、OpenAI 等兼容 API 的主流 AI 模型，通过环境变量即可快速配置。'}
+      </p>
+    </div>
+  </div>
+</section>
