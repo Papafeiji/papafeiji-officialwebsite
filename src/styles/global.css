@@ -114,9 +114,19 @@ html:not(.dark) {
 .code-body .prompt { color: #B58D5E; }
 .code-body .cmd { color: var(--color-text-primary); }
 
-/* ── Mobile <details> backdrop fix ── */
+/* ── Mobile <details> fix ── */
 details::backdrop {
   background: transparent;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::marker {
+  display: none;
+  content: "";
 }
 
 /* Animations */
