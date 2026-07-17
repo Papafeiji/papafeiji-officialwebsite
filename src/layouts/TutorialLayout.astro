@@ -13,39 +13,6 @@ const _ = (key: any) => t(lang as any, key as any);
 ---
 
 <Layout title={title} description={description} lang={lang} ogType="article">
-  <header class="border-b border-surface-06 bg-bg-card">
-    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href={lang === 'en' ? '/en' : '/'} class="flex items-center gap-3 text-text-primary no-underline">
-        <img src="/papafeiji.png" alt={_('site.name')} class="w-8 h-8 rounded-lg" />
-        <span class="font-bold text-lg tracking-tight">{_('site.name')}</span>
-      </a>
-      <div class="hidden md:flex items-center gap-4">
-        <a href={lang === 'en' ? '/en' : '/'} class="text-sm text-text-secondary hover:text-text-primary transition-colors">{_('tutorial.home')}</a>
-        <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="text-sm text-brand-gold">{_('nav.tutorial')}</a>
-        <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
-      <details class="md:hidden">
-        <summary class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer list-none marker:hidden">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </summary>
-        <div class="absolute right-0 top-16 w-48 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex flex-col gap-1">
-          <a href={lang === 'en' ? '/en' : '/'} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('tutorial.home')}</a>
-          <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="block px-4 py-3 rounded-lg text-base text-brand-gold">{_('nav.tutorial')}</a>
-          <hr class="border-surface-06 my-2" />
-          <div class="flex items-center gap-2 px-4 py-2">
-            <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
-              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </button>
-            <span class="text-sm text-text-secondary">Theme</span>
-          </div>
-        </div>
-      </details>
-    </div>
-  </header>
   <slot />
   <footer class="border-t border-surface-06 py-12 px-6 mt-16">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
