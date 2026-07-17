@@ -10,7 +10,7 @@ metadata:
 1.进入某一天日记
 2.点击右上角的“分享”按钮
 
-[![分享](/tutorial3-1.png)](weixin://dl/business/?appid=wx179ae36324c7c502&path=pages/index/index&env_version=release)
+[![分享](/tutorial3-1.webp)](weixin://dl/business/?appid=wx179ae36324c7c502&path=pages/index/index&env_version=release)
 
 PS. 该功能可将日记内图片也同时下载到本地/分享到朋友圈。
 PS. 当您将行程分享给好友时，我们还在卡片下面加了个小尾巴，感谢您将爬爬记忆助手推荐给更多用户！

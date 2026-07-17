@@ -1,5 +1,11 @@
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
+import sharp from 'sharp';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const publicDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../public');
+const dimensionCache = new Map();
 
 export function readingTimeRemarkPlugin() {
   return function (tree, file) {
@@ -22,21 +28,16 @@ export function responsiveTablesRehypePlugin() {
           children: [child],
         };
       }
-      if (child.type === 'element' && child.tagName === 'img') {
-        child.properties.loading = 'lazy';
-        child.properties.decoding = 'async';
-      }
     }
   };
 }
 
 export function lazyImagesRehypePlugin() {
-  return function (tree) {
+  return async function (tree) {
+    const images = [];
     function visit(node) {
       if (node.type === 'element' && node.tagName === 'img') {
-        node.properties = node.properties || {};
-        node.properties.loading = 'lazy';
-        node.properties.decoding = 'async';
+        images.push(node);
       }
       if (node.children) {
         for (const child of node.children) {
@@ -45,5 +46,32 @@ export function lazyImagesRehypePlugin() {
       }
     }
     visit(tree);
+
+    await Promise.all(
+      images.map(async (node) => {
+        node.properties = node.properties || {};
+        node.properties.loading = 'lazy';
+        node.properties.decoding = 'async';
+
+        const src = node.properties.src;
+        if (typeof src !== 'string' || !src.startsWith('/') || src.startsWith('//')) return;
+        if (node.properties.width && node.properties.height) return;
+
+        try {
+          let dims = dimensionCache.get(src);
+          if (!dims) {
+            const meta = await sharp(path.join(publicDir, src)).metadata();
+            dims = { width: meta.width, height: meta.height };
+            dimensionCache.set(src, dims);
+          }
+          if (dims.width && dims.height) {
+            node.properties.width = dims.width;
+            node.properties.height = dims.height;
+          }
+        } catch {
+          // image not found locally; skip dimensions
+        }
+      })
+    );
   };
 }

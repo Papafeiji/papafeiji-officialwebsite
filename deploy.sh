@@ -176,21 +176,25 @@ server {
     index index.html;
     error_page 404 /404.html;
 
+    add_header X-Content-Type-Options \"nosniff\" always;
+    add_header X-Frame-Options \"SAMEORIGIN\" always;
+    add_header Referrer-Policy \"strict-origin-when-cross-origin\" always;
+
     gzip on;
     gzip_vary on;
+    gzip_comp_level 6;
     gzip_min_length 256;
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
 
     location / {
         try_files \$uri \$uri/ =404;
+        expires -1;
     }
     location /_astro/ {
         expires 1y;
-        add_header Cache-Control \"public, max-age=31536000, immutable\";
     }
-    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
+    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|avif|woff2?)$ {
         expires 30d;
-        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 NGINX_EOF
@@ -206,7 +210,7 @@ ensure_ssl_config() {
   log_info "写入 HTTPS 配置..."
   run_remote "cat > /etc/nginx/sites-available/papafeiji-officialwebsite << 'NGINX_EOF'
 server {
-    listen 443 ssl;
+    listen 443 ssl http2;
     server_name ${DOMAIN};
     root ${REMOTE_DIR};
     index index.html;
@@ -216,21 +220,26 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
     error_page 404 /404.html;
 
+    add_header X-Content-Type-Options \"nosniff\" always;
+    add_header X-Frame-Options \"SAMEORIGIN\" always;
+    add_header Referrer-Policy \"strict-origin-when-cross-origin\" always;
+    add_header Strict-Transport-Security \"max-age=31536000\" always;
+
     gzip on;
     gzip_vary on;
+    gzip_comp_level 6;
     gzip_min_length 256;
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
 
     location / {
         try_files \$uri \$uri/ =404;
+        expires -1;
     }
     location /_astro/ {
         expires 1y;
-        add_header Cache-Control \"public, max-age=31536000, immutable\";
     }
-    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
+    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|avif|woff2?)$ {
         expires 30d;
-        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 server {
@@ -277,6 +286,12 @@ verify_access() {
 
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${DOMAIN}/tutorial/" || echo "000")
   [ "${code}" = "200" ] && log_info "✓ https://${DOMAIN}/tutorial/" || log_warn "✗ https://${DOMAIN}/tutorial/ → ${code}"
+
+  code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${DOMAIN}/en/" || echo "000")
+  [ "${code}" = "200" ] && log_info "✓ https://${DOMAIN}/en/" || log_warn "✗ https://${DOMAIN}/en/ → ${code}"
+
+  code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${DOMAIN}/about.webp" || echo "000")
+  [ "${code}" = "200" ] && log_info "✓ https://${DOMAIN}/about.webp" || log_warn "✗ https://${DOMAIN}/about.webp → ${code}"
 }
 
 # ═══════════════════════════════════════════

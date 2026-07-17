@@ -8,7 +8,11 @@ export default defineConfig({
   output: 'static',
   outDir: 'out',
   site: 'https://papafeiji.cn',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/(model|privacy-police|terms-of-use)\/$/.test(page),
+    }),
+  ],
   compressHTML: true,
   vite: {
     plugins: [tailwindcss()],

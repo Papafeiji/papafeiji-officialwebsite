@@ -15,7 +15,7 @@ How to set up:
 3. Tap on an address to rename it to your preferred name
 4. The system supports quick presets: "🏠 Home" and "🏢 Company" — fill in with one tap
 
-![Favorite places](/tutorial6-1.png)
+![Favorite places](/tutorial6-1.webp)
 
 Use cases:
 - Turn the detailed address returned by location services into "Company"; all diaries at that location will automatically display as "Company"

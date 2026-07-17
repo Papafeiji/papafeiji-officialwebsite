@@ -43,15 +43,15 @@ const siteName = _('site.name');
 
     <!-- Mobile: toggle menu -->
     <div class="md:hidden relative" data-mobile-menu>
-      <button id="mobile-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer select-none bg-transparent border-none" onclick="var m=this.nextElementSibling;var o=m.classList.contains('hidden');m.classList.toggle('hidden');this.setAttribute('aria-expanded',o?'true':'false');if(o){function c(e){if(!m.contains(e.target)&&e.target!==this){m.classList.add('hidden');this.setAttribute('aria-expanded','false');document.removeEventListener('click',c,true);document.removeEventListener('keydown',k,true)}}function k(e){if(e.key==='Escape'){m.classList.add('hidden');this.setAttribute('aria-expanded','false');document.removeEventListener('click',c,true);document.removeEventListener('keydown',k,true);this.focus()}}setTimeout(function(){document.addEventListener('click',c,true);document.addEventListener('keydown',k,true)},0)}" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button id="mobile-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer select-none bg-transparent border-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events:none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
       <div id="mobile-menu" class="absolute right-0 top-16 w-64 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex-col gap-1 hidden" role="menu">
-        <a href={`${home}#features`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false')">{_('nav.features')}</a>
-        <a href={`${home}#how-it-works`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false')">{_('nav.quickstart')}</a>
-        <a href={`${home}#integrations`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false')">{_('nav.integrations')}</a>
-        <a href={`${home}#open-source`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false')">{_('nav.opensource')}</a>
-        <a href={tutorial} class="block px-4 py-3 rounded-lg text-base text-brand-gold" role="menuitem" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false')">{_('nav.tutorial')}</a>
+        <a href={`${home}#features`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.features')}</a>
+        <a href={`${home}#how-it-works`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.quickstart')}</a>
+        <a href={`${home}#integrations`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.integrations')}</a>
+        <a href={`${home}#open-source`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.opensource')}</a>
+        <a href={tutorial} class="block px-4 py-3 rounded-lg text-base text-brand-gold" role="menuitem">{_('nav.tutorial')}</a>
         <hr class="border-surface-06 my-2" />
         <div class="flex items-center gap-3 px-4 py-2">
           <button class="theme-toggle" onclick="var h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')" aria-label="Toggle theme">
@@ -68,3 +68,37 @@ const siteName = _('site.name');
     </div>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    const close = () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      document.removeEventListener('click', onDocClick, true);
+      document.removeEventListener('keydown', onKeydown, true);
+    };
+    const onDocClick = (e: MouseEvent) => {
+      if (!menu.contains(e.target as Node) && !btn.contains(e.target as Node)) close();
+    };
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        close();
+        btn.focus();
+      }
+    };
+    btn.addEventListener('click', () => {
+      const opening = menu.classList.contains('hidden');
+      if (opening) {
+        menu.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        document.addEventListener('click', onDocClick, true);
+        document.addEventListener('keydown', onKeydown, true);
+      } else {
+        close();
+      }
+    });
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  }
+</script>

@@ -13,7 +13,7 @@ How to invite:
 1. Go to "Personal Center" → "My Invitations"
 2. Tap "Forward to Friends" to send a mini-program card, or tap "Share to Moments" to generate a QR code image — save it and share to your Moments
 
-![Invite rewards](/tutorial7-1.png)
+![Invite rewards](/tutorial7-1.webp)
 
 Invitation reward rules:
 - When a friend registers through your invitation, they immediately receive 7 days of Pro membership

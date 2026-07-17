@@ -12,7 +12,7 @@ metadata:
 1. 长按"新增"按钮（将"新增"按钮按住 1 秒以上）
 2. 在弹出的窗口中输入您的工作记忆
 3. 点击"保存"，记忆即保存成功
-![工作记忆功能](/tutorial5-1.png)
+![工作记忆功能](/tutorial5-1.webp)
 
 对接外部 AI 助手【进阶推荐，全自动化记录】：
 工作记忆可通过 MCP/API 被 OpenClaw 龙虾、ChatGPT、Claude、WorkBuddy 等 AI助手读取或写入，您使用这些桌面助手产生的记忆将自动同步到记忆库中。
@@ -21,6 +21,6 @@ metadata:
 - 点击"生成 API 密钥"获取专属密钥
 - 通过密钥调用接口读写您的记忆与日记
 - 支持 MCP 协议，可直接在 OpenClaw 龙虾、ChatGPT、Claude、WorkBuddy 等客户端中配置使用
-![工作记忆功能](/tutorial5-2.png)
+![工作记忆功能](/tutorial5-2.webp)
 
 具体对接使用说明可在"我的记忆"页面中查看，也可关注客服咨询更多。
