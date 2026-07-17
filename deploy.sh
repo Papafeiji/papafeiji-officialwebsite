@@ -191,6 +191,14 @@ server {
     }
     location /_astro/ {
         expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    location ~* \.(png|jpg|jpeg|webp|gif|svg|ico)$ {
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+    }
+    location /_astro/ {
+        expires 1y;
         add_header Cache-Control \"public, immutable\";
     }
     location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
@@ -227,6 +235,14 @@ server {
 
     location / {
         try_files \\\$uri \\\$uri/ =404;
+    }
+    location /_astro/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    location ~* \.(png|jpg|jpeg|webp|gif|svg|ico)$ {
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
     }
     location /_astro/ {
         expires 1y;

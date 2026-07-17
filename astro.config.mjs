@@ -9,6 +9,7 @@ export default defineConfig({
   outDir: 'out',
   site: 'https://papafeiji.cn',
   integrations: [sitemap()],
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },

@@ -29,6 +29,8 @@ const defaultHref = isEn
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8f8fa" media="(prefers-color-scheme: light)" />
   <meta name="format-detection" content="telephone=no,email=no,address=no" />
   <meta name="x5-fullscreen" content="true" />
   <meta name="x5-page-mode" content="app" />
@@ -45,6 +47,7 @@ const defaultHref = isEn
   <meta property="og:type" content={ogType} />
   <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
   <link rel="icon" type="image/png" href="/papafeiji.png" />
+  <link rel="apple-touch-icon" href="/papafeiji.png" />
   <link rel="canonical" href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'en' : 'zh'} href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'zh' : 'en'} href={otherLangHref} />

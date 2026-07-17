@@ -19,8 +19,6 @@ export const translations = {
     "hero.subtitle": "开源的 AI 记忆基础设施。自动记录你的物理世界行程，为豆包、Kimi、千问等主流大模型提供持久记忆能力。你的龙虾，长出脚，来到真实世界。",
     "hero.cta.deploy": "开始部署",
     "hero.cta.github": "在 GitHub 上查看",
-    "hero.scroll": "向下滚动",
-    "hero.scrollHint": "向下滚动",
     "hero.scrollHint": "向下滚动",
 
     // Problem
@@ -146,8 +144,6 @@ export const translations = {
     "hero.subtitle": "Open-source AI memory infrastructure. Automatically records your physical world journeys and provides persistent memory for ChatGPT, Claude, DeepSeek, and more major LLMs.",
     "hero.cta.deploy": "Deploy Now",
     "hero.cta.github": "View on GitHub",
-    "hero.scroll": "Scroll down",
-    "hero.scrollHint": "Scroll Down",
     "hero.scrollHint": "Scroll Down",
 
     "problem.badge": "Core Pain Points",
