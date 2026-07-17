@@ -7,7 +7,6 @@ const isEn = lang === 'en';
 ---
 <section id="location" class="relative py-32 px-6">
   <div class="max-w-5xl mx-auto">
-
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
         <span class="text-sm text-brand-gold font-medium">{_('location.badge')}</span>
@@ -15,73 +14,36 @@ const isEn = lang === 'en';
       <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
         {_('location.title.1')}<span class="gradient-text">{_('location.title.2')}</span>
       </h2>
-      <p class="text-xl text-text-secondary max-w-2xl mx-auto">
-        {_('location.subtitle')}
-      </p>
+      <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('location.subtitle')}</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
-      <!-- Smart Stay Detection -->
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Smart Stay Detection' : '智能停留识别'}</h3>
-        <ul class="space-y-2 text-text-secondary text-sm leading-relaxed">
-          {isEn ? <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Continuous GPS: every 30s when foreground, every 120s when background</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Stay threshold: within 300m range, stationary for over 10 minutes</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Batch upload up to 50 location points after each stay ends</li>
-          </> : <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 前台每 30 秒采集一次，后台每 120 秒采集一次</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 300 米范围内持续停留超 10 分钟即判定为有效停留点</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 单次停留结束后批量上传，单次最多 50 个点位</li>
-          </>}
-        </ul>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          {isEn ? 'Background GPS collection without user intervention. Intelligently identifies valid stay behavior and filters out irrelevant movement tracks.' : '后台无感采集 GPS 点位，智能判定有效停留行为，过滤无效移动轨迹。'}
+        </p>
       </div>
-
-      <!-- Server Aggregation -->
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Data Aggregation & Diary' : '数据聚合与日记生成'}</h3>
-        <ul class="space-y-2 text-text-secondary text-sm leading-relaxed">
-          {isEn ? <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Clusters points by 300m + 30min, computes average coordinates</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Tencent Map geocoding for accurate landmark names & addresses</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Familiar addresses within 300m auto-replaced with custom names</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Smart dedup: same date + same address won't duplicate</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Auto-generates diary entries marked "Auto-recorded" daily</li>
-          </> : <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 按「空间 300 米 + 时间 30 分钟」规则聚合为有效停留簇</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 腾讯地图逆地理编码，匹配精准地标名称与详细地址</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 熟地址 300 米内自动替换为自定义熟知名称</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 智能去重：同一日期同一地址不会重复生成记录</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 每日自动生成标注「自动记录」的日记，附带地址信息</li>
-          </>}
-        </ul>
+        <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'AI Trajectory Clustering' : 'AI 轨迹聚合'}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          {isEn ? 'Auto-clusters spatiotemporal trajectories, resolves real-world addresses, matches frequent locations. Smart deduplication keeps your diary clean and organized.' : '自动聚类时空轨迹、解析真实地址、匹配常用地点，智能去重，保证日记干净整洁。'}
+        </p>
       </div>
-
-      <!-- Smart Alerts -->
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Smart Exception Alerts' : '智能异常提醒'}</h3>
-        <ul class="space-y-2 text-text-secondary text-sm leading-relaxed">
-          {isEn ? <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Silent alert if 60+ min without location activity during 8:00–22:00</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> New place alert: notified when arriving at a new location</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Anti-spam: max 1 push per user per day</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> Requires "Always" location permission for the Mini Program</li>
-          </> : <>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 每日 8:00–22:00，超 60 分钟无位置活动则推送提醒</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 抵达全新地点时自动推送通知告知当日新停留地点</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 防骚扰：每人每日最多接收一次异常推送</li>
-            <li class="flex gap-2"><span class="text-brand-gold shrink-0">-</span> 需授权「使用期间及离开后」持续位置权限</li>
-          </>}
-        </ul>
+        <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Smart Status Alerts' : '智能状态提醒'}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          {isEn ? 'Intelligent alerts for abnormal silence and new location arrivals, balancing recording completeness with user experience.' : '异常静默、新地点抵达智能提醒，兼顾记录完整性与用户体验。'}
+        </p>
       </div>
     </div>
   </div>

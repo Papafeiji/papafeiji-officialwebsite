@@ -1,0 +1,53 @@
+---
+import { createT } from '../i18n/translations';
+export interface Props { lang?: string; }
+const { lang = 'zh' } = Astro.props;
+const _ = createT(lang);
+---
+<section id="self-host" class="relative py-32 px-6">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(181,141,94,0.08),transparent)]"></div>
+  <div class="relative max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
+        <span class="text-sm text-brand-gold font-medium">{_('selfhost.badge')}</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+        {_('selfhost.title.1')}<span class="gradient-text">{_('selfhost.title.2')}</span>
+      </h2>
+      <p class="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+        {_('selfhost.subtitle')}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="group p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-text-primary mb-3">{_('selfhost.card1.title')}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">{_('selfhost.card1.desc')}</p>
+      </div>
+      <div class="group p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-text-primary mb-3">{_('selfhost.card2.title')}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">{_('selfhost.card2.desc')}</p>
+      </div>
+      <div class="group p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-text-primary mb-3">{_('selfhost.card3.title')}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">{_('selfhost.card3.desc')}</p>
+      </div>
+      <div class="group p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-text-primary mb-3">{_('selfhost.card4.title')}</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">{_('selfhost.card4.desc')}</p>
+      </div>
+    </div>
+  </div>
+</section>

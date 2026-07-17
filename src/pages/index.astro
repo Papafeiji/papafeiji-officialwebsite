@@ -2,15 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import { createT } from '../i18n/translations';
 import Hero from '../components/Hero.astro';
-import Background from '../components/Background.astro';
-import Solution from '../components/Solution.astro';
-import Benefits from '../components/Benefits.astro';
+import ProductIntro from '../components/ProductIntro.astro';
+import SelfHost from '../components/SelfHost.astro';
 import FeatureAI from '../components/FeatureAI.astro';
 import FeatureLocation from '../components/FeatureLocation.astro';
 import FeatureFamily from '../components/FeatureFamily.astro';
 import FeatureMCP from '../components/FeatureMCP.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import OpenSource from '../components/OpenSource.astro';
 import Footer from '../components/Footer.astro';
 
 const _ = createT('zh');
@@ -29,17 +26,14 @@ const _ = createT('zh');
     "alternateName": "PathMemo",
     "url": "https://papafeiji.cn",
     "logo": "https://papafeiji.cn/papafeiji.png",
-    "description": "家庭私密时光记录助手 - 开源的私密时光记录工具",
+    "description": "私人可控 · AI 家庭记忆中枢 - 基于微信小程序的全自动时光记录工具",
     "sameAs": ["https://github.com/Papafeiji/pathmemos"]
   })} />
-  <Background lang="zh" />
-  <Solution lang="zh" />
-  <Benefits lang="zh" />
+  <ProductIntro lang="zh" />
+  <SelfHost lang="zh" />
   <FeatureAI lang="zh" />
   <FeatureLocation lang="zh" />
   <FeatureFamily lang="zh" />
   <FeatureMCP lang="zh" />
-  <HowItWorks lang="zh" />
-  <OpenSource lang="zh" />
   <Footer lang="zh" />
 </Layout>
