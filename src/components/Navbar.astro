@@ -43,9 +43,9 @@ const siteName = _('site.name');
 
     <!-- Mobile: toggle menu -->
     <div class="md:hidden relative" data-mobile-menu>
-      <button class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('hidden')">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-      </button>
+      <span class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer select-none" onclick="var m=this.nextElementSibling;m.classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events:none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </span>
       <div class="absolute right-0 top-16 w-64 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex-col gap-1 hidden">
         <a href={`${home}#features`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('nav.features')}</a>
         <a href={`${home}#how-it-works`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('nav.quickstart')}</a>
