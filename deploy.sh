@@ -182,7 +182,7 @@ server {
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
 
     location / {
-        try_files \\\$uri \\\$uri/ =404;
+        try_files \$uri \$uri/ =404;
     }
     location /_astro/ {
         expires 1y;
@@ -222,7 +222,7 @@ server {
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
 
     location / {
-        try_files \\\$uri \\\$uri/ =404;
+        try_files \$uri \$uri/ =404;
     }
     location /_astro/ {
         expires 1y;
@@ -236,7 +236,7 @@ server {
 server {
     listen 80;
     server_name ${DOMAIN};
-    return 301 https://\\\$host\\\$request_uri;
+    return 301 https://\$host\$request_uri;
 }
 NGINX_EOF
 ln -sf /etc/nginx/sites-available/papafeiji-officialwebsite /etc/nginx/sites-enabled/papafeiji-officialwebsite

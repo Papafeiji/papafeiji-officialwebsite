@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import TutorialLayout from '../../../layouts/TutorialLayout.astro';
 import { getStaticPathsTutorialPostEn } from '../../../utils/blog';
-import { t } from '../../../i18n/translations';
+import { createT } from '../../../i18n/translations';
 
 export const getStaticPaths = (async () => {
   return await getStaticPathsTutorialPostEn();
@@ -10,7 +10,7 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = post;
-const _ = (key: any) => t('en', key as any);
+const _ = createT('en');
 ---
 
 <TutorialLayout title={post.title} description={post.excerpt} lang="en">

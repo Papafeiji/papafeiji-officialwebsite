@@ -1,11 +1,11 @@
 ---
-import { t } from '../i18n/translations';
+import { createT } from '../i18n/translations';
 
 export interface Props {
   lang?: string;
 }
 const { lang = 'zh' } = Astro.props;
-const _ = (key: string) => t(lang as 'zh' | 'en', key as any);
+const _ = createT(lang);
 const isEn = lang === 'en';
 const home = isEn ? '/en/' : '/';
 const tutorial = isEn ? '/en/tutorial' : '/tutorial';

@@ -1,10 +1,10 @@
 ---
 import TutorialLayout from '../../../layouts/TutorialLayout.astro';
 import { fetchPostsEn } from '../../../utils/blog';
-import { t } from '../../../i18n/translations';
+import { createT } from '../../../i18n/translations';
 
 const posts = (await fetchPostsEn()).filter((p) => p.slug.startsWith('tutorial'));
-const _ = (key: any) => t('en', key as any);
+const _ = createT('en');
 ---
 
 <TutorialLayout title={_('tutorial.list.title')} description={_('tutorial.list.subtitle')} lang="en">

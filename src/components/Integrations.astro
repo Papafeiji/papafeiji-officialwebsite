@@ -1,8 +1,8 @@
 ---
-import { t } from '../i18n/translations';
+import { createT } from '../i18n/translations';
 export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
-const _ = (key: any) => t(lang, key as any);
+const _ = createT(lang);
 
 const platforms = [
   { name: "豆包", color: "#3B82F6", initial: "豆" },

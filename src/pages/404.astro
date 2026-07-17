@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { t } from '../i18n/translations';
+import { createT } from '../i18n/translations';
 
 const isEn = Astro.url.pathname.startsWith('/en/');
 const lang = isEn ? 'en' : 'zh';
 const home = isEn ? '/en/' : '/';
-const _ = (key: any) => t(lang as 'zh' | 'en', key as any);
+const _ = createT(lang);
 ---
 
 <Layout title={isEn ? '404 - Page Not Found' : '404 - 页面未找到'} lang={lang}>
