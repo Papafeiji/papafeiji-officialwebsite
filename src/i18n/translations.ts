@@ -246,12 +246,16 @@ export const translations = {
 export type TranslationKey = keyof typeof translations.zh;
 export type Lang = 'zh' | 'en';
 
-export function t(lang: Lang, key: TranslationKey): string {
-  const result = translations[lang]?.[key];
-  if (result !== undefined) return result as string;
+export function t(lang: Lang, key: string): string {
+  const result = (translations[lang] as Record<string, string>)[key];
+  if (result !== undefined) return result;
   if (lang !== 'zh') {
-    const fallback = translations.zh[key];
-    if (fallback !== undefined) return fallback as string;
+    const fallback = (translations.zh as Record<string, string>)[key];
+    if (fallback !== undefined) return fallback;
   }
   return key;
+}
+
+export function createT(lang: string) {
+  return (key: string) => t(lang as Lang, key);
 }

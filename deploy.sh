@@ -190,7 +190,7 @@ server {
     }
     location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
         expires 30d;
-        add_header Cache-Control "public, max-age=2592000";
+        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 NGINX_EOF
@@ -230,7 +230,7 @@ server {
     }
     location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
         expires 30d;
-        add_header Cache-Control "public, max-age=2592000";
+        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 server {
