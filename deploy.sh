@@ -186,19 +186,11 @@ server {
     }
     location /_astro/ {
         expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-    location ~* \.(png|jpg|jpeg|webp|gif|svg|ico)$ {
-        expires 30d;
-        add_header Cache-Control "public, max-age=2592000";
-    }
-    location /_astro/ {
-        expires 1y;
-        add_header Cache-Control \"public, immutable\";
+        add_header Cache-Control \"public, max-age=31536000, immutable\";
     }
     location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
         expires 30d;
-        add_header Cache-Control \"public, max-age=2592000\";
+        add_header Cache-Control "public, max-age=2592000";
     }
 }
 NGINX_EOF
@@ -234,19 +226,11 @@ server {
     }
     location /_astro/ {
         expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-    location ~* \.(png|jpg|jpeg|webp|gif|svg|ico)$ {
-        expires 30d;
-        add_header Cache-Control "public, max-age=2592000";
-    }
-    location /_astro/ {
-        expires 1y;
-        add_header Cache-Control \"public, immutable\";
+        add_header Cache-Control \"public, max-age=31536000, immutable\";
     }
     location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
         expires 30d;
-        add_header Cache-Control \"public, max-age=2592000\";
+        add_header Cache-Control "public, max-age=2592000";
     }
 }
 server {

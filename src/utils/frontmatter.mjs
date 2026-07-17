@@ -22,6 +22,10 @@ export function responsiveTablesRehypePlugin() {
           children: [child],
         };
       }
+      if (child.type === 'element' && child.tagName === 'img') {
+        child.properties.loading = 'lazy';
+        child.properties.decoding = 'async';
+      }
     }
   };
 }

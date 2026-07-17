@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /tutorial/model/
+Disallow: /tutorial/privacy-police/
+Disallow: /tutorial/terms-of-use/
+Disallow: /en/tutorial/model/
+Disallow: /en/tutorial/privacy-police/
+Disallow: /en/tutorial/terms-of-use/
+
 Sitemap: https://papafeiji.cn/sitemap-index.xml

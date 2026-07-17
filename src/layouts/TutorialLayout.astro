@@ -1,6 +1,6 @@
 ---
 import Layout from './Layout.astro';
-import { t } from '../i18n/translations';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   title: string;
@@ -9,26 +9,9 @@ export interface Props {
 }
 
 const { title, description, lang = 'zh' } = Astro.props;
-const _ = (key: any) => t(lang as any, key as any);
 ---
 
 <Layout title={title} description={description} lang={lang} ogType="article">
   <slot />
-  <footer class="border-t border-surface-06 py-12 px-6 mt-16">
-    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <img src="/papafeiji.png" alt={_('site.name')} width="32" height="32" class="w-8 h-8 rounded-lg opacity-60" loading="lazy" decoding="async" />
-        <span class="text-text-muted text-sm">{_('site.name')} · {_('site.tagline')}</span>
-      </div>
-      <div class="flex items-center gap-6 text-sm text-text-muted">
-        <a href={lang === 'en' ? '/en/tutorial' : '/tutorial'} class="hover:text-text-secondary transition-colors">{_('footer.tutorial')}</a>
-        <a href="https://github.com/papafeiji/papafeiji-saas" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">GitHub</a>
-      </div>
-      <div class="text-xs text-text-muted text-center md:text-right">
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">
-          {_('site.copyright')}
-        </a>
-      </div>
-    </div>
-  </footer>
+  <Footer lang={lang} />
 </Layout>
