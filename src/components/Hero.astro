@@ -2,7 +2,7 @@
 import { t } from '../i18n/translations';
 export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
-const _ = (key: any) => t(lang, key as any);
+const _ = (key: string) => t(lang as 'zh' | 'en', key as any);
 ---
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
   <!-- Background gradient -->
@@ -15,7 +15,7 @@ const _ = (key: any) => t(lang, key as any);
     <div class="mb-10 animate-float">
       <div class="relative inline-block">
         <div class="absolute inset-0 bg-brand-gold/20 rounded-3xl blur-2xl"></div>
-        <img src="/papafeiji.png" alt={_('site.name')} class="relative w-28 h-28 rounded-2xl" />
+        <img src="/papafeiji.png" alt={_('site.name')} width="112" height="112" class="relative w-28 h-28 rounded-2xl" decoding="async" />
       </div>
     </div>
 
@@ -51,7 +51,7 @@ const _ = (key: any) => t(lang, key as any);
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted">
-    <span class="text-xs tracking-widest uppercase">向下滚动</span>
+    <span class="text-xs tracking-widest uppercase">{_('hero.scrollHint')}</span>
     <div class="w-5 h-8 rounded-full border border-surface-20 flex justify-center pt-1">
       <div class="w-1 h-2 rounded-full bg-brand-gold animate-bounce"></div>
     </div>

@@ -26,6 +26,8 @@
   --color-nav-bg: rgba(10, 10, 15, 0.8);
   --color-contrast-btn-bg: #ffffff;
   --color-contrast-btn-text: #0a0a0f;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
 }
 
 html {
@@ -63,6 +65,8 @@ html:not(.dark) {
   --color-nav-bg: rgba(248, 248, 250, 0.8);
   --color-contrast-btn-bg: #0a0a0f;
   --color-contrast-btn-text: #ffffff;
+
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
 }
 
 /* Custom scrollbar */
@@ -122,9 +126,7 @@ html:not(.dark) {
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 
-/* Section reveal */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+
 
 /* ── Prose / tutorial content ── */
 .prose-custom { color: var(--color-text-primary); line-height: 1.8; font-size: 1.05rem; }

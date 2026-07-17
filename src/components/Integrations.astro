@@ -35,7 +35,7 @@ const platforms = [
     
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         {platforms.map((p) => (
-          <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-surface-10 transition-all">
+          <div class="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-bg-card border border-surface-06 hover:border-surface-10 transition-all">
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-bold text-white transition-transform group-hover:scale-110" style={`background: ${p.color}20; color: ${p.color};`}>
               {p.initial}
             </div>
@@ -46,7 +46,7 @@ const platforms = [
     
 
     
-      <div class="mt-12 p-6 rounded-2xl bg-bg-card border border-border-subtle text-center">
+      <div class="mt-12 p-6 rounded-2xl bg-bg-card border border-surface-06 text-center">
         <p class="text-text-secondary text-sm" set:html={_('integrations.note')} />
       </div>
     

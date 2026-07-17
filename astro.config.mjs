@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.mjs';
 
 export default defineConfig({
   output: 'static',
@@ -14,6 +14,6 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin],
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 });

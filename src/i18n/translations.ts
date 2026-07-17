@@ -19,6 +19,9 @@ export const translations = {
     "hero.subtitle": "开源的 AI 记忆基础设施。自动记录你的物理世界行程，为豆包、Kimi、千问等主流大模型提供持久记忆能力。你的龙虾，长出脚，来到真实世界。",
     "hero.cta.deploy": "开始部署",
     "hero.cta.github": "在 GitHub 上查看",
+    "hero.scroll": "向下滚动",
+    "hero.scrollHint": "向下滚动",
+    "hero.scrollHint": "向下滚动",
 
     // Problem
     "problem.badge": "核心痛点",
@@ -115,6 +118,10 @@ export const translations = {
     "tutorial.minRead": "分钟阅读",
     "tutorial.home": "首页",
 
+    // 404
+    "page404.message": "页面未找到 / Page not found",
+    "page404.back": "返回首页",
+
     // Meta
     "meta.title": "爬爬记忆助手 · 跨 AI 的外挂记忆库",
     "meta.desc": "爬爬记忆助手是一款开源的 AI 记忆基础设施。自动记录物理世界行程，为豆包、Kimi、千问等主流大模型提供持久记忆能力。",
@@ -139,6 +146,9 @@ export const translations = {
     "hero.subtitle": "Open-source AI memory infrastructure. Automatically records your physical world journeys and provides persistent memory for ChatGPT, Claude, DeepSeek, and more major LLMs.",
     "hero.cta.deploy": "Deploy Now",
     "hero.cta.github": "View on GitHub",
+    "hero.scroll": "Scroll down",
+    "hero.scrollHint": "Scroll Down",
+    "hero.scrollHint": "Scroll Down",
 
     "problem.badge": "Core Pain Points",
     "problem.title.1": "ChatGPT, Claude, Gemini...",
@@ -226,6 +236,10 @@ export const translations = {
     "tutorial.back": "Back to Tutorials",
     "tutorial.minRead": "min read",
     "tutorial.home": "Home",
+
+    // 404
+    "page404.message": "Page not found / 页面未找到",
+    "page404.back": "Back to Home",
 
     "meta.title": "PathMemo · Cross-AI External Memory Hub",
     "meta.desc": "PathMemo is an open-source AI memory infrastructure. Automatically records your physical world journeys and provides persistent memory capabilities for major LLMs.",

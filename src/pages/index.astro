@@ -19,6 +19,16 @@ const _ = (key: any) => t('zh', key as any);
   lang="zh"
 >
   <Hero lang="zh" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "爬爬记忆助手",
+    "alternateName": "PathMemo",
+    "url": "https://papafeiji.cn",
+    "logo": "https://papafeiji.cn/papafeiji.png",
+    "description": "跨 AI 的外挂记忆库 - 开源的 AI 记忆基础设施",
+    "sameAs": ["https://github.com/papafeiji/papafeiji-saas"]
+  })} />
   <Problem lang="zh" />
   <Solution lang="zh" />
   <Features lang="zh" />

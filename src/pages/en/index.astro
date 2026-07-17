@@ -19,6 +19,16 @@ const _ = (key: any) => t('en', key as any);
   lang="en"
 >
   <Hero lang="en" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PathMemo",
+    "alternateName": "爬爬记忆助手",
+    "url": "https://papafeiji.cn",
+    "logo": "https://papafeiji.cn/papafeiji.png",
+    "description": "Cross-AI External Memory Hub - Open-source AI memory infrastructure",
+    "sameAs": ["https://github.com/papafeiji/papafeiji-saas"]
+  })} />
   <Problem lang="en" />
   <Solution lang="en" />
   <Features lang="en" />

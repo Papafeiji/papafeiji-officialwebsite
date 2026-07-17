@@ -14,13 +14,21 @@ const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/papafei
 const isEn = lang === 'en';
 const htmlLang = isEn ? 'en' : 'zh-CN';
 const siteName = isEn ? 'PathMemo' : '爬爬记忆助手';
+const currentUrl = Astro.url.href;
+const siteUrl = 'https://papafeiji.cn';
+const otherLangHref = isEn
+  ? currentUrl.replace(/^https:\/\/[^\/]+\/en\//, siteUrl + '/')
+  : currentUrl.replace(/^https:\/\/[^\/]+\//, siteUrl + '/en/');
+const defaultHref = isEn
+  ? currentUrl.replace(/^https:\/\/[^\/]+\/en\//, siteUrl + '/')
+  : currentUrl;
 ---
 
 <!DOCTYPE html>
 <html lang={htmlLang} class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="format-detection" content="telephone=no,email=no,address=no" />
   <meta name="x5-fullscreen" content="true" />
   <meta name="x5-page-mode" content="app" />
@@ -31,14 +39,25 @@ const siteName = isEn ? 'PathMemo' : '爬爬记忆助手';
   {description && <meta name="description" content={description} />}
   <meta property="og:title" content={`${title} · ${siteName}`} />
   {description && <meta property="og:description" content={description} />}
-  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:url" content={currentUrl} />
   <meta property="og:site_name" content={siteName} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:type" content={ogType} />
   <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
   <link rel="icon" type="image/png" href="/papafeiji.png" />
+  <link rel="canonical" href={currentUrl} />
+  <link rel="alternate" hreflang={isEn ? 'en' : 'zh'} href={currentUrl} />
+  <link rel="alternate" hreflang={isEn ? 'zh' : 'en'} href={otherLangHref} />
+  <link rel="alternate" hreflang="x-default" href={defaultHref} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} · ${siteName}`} />
+  {description && <meta name="twitter:description" content={description} />}
+  <meta name="twitter:image" content={ogImage} />
+  <link rel="preconnect" href="https://github.com" />
+  <link rel="preconnect" href="https://beian.miit.gov.cn" />
   <script is:inline>
-    (function(){var t=localStorage.getItem('theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.remove('dark');var l=localStorage.getItem('lang');if(!l&&navigator.language){var n=navigator.language.toLowerCase();var e=/^zh\b/.test(n);var u=window.location.pathname;if(e&&u.startsWith('/en/')){window.location.href=u.replace(/^\/en/,'')||'/'}else if(!e&&!u.startsWith('/en/')){window.location.href='/en'+u}}})();
+    (function(){var t=localStorage.getItem('theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.remove('dark');var l=localStorage.getItem('lang');if(!l&&navigator.language){var n=navigator.language.toLowerCase();var e=/^zh\b/.test(n);var u=window.location.pathname;if(e&&u.startsWith('/en/')){window.location.replace(u.replace(/^\/en/,'')||'/')}else if(!e&&!u.startsWith('/en/')){window.location.replace('/en'+u)}}})();
   </script>
 </head>
 <body>

@@ -24,7 +24,7 @@ const _ = (key: any) => t(lang, key as any);
 
     <!-- Architecture diagram -->
     
-      <div class="relative p-8 md:p-12 rounded-3xl bg-bg-card border border-border-subtle overflow-hidden">
+      <div class="relative p-8 md:p-12 rounded-3xl bg-bg-card border border-surface-06 overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
 
         <div class="grid md:grid-cols-3 gap-8 items-center">
@@ -56,7 +56,7 @@ const _ = (key: any) => t(lang, key as any);
             <div class="absolute inset-0 bg-brand-gold/5 rounded-2xl blur-xl"></div>
             <div class="relative p-6 rounded-2xl bg-gradient-to-b from-brand-gold/10 to-brand-gold/5 border border-brand-gold/20 text-center">
               <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-brand-gold/20 flex items-center justify-center">
-                <img src="/papafeiji.png" alt={_('site.name')} class="w-10 h-10 rounded-lg" />
+                <img src="/papafeiji.png" alt={_('site.name')} width="40" height="40" class="w-10 h-10 rounded-lg" loading="lazy" decoding="async" />
               </div>
               <h3 class="text-lg font-bold text-brand-warm mb-1">{_('solution.memoryHub')}</h3>
               <p class="text-xs text-brand-gold">{_('solution.memoryHub.subtitle')}</p>

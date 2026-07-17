@@ -77,7 +77,7 @@ Respecting user privacy is a fundamental policy of ours. We generally do not pub
 - Protecting the privacy and safety of users and the public in emergency situations.
 - Other circumstances we deem necessary.
 
-For specific information about PathMemo's data protection measures, please read our Privacy Policy at https://papafeiji.cn/en/tutorial/privacy-police. This policy explains how PathMemo handles your personal information when you use related services and how it protects your privacy. You agree to apply your data in compliance with the PathMemo Privacy Policy.
+For specific information about PathMemo's data protection measures, please read our Privacy Policy at /en/tutorial/privacy-police. This policy explains how PathMemo handles your personal information when you use related services and how it protects your privacy. You agree to apply your data in compliance with the PathMemo Privacy Policy.
 
 ## 5. Service Changes
 

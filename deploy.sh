@@ -179,8 +179,23 @@ server {
     server_name ${DOMAIN};
     root ${REMOTE_DIR};
     index index.html;
+    error_page 404 /404.html;
+
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 256;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
+
     location / {
         try_files \\\$uri \\\$uri/ =404;
+    }
+    location /_astro/ {
+        expires 1y;
+        add_header Cache-Control \"public, immutable\";
+    }
+    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 NGINX_EOF
@@ -203,8 +218,23 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    error_page 404 /404.html;
+
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 256;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;
+
     location / {
         try_files \\\$uri \\\$uri/ =404;
+    }
+    location /_astro/ {
+        expires 1y;
+        add_header Cache-Control \"public, immutable\";
+    }
+    location ~* \\.(png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control \"public, max-age=2592000\";
     }
 }
 server {

@@ -25,3 +25,21 @@ export function responsiveTablesRehypePlugin() {
     }
   };
 }
+
+export function lazyImagesRehypePlugin() {
+  return function (tree) {
+    function visit(node) {
+      if (node.type === 'element' && node.tagName === 'img') {
+        node.properties = node.properties || {};
+        node.properties.loading = 'lazy';
+        node.properties.decoding = 'async';
+      }
+      if (node.children) {
+        for (const child of node.children) {
+          visit(child);
+        }
+      }
+    }
+    visit(tree);
+  };
+}
