@@ -165,12 +165,7 @@ sync_main() {
 ensure_nginx_config() {
   log_step "检查/创建 nginx 配置"
 
-  if [ "${first_deploy}" != "true" ]; then
-    log_info "更新部署，跳过 nginx 配置重写"
-    return
-  fi
-
-  log_info "首次部署，写入 nginx 配置..."
+  log_info "写入 nginx HTTP 配置..."
 
   # 先写 HTTP 配置
   run_remote "cat > /etc/nginx/sites-available/papafeiji-officialwebsite << 'NGINX_EOF'
@@ -212,7 +207,8 @@ nginx -t && systemctl reload nginx"
 }
 
 ensure_ssl_config() {
-  if [ "${first_deploy}" != "true" ]; then
+  if ! run_remote "test -f /etc/letsencrypt/live/${DOMAIN}/fullchain.pem" >/dev/null 2>&1; then
+    log_info "SSL 证书尚未就绪，跳过 HTTPS 配置"
     return
   fi
   log_info "写入 HTTPS 配置..."

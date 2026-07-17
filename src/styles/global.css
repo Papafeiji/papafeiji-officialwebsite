@@ -81,6 +81,12 @@ html:not(.dark) {
   color: var(--color-text-primary);
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #B58D5E 0%, #FFECC5 50%, #B58D5E 100%);
@@ -125,6 +131,15 @@ html:not(.dark) {
 @keyframes pulse-glow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 
 
