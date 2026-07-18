@@ -17,8 +17,8 @@ const isEn = lang === 'en';
       <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('location.subtitle')}</p>
     </div>
 
-    <!-- Map trajectory illustration -->
-    <div class="relative mb-20 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
+    <!-- Map trajectory illustration (desktop only) -->
+    <div class="hidden md:block relative mb-20 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
       <div class="absolute inset-0">
         <!-- Map grid -->
         <svg class="w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">

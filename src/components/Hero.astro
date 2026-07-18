@@ -4,10 +4,10 @@ export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 ---
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16">
   <div class="absolute inset-0 bg-gradient-to-b from-bg-deep via-bg-card to-bg-deep"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(181,141,94,0.15),transparent)]"></div>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/10 rounded-full blur-[120px] animate-pulse-glow"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-gold/10 rounded-full blur-[80px] md:blur-[120px] animate-pulse-glow"></div>
 
   <!-- Floating particles -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
