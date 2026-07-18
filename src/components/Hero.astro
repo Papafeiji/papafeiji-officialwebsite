@@ -36,10 +36,28 @@ const isEn = lang === 'en';
       {_('hero.subtitle')}
     </p>
 
-    <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 md:mb-10 text-sm md:text-base text-text-secondary">
-      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>{_('hero.bullet1')}</li>
-      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>{_('hero.bullet2')}</li>
-      <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>{_('hero.bullet3')}</li>
+    <ul class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-8 md:mb-10 text-sm md:text-base">
+      <li class="flex items-start gap-3 text-left">
+        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-brand-gold shrink-0"></span>
+        <div>
+          <div class="text-text-primary font-medium">{_('hero.bullet1.title')}</div>
+          <div class="text-text-secondary text-xs md:text-sm">{_('hero.bullet1.desc')}</div>
+        </div>
+      </li>
+      <li class="flex items-start gap-3 text-left">
+        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-brand-gold shrink-0"></span>
+        <div>
+          <div class="text-text-primary font-medium">{_('hero.bullet2.title')}</div>
+          <div class="text-text-secondary text-xs md:text-sm">{_('hero.bullet2.desc')}</div>
+        </div>
+      </li>
+      <li class="flex items-start gap-3 text-left">
+        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-brand-gold shrink-0"></span>
+        <div>
+          <div class="text-text-primary font-medium">{_('hero.bullet3.title')}</div>
+          <div class="text-text-secondary text-xs md:text-sm">{_('hero.bullet3.desc')}</div>
+        </div>
+      </li>
     </ul>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 md:mb-12">
