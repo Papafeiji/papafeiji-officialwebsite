@@ -10,7 +10,7 @@ export interface Props {
   ogType?: string;
 }
 
-const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/papafeiji.png', ogType = 'website' } = Astro.props;
+const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/newlogo.png', ogType = 'website' } = Astro.props;
 const isEn = lang === 'en';
 const htmlLang = isEn ? 'en' : 'zh-CN';
 const siteName = isEn ? 'PathMemos' : '爬爬记忆助手';
@@ -48,10 +48,10 @@ const defaultHref = isEn
   <meta property="og:image" content={ogImage} />
   <meta property="og:type" content={ogType} />
   <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
-  <link rel="icon" type="image/png" href="/papafeiji-32.png" sizes="32x32" />
-  <link rel="icon" type="image/webp" href="/papafeiji-128.webp" sizes="128x128" />
-  <link rel="apple-touch-icon" href="/papafeiji-256.png" />
-  <link rel="preload" as="image" href="/papafeiji-128.webp" type="image/webp" />
+  <link rel="icon" type="image/png" href="/newlogo-32.png" sizes="32x32" />
+  <link rel="icon" type="image/webp" href="/newlogo-128.webp" sizes="128x128" />
+  <link rel="apple-touch-icon" href="/newlogo-256.png" />
+  <link rel="preload" as="image" href="/newlogo-128.webp" type="image/webp" />
   <link rel="canonical" href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'en' : 'zh'} href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'zh' : 'en'} href={otherLangHref} />
