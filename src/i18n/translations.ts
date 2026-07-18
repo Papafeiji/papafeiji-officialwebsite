@@ -58,7 +58,7 @@ export const translations = {
     "mcp.badge": "MCP 开放记忆中枢",
     "mcp.title.1": "让所有 AI",
     "mcp.title.2": "拥有你的专属记忆",
-    "mcp.subtitle": "开源版开放标准 MCP 接口，对接 Cursor、Claude 等主流 AI 工具，将你的个人生活记忆变为所有 AI 的专属长期上下文",
+    "mcp.subtitle": "开放标准 MCP 接口，对接 OpenClaw、ChatGPT、Claude、Kimi 等主流 AI 工具，将你的个人生活记忆变为所有 AI 的专属长期上下文",
 
     // Footer
     "footer.tutorial": "教程",
@@ -132,7 +132,7 @@ export const translations = {
     "mcp.badge": "MCP Open Memory Hub",
     "mcp.title.1": "Give Every AI",
     "mcp.title.2": "Your Personal Memory",
-    "mcp.subtitle": "The open-source edition exposes a standard MCP endpoint, connecting Cursor, Claude, and other AI tools — turning your personal life memories into long-term context for all your AIs",
+    "mcp.subtitle": "Exposes a standard MCP endpoint, connecting OpenClaw, ChatGPT, Claude, Kimi, and other AI tools — turning your personal life memories into long-term context for all your AIs",
 
     "footer.tutorial": "Tutorial",
     "footer.privacy": "Privacy Policy",
