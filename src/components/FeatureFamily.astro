@@ -18,50 +18,43 @@ const isEn = lang === 'en';
     </div>
 
     <!-- Blackboard + Sticky Notes -->
-    <div class="relative mb-20 overflow-hidden rounded-3xl border border-surface-06" style="background:linear-gradient(135deg,#1a1a0e 0%,#1e1e12 30%,#1a1a10 60%,#1c1c0f 100%)">
-      <!-- Cork texture dots -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image:radial-gradient(circle,rgba(181,141,94,0.8) 1px,transparent 1px);background-size:16px 16px"></div>
-
-      <!-- Wood frame border -->
-      <div class="absolute inset-2 rounded-2xl border-4" style="border-color:rgba(139,105,20,0.3)"></div>
+    <div class="relative mb-20 overflow-hidden rounded-3xl border border-surface-06 cork-board">
+      <div class="absolute inset-0 cork-dots"></div>
+      <div class="absolute inset-2 rounded-2xl border-4 cork-frame"></div>
 
       <div class="relative p-6 md:p-10">
         <!-- Sticky notes grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
-          <!-- Mom's note -->
           <div class="relative group" style="animation:stickFloat 4s ease-in-out infinite">
             <div class="w-full aspect-[4/3] rounded-sm p-3 flex flex-col gap-1.5 shadow-lg" style="background:linear-gradient(135deg,#FDE68A,#FCD34D);transform:rotate(-3deg);transition:transform 0.3s;cursor:pointer" onmouseenter="this.style.transform='rotate(0deg) scale(1.05)'" onmouseleave="this.style.transform='rotate(-3deg) scale(1)'">
-              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style="background:linear-gradient(135deg,#F97316,#EA580C);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full pushpin-amber"></div>
               <div class="text-[11px] md:text-xs font-semibold text-amber-900">{isEn ? 'Mom' : '妈妈'}</div>
-              <div class="text-[10px] text-amber-800 leading-tight">{isEn ? 'Took baby to the park today 🌳 Fun afternoon!' : '今天带宝宝去了公园 🌳 开心一下午！'}</div>
+              <div class="text-[10px] text-amber-800 leading-tight">{isEn ? 'Took baby to the park 🌳 Fun afternoon!' : '今天带宝宝去了公园 🌳 开心一下午！'}</div>
               <div class="text-[9px] text-amber-600 mt-auto">{isEn ? 'Jul 18 · 3 entries' : '7月18日 · 3 篇日记'}</div>
             </div>
           </div>
 
-          <!-- Dad's note -->
           <div class="relative group" style="animation:stickFloat 4.5s ease-in-out infinite 0.3s">
             <div class="w-full aspect-[4/3] rounded-sm p-3 flex flex-col gap-1.5 shadow-lg" style="background:linear-gradient(135deg,#BFDBFE,#93C5FD);transform:rotate(2deg);transition:transform 0.3s;cursor:pointer" onmouseenter="this.style.transform='rotate(0deg) scale(1.05)'" onmouseleave="this.style.transform='rotate(2deg) scale(1)'">
-              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full pushpin-violet"></div>
               <div class="text-[11px] md:text-xs font-semibold text-blue-900">{isEn ? 'Dad' : '爸爸'}</div>
               <div class="text-[10px] text-blue-800 leading-tight">{isEn ? 'Work meeting done early 🎉 Family dinner tonight!' : '今天会议提前结束 🎉 晚上全家聚餐！'}</div>
               <div class="text-[9px] text-blue-600 mt-auto">{isEn ? 'Jul 18 · 4 entries' : '7月18日 · 4 篇日记'}</div>
             </div>
           </div>
 
-          <!-- Baby's note -->
           <div class="relative group" style="animation:stickFloat 5s ease-in-out infinite 0.6s">
             <div class="w-full aspect-[4/3] rounded-sm p-3 flex flex-col gap-1.5 shadow-lg" style="background:linear-gradient(135deg,#A7F3D0,#6EE7B7);transform:rotate(-5deg);transition:transform 0.3s;cursor:pointer" onmouseenter="this.style.transform='rotate(0deg) scale(1.05)'" onmouseleave="this.style.transform='rotate(-5deg) scale(1)'">
-              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style="background:linear-gradient(135deg,#EC4899,#DB2777);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full pushpin-pink"></div>
               <div class="text-[11px] md:text-xs font-semibold text-emerald-900">{isEn ? 'Baby' : '宝宝'}</div>
               <div class="text-[10px] text-emerald-800 leading-tight">{isEn ? 'First trip to the zoo! 🦁 Loved the lions' : '第一次去动物园！🦁 看到狮子好兴奋'}</div>
               <div class="text-[9px] text-emerald-600 mt-auto">{isEn ? 'Jul 18 · 2 entries' : '7月18日 · 2 篇日记'}</div>
             </div>
           </div>
 
-          <!-- Grandpa's note -->
           <div class="relative group" style="animation:stickFloat 4.2s ease-in-out infinite 0.9s">
             <div class="w-full aspect-[4/3] rounded-sm p-3 flex flex-col gap-1.5 shadow-lg" style="background:linear-gradient(135deg,#DDD6FE,#C4B5FD);transform:rotate(4deg);transition:transform 0.3s;cursor:pointer" onmouseenter="this.style.transform='rotate(0deg) scale(1.05)'" onmouseleave="this.style.transform='rotate(4deg) scale(1)'">
-              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style="background:linear-gradient(135deg,#14B8A6,#0D9488);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+              <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full pushpin-teal"></div>
               <div class="text-[11px] md:text-xs font-semibold text-violet-900">{isEn ? 'Grandpa' : '爷爷'}</div>
               <div class="text-[10px] text-violet-800 leading-tight">{isEn ? 'Morning tai-chi ☯️ Cooked lunch for everyone' : '早晨太极 ☯️ 中午给大家做了饭'}</div>
               <div class="text-[9px] text-violet-600 mt-auto">{isEn ? 'Jul 18 · 3 entries' : '7月18日 · 3 篇日记'}</div>
@@ -69,71 +62,52 @@ const isEn = lang === 'en';
           </div>
         </div>
 
-        <!-- Center: Family merge zone -->
-        <div class="relative overflow-hidden rounded-2xl border-2 border-dashed p-4 md:p-6" style="border-color:rgba(181,141,94,0.35);background:rgba(181,141,94,0.06)">
-          <!-- Decorative washi tape -->
-          <div class="absolute -top-1 left-1/3 w-20 h-5 rounded-sm opacity-80" style="background:linear-gradient(90deg,rgba(245,158,11,0.6),rgba(251,191,36,0.4));transform:rotate(-2deg)"></div>
-          <div class="absolute -top-1 right-1/4 w-16 h-5 rounded-sm opacity-80" style="background:linear-gradient(90deg,rgba(236,72,153,0.5),rgba(244,114,182,0.3));transform:rotate(3deg)"></div>
+        <!-- Center: Clean merge hub -->
+        <div class="flex items-center gap-3 md:gap-6">
+          <div class="hidden md:flex flex-1 justify-center">
+            <div class="flex items-center gap-1">
+              <div class="w-1.5 h-1.5 rounded-full bg-amber-400/40"></div>
+              <div class="w-10 h-px bg-gradient-to-r from-amber-400/20 to-brand-gold/30"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-400/40"></div>
+              <div class="w-10 h-px bg-gradient-to-r from-blue-400/20 to-brand-gold/30"></div>
+            </div>
+          </div>
 
-          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <!-- Sub-notes connecting to center -->
-            <div class="hidden md:flex flex-col gap-2 shrink-0">
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full" style="background:#FCD34D"></div>
-                <svg width="40" height="2" class="text-amber-400/30"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.5s" repeatCount="indefinite"/></line></svg>
+          <div class="relative flex-1 md:flex-none overflow-hidden rounded-2xl border-2 border-dashed p-4 md:px-10 md:py-6 hub-zone">
+            <div class="absolute -top-1 left-1/3 w-16 h-4 rounded-sm opacity-70 washi-tape-amber"></div>
+            <div class="absolute -top-1 right-1/3 w-14 h-4 rounded-sm opacity-70 washi-tape-pink"></div>
+            <div class="flex items-center justify-center gap-6 md:gap-10">
+              <div class="flex flex-col items-center">
+                <div class="text-2xl md:text-3xl font-bold text-brand-gold">12</div>
+                <div class="text-[10px] text-text-muted">{isEn ? 'entries' : '篇日记'}</div>
               </div>
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full" style="background:#93C5FD"></div>
-                <svg width="40" height="2" class="text-blue-400/30"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.8s" repeatCount="indefinite"/></line></svg>
+              <div class="relative">
+                <img src="/papafeiji.png" alt="" width="40" height="40" class="w-10 h-10 md:w-11 md:h-11 rounded-lg shadow-md shadow-brand-gold/20" />
+                <div class="absolute -inset-2 rounded-xl bg-brand-gold/8 animate-ping" style="animation-duration:3s"></div>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="text-2xl md:text-3xl font-bold text-brand-gold">4</div>
+                <div class="text-[10px] text-text-muted">{isEn ? 'members' : '位成员'}</div>
               </div>
             </div>
+          </div>
 
-            <!-- Center shared board -->
-            <div class="flex-1 text-center">
-              <div class="inline-flex items-center gap-2 mb-3">
-                <img src="/papafeiji.png" alt="" width="28" height="28" class="w-7 h-7 rounded-lg shadow-sm" />
-                <span class="text-brand-gold font-bold text-sm md:text-base">{isEn ? 'FAMILY BOARD' : '全家共享板'}</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2 md:gap-4">
-                <div class="bg-surface-03 rounded-xl p-2 md:p-3 border border-surface-06 hover:border-brand-gold/20 transition-colors cursor-default">
-                  <div class="text-[10px] md:text-xs text-text-muted">{isEn ? '📸 Latest photo' : '📸 最新照片'}</div>
-                  <div class="text-[9px] text-text-secondary mt-1">{isEn ? 'Zoo trip — 4 photos' : '动物园之旅 — 4 张'}</div>
-                </div>
-                <div class="bg-surface-03 rounded-xl p-2 md:p-3 border border-surface-06 hover:border-brand-gold/20 transition-colors cursor-default">
-                  <div class="text-[10px] md:text-xs text-text-muted">{isEn ? '📍 Shared location' : '📍 共享位置'}</div>
-                  <div class="text-[9px] text-text-secondary mt-1">{isEn ? '4 members checked in' : '4 位成员已打卡'}</div>
-                </div>
-                <div class="bg-surface-03 rounded-xl p-2 md:p-3 border border-surface-06 hover:border-brand-gold/20 transition-colors cursor-default">
-                  <div class="text-[10px] md:text-xs text-text-muted">{isEn ? '📝 Today' : '📝 今日日记'}</div>
-                  <div class="text-[9px] text-text-secondary mt-1">{isEn ? '12 entries from family' : '全家 12 篇日记'}</div>
-                </div>
-                <div class="bg-surface-03 rounded-xl p-2 md:p-3 border border-surface-06 hover:border-brand-gold/20 transition-colors cursor-default">
-                  <div class="text-[10px] md:text-xs text-text-muted">{isEn ? '🗓️ This week' : '🗓️ 本周汇总'}</div>
-                  <div class="text-[9px] text-text-secondary mt-1">{isEn ? '58 entries · 5 members' : '58 篇 · 5 位成员'}</div>
-                </div>
-              </div>
-              <div class="text-[10px] text-text-muted mt-4">{isEn ? 'All family records merged in one place. Each member keeps their own diary, shared on the board.' : '全家记录一处聚合，每位成员的日记独立保存、共享展示。'}</div>
-            </div>
-
-            <div class="hidden md:flex flex-col gap-2 shrink-0">
-              <div class="flex items-center gap-2">
-                <svg width="40" height="2" class="text-emerald-400/30"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.6s" repeatCount="indefinite"/></line></svg>
-                <div class="w-2 h-2 rounded-full" style="background:#6EE7B7"></div>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg width="40" height="2" class="text-violet-400/30"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="2s" repeatCount="indefinite"/></line></svg>
-                <div class="w-2 h-2 rounded-full" style="background:#C4B5FD"></div>
-              </div>
+          <div class="hidden md:flex flex-1 justify-center">
+            <div class="flex items-center gap-1">
+              <div class="w-10 h-px bg-gradient-to-l from-emerald-400/20 to-brand-gold/30"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-emerald-400/40"></div>
+              <div class="w-10 h-px bg-gradient-to-l from-violet-400/20 to-brand-gold/30"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-violet-400/40"></div>
             </div>
           </div>
         </div>
 
-        <!-- Clipboard/cork pins along bottom -->
-        <div class="flex justify-center gap-3 mt-6">
-          <div class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#FCD34D,#F59E0B);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
-          <div class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#93C5FD,#3B82F6);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
-          <div class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#6EE7B7,#10B981);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
-          <div class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#C4B5FD,#8B5CF6);box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+        <!-- Bottom pins -->
+        <div class="flex justify-center gap-3 mt-5">
+          <div class="w-2.5 h-2.5 rounded-full pushpin-amber"></div>
+          <div class="w-2.5 h-2.5 rounded-full pushpin-blue"></div>
+          <div class="w-2.5 h-2.5 rounded-full pushpin-green"></div>
+          <div class="w-2.5 h-2.5 rounded-full pushpin-violet"></div>
         </div>
       </div>
     </div>
@@ -145,35 +119,45 @@ const isEn = lang === 'en';
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Easy Family Management' : '便捷家庭管理'}</h3>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          {isEn ? 'Support family creation, QR code invites, full family migration. Flexible join/leave mechanisms for all family scenarios.' : '支持创建家庭、扫码邀请、整家庭迁移，灵活的成员加入与退出机制，适配各类家庭使用场景。'}
-        </p>
+        <p class="text-text-secondary text-sm leading-relaxed">{isEn ? 'Support family creation, QR code invites, full family migration. Flexible join/leave mechanisms for all family scenarios.' : '支持创建家庭、扫码邀请、整家庭迁移，灵活的成员加入与退出机制，适配各类家庭使用场景。'}</p>
       </div>
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 hover:bg-surface-02 transition-all duration-300">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Unified Diary View' : '全员日记聚合视图'}</h3>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          {isEn ? 'Timeline auto-merges all family records. Switch between full view and individual view. Open sharing with independent editing — clear permissions.' : '时间线自动合并全家记录，支持总览/单人切换查看，公开共享、独立编辑，权限清晰可控。'}
-        </p>
+        <p class="text-text-secondary text-sm leading-relaxed">{isEn ? 'Timeline auto-merges all family records. Switch between full view and individual view. Open sharing with independent editing.' : '时间线自动合并全家记录，支持总览/单人切换查看，公开共享、独立编辑，权限清晰可控。'}</p>
       </div>
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 hover:bg-surface-02 transition-all duration-300">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Daily Family Cover' : '每日家庭封面'}</h3>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          {isEn ? 'System intelligently selects daily cover — photos or trajectory maps auto-generated. Preserve each day\'s exclusive family moment.' : '系统智能优选当日封面，照片、轨迹地图自动生成，沉淀每日家庭专属画面。'}
-        </p>
+        <p class="text-text-secondary text-sm leading-relaxed">{isEn ? 'System intelligently selects daily cover — photos or trajectory maps auto-generated. Preserve each day\'s exclusive family moment.' : '系统智能优选当日封面，照片、轨迹地图自动生成，沉淀每日家庭专属画面。'}</p>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes stickFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
+  @keyframes stickFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+  .cork-board { background: #FEF3C7; }
+  .dark .cork-board { background: linear-gradient(135deg,#1a1a0e,#1e1e12 30%,#1a1a10 60%,#1c1c0f); }
+  .cork-dots { opacity: 0.06; background-image: radial-gradient(circle,rgba(180,140,80,0.9) 1px,transparent 1px); background-size: 14px 14px; }
+  .dark .cork-dots { opacity: 0.03; background-image: radial-gradient(circle,rgba(181,141,94,0.8) 1px,transparent 1px); }
+  .cork-frame { border-color: rgba(180,140,60,0.25); }
+  .dark .cork-frame { border-color: rgba(139,105,20,0.3); }
+
+  .pushpin-amber { background: linear-gradient(135deg,#FCD34D,#F59E0B); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+  .pushpin-violet { background: linear-gradient(135deg,#A78BFA,#7C3AED); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+  .pushpin-pink { background: linear-gradient(135deg,#F472B6,#DB2777); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+  .pushpin-teal { background: linear-gradient(135deg,#2DD4BF,#0D9488); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+  .pushpin-blue { background: linear-gradient(135deg,#93C5FD,#3B82F6); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+  .pushpin-green { background: linear-gradient(135deg,#6EE7B7,#10B981); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+
+  .washi-tape-amber { background: linear-gradient(90deg,rgba(245,158,11,0.5),rgba(251,191,36,0.3)); transform: rotate(-2deg); }
+  .washi-tape-pink { background: linear-gradient(90deg,rgba(236,72,153,0.4),rgba(244,114,182,0.25)); transform: rotate(3deg); }
+
+  .hub-zone { border-color: rgba(181,141,94,0.35); background: rgba(181,141,94,0.06); }
 </style>
