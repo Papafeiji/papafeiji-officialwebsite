@@ -4,7 +4,40 @@ export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 const isEn = lang === 'en';
+const streams = [
+  {
+    label: 'A',
+    name: isEn ? 'Dashed Sequence' : '虚线序列',
+    left: `<svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/></line></svg>`,
+    right: `<svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/></line><line x1="145" y1="20" x2="290" y2="8" stroke="rgba(168,85,247,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.8s" repeatCount="indefinite"/></line><line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2s" repeatCount="indefinite"/></line><line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.6s" repeatCount="indefinite"/></line><line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2.2s" repeatCount="indefinite"/></line></svg>`
+  },
+  {
+    label: 'B',
+    name: isEn ? 'Gradient Pulse' : '渐变脉冲',
+    left: `<svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none"><defs><linearGradient id="pg"><stop offset="0%" stop-color="rgba(181,141,94,0.1)"><animate attributeName="stop-color" values="rgba(181,141,94,0.1);rgba(181,141,94,0.8);rgba(181,141,94,0.1)" dur="2.5s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="rgba(181,141,94,0.8)"><animate attributeName="stop-color" values="rgba(181,141,94,0.8);rgba(181,141,94,0.1);rgba(181,141,94,0.8)" dur="2.5s" repeatCount="indefinite"/></stop></linearGradient></defs><line x1="0" y1="20" x2="145" y2="20" stroke="url(#pg)" stroke-width="3"/></svg>`,
+    right: `<svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none"><defs><linearGradient id="rp1"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(168,85,247,0.7)"><animate attributeName="stop-color" values="rgba(168,85,247,0.3);rgba(168,85,247,0.8);rgba(168,85,247,0.3)" dur="2s" repeatCount="indefinite"/></stop></linearGradient><linearGradient id="rp2"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(249,115,22,0.7)"><animate attributeName="stop-color" values="rgba(249,115,22,0.3);rgba(249,115,22,0.8);rgba(249,115,22,0.3)" dur="2.3s" repeatCount="indefinite"/></stop></linearGradient><linearGradient id="rp3"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(6,182,212,0.7)"><animate attributeName="stop-color" values="rgba(6,182,212,0.3);rgba(6,182,212,0.8);rgba(6,182,212,0.3)" dur="1.8s" repeatCount="indefinite"/></stop></linearGradient><linearGradient id="rp4"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.7)"><animate attributeName="stop-color" values="rgba(16,185,129,0.3);rgba(16,185,129,0.8);rgba(16,185,129,0.3)" dur="2.5s" repeatCount="indefinite"/></stop></linearGradient></defs><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/></line><line x1="145" y1="20" x2="290" y2="8" stroke="url(#rp1)" stroke-width="2.5"/><line x1="145" y1="20" x2="290" y2="16" stroke="url(#rp2)" stroke-width="2.5"/><line x1="145" y1="20" x2="290" y2="24" stroke="url(#rp3)" stroke-width="2.5"/><line x1="145" y1="20" x2="290" y2="32" stroke="url(#rp4)" stroke-width="2.5"/></svg>`
+  },
+  {
+    label: 'C',
+    name: isEn ? 'Neon Glow Beam' : '霓虹光柱',
+    left: `<svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none"><defs><filter id="gl"><feGaussianBlur stdDeviation="2"/></filter></defs><line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#gl)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line><line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/></svg>`,
+    right: `<svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none"><defs><filter id="rgl"><feGaussianBlur stdDeviation="2.5"/></filter></defs><line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#rgl)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line><line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/><line x1="145" y1="20" x2="290" y2="8" stroke="#8B5CF6" stroke-width="5" opacity="0.12" filter="url(#rgl)"/><line x1="145" y1="20" x2="290" y2="8" stroke="#8B5CF6" stroke-width="1.5" opacity="0.7"/><line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="5" opacity="0.12" filter="url(#rgl)"/><line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="1.5" opacity="0.7"/><line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="5" opacity="0.12" filter="url(#rgl)"/><line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="1.5" opacity="0.7"/><line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="5" opacity="0.12" filter="url(#rgl)"/><line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="1.5" opacity="0.7"/></svg>`
+  },
+  {
+    label: 'D',
+    name: isEn ? 'Particle Stream' : '粒子流动',
+    left: `<svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.25)" stroke-width="1.5"/><circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle><circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle><circle r="2" fill="#B58D5E" opacity="0.4"><animateMotion dur="3s" repeatCount="indefinite" begin="1.4s" path="M0,20 Q75,20 145,20"/></circle></svg>`,
+    right: `<svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.25)" stroke-width="1.5"/><circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle><circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle><line x1="145" y1="20" x2="290" y2="8" stroke="rgba(168,85,247,0.2)" stroke-width="1"/><line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.2)" stroke-width="1"/><line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.2)" stroke-width="1"/><line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.2)" stroke-width="1"/><circle r="3" fill="#8B5CF6" opacity="0.8"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1s" path="M145,20 Q220,8 290,8"/></circle><circle r="3" fill="#D97706" opacity="0.8"><animateMotion dur="3s" repeatCount="indefinite" begin="1.5s" path="M145,20 Q220,16 290,16"/></circle><circle r="3" fill="#06B6D4" opacity="0.8"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.5s" path="M145,20 Q220,24 290,24"/></circle><circle r="3" fill="#10B981" opacity="0.8"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s" path="M145,20 Q220,32 290,32"/></circle></svg>`
+  },
+  {
+    label: 'E',
+    name: isEn ? 'Double Orbit' : '双轨交替',
+    left: `<svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.2)" stroke-width="1.5"/><path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/></path><path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></path></svg>`,
+    right: `<svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.2)" stroke-width="1.5"/><path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/></path><path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></path><line x1="145" y1="20" x2="290" y2="8" stroke="rgba(168,85,247,0.25)" stroke-width="1.5"/><line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.25)" stroke-width="1.5"/><line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.25)" stroke-width="1.5"/><line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.25)" stroke-width="1.5"/><circle r="4" fill="#8B5CF6" opacity="0.6"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/></circle><circle r="4" fill="#D97706" opacity="0.6" cx="180" cy="16"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.3s" repeatCount="indefinite"/></circle><circle r="4" fill="#06B6D4" opacity="0.6" cx="220" cy="24"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.8s" repeatCount="indefinite"/></circle><circle r="4" fill="#10B981" opacity="0.6" cx="260" cy="32"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite"/></circle></svg>`
+  }
+];
 ---
+
 <section id="mcp" class="relative py-20 md:py-32 px-6 overflow-hidden">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
@@ -17,236 +50,42 @@ const isEn = lang === 'en';
       <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('mcp.subtitle')}</p>
     </div>
 
-    <!-- Clean editorial illustration: Memory Streams -->
-    <div class="relative mb-20 overflow-hidden rounded-3xl bg-bg-card border border-surface-06 px-4 md:px-10 py-10 md:py-14">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        
-        <!-- Left: Memory Source -->
-        <div class="flex flex-col items-center gap-3 shrink-0">
-          <span class="text-sm md:text-base text-text-primary font-semibold">{isEn ? 'Your Memories' : '你的记忆'}</span>
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-gold/8 border border-brand-gold/15 transition-all hover:bg-brand-gold/12">
-              <div class="w-9 h-9 rounded-lg bg-brand-gold/15 flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div>
-                <div class="text-sm text-text-primary font-medium">{isEn ? 'Life' : '生活记忆'}</div>
-                <div class="text-[10px] md:text-xs text-text-muted">{isEn ? 'Family, travel, daily life' : '家庭、出行、日常'}</div>
+    <!-- 5 stream variants for comparison -->
+    <div class="space-y-6 mb-20">
+      {streams.map(s => (
+        <div class="overflow-hidden rounded-3xl bg-bg-card border border-surface-06 px-4 md:px-8 py-6 md:py-8">
+          <div class="text-center mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-04 border border-surface-06 text-sm text-brand-gold font-medium">{s.label}. {s.name}</span>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <!-- Left: Memory Source (compact) -->
+            <div class="flex flex-col items-center gap-2 shrink-0">
+              <div class="flex gap-2">
+                <div class="px-3 py-1.5 rounded-lg bg-brand-gold/8 border border-brand-gold/15 text-xs text-text-primary font-medium">生活记忆</div>
+                <div class="px-3 py-1.5 rounded-lg bg-blue-500/8 border border-blue-500/15 text-xs text-text-primary font-medium">工作记忆</div>
               </div>
             </div>
-            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-500/8 border border-blue-500/15 transition-all hover:bg-blue-500/12">
-              <div class="w-9 h-9 rounded-lg bg-blue-500/15 flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              <div>
-                <div class="text-sm text-text-primary font-medium">{isEn ? 'Work' : '工作记忆'}</div>
-                <div class="text-[10px] md:text-xs text-text-muted">{isEn ? 'Projects, consultations, notes' : '项目、咨询、笔记'}</div>
-              </div>
+            <!-- Stream left -->
+            <div class="hidden md:flex flex-1 items-center h-8" set:html={s.left} />
+            <div class="flex md:hidden text-brand-gold text-lg animate-bounce">→</div>
+            <!-- Hub (compact) -->
+            <div class="flex items-center gap-2 shrink-0">
+              <img src="/papafeiji.png" alt="PathMemos" width="36" height="36" class="w-9 h-9 rounded-lg shadow-sm shadow-brand-gold/20" />
+              <span class="text-xs text-brand-gold font-medium">PathMemos</span>
+            </div>
+            <!-- Stream right -->
+            <div class="hidden md:flex flex-1 items-center h-8" set:html={s.right} />
+            <div class="flex md:hidden text-brand-gold text-lg animate-bounce">→</div>
+            <!-- Right: AI tools (compact) -->
+            <div class="flex gap-2 shrink-0">
+              <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-[10px] font-bold">Cu</div>
+              <div class="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-[10px] font-bold">Cl</div>
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-[10px] font-bold">D</div>
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-[10px] font-bold">O</div>
             </div>
           </div>
         </div>
-
-        <!-- A: Dashed sequence -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <div class="text-[10px] text-text-muted absolute -top-4 left-4">A</div>
-          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6">
-              <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
-            </line>
-          </svg>
-        </div>
-
-        <!-- B: Gradient pulse wave -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <div class="text-[10px] text-text-muted absolute -top-4 left-4">B</div>
-          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="pulse-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(181,141,94,0.1)"><animate attributeName="stop-color" values="rgba(181,141,94,0.1);rgba(181,141,94,0.8);rgba(181,141,94,0.1)" dur="2.5s" repeatCount="indefinite"/></stop>
-                <stop offset="100%" stop-color="rgba(181,141,94,0.8)"><animate attributeName="stop-color" values="rgba(181,141,94,0.8);rgba(181,141,94,0.1);rgba(181,141,94,0.8)" dur="2.5s" repeatCount="indefinite"/></stop>
-              </linearGradient>
-            </defs>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="url(#pulse-grad)" stroke-width="3"/>
-          </svg>
-        </div>
-
-        <!-- C: Neon glow beam -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <div class="text-[10px] text-text-muted absolute -top-4 left-4">C</div>
-          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
-            <defs>
-              <filter id="glow"><feGaussianBlur stdDeviation="2"/></filter>
-            </defs>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#glow)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/>
-          </svg>
-        </div>
-
-        <!-- D: Particle stream (current) -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <div class="text-[10px] text-text-muted absolute -top-4 left-4">D</div>
-          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
-            <circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle>
-            <circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle>
-            <circle r="2" fill="#B58D5E" opacity="0.4"><animateMotion dur="3s" repeatCount="indefinite" begin="1.4s" path="M0,20 Q75,20 145,20"/></circle>
-          </svg>
-        </div>
-
-        <!-- E: Orbiting double line -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <div class="text-[10px] text-text-muted absolute -top-4 left-4">E</div>
-          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
-            <path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7">
-              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
-            </path>
-            <path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7">
-              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
-            </path>
-          </svg>
-        </div>
-
-        <!-- Center: PathMemos Hub -->
-        <div class="flex flex-col items-center gap-2 shrink-0">
-          <div class="relative">
-            <img src="/papafeiji.png" alt="PathMemos" width="72" height="72" class="w-[72px] h-[72px] md:w-[96px] md:h-[96px] rounded-2xl shadow-lg shadow-brand-gold/30" />
-            <div class="absolute -inset-3 rounded-3xl bg-brand-gold/10 animate-ping" style="animation-duration:2.5s"></div>
-          </div>
-          <span class="text-sm md:text-base text-brand-gold font-semibold">PathMemos</span>
-          <span class="text-[10px] md:text-xs text-text-muted">{isEn ? 'MCP Memory Hub' : 'MCP 记忆中枢'}</span>
-        </div>
-
-        <!-- A: Dashed sequence -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/></line>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.8s" repeatCount="indefinite"/></line>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2s" repeatCount="indefinite"/></line>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.6s" repeatCount="indefinite"/></line>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2.2s" repeatCount="indefinite"/></line>
-          </svg>
-        </div>
-
-        <!-- B: Gradient pulse wave -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="rpulse1" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(168,85,247,0.7)"><animate attributeName="stop-color" values="rgba(168,85,247,0.3);rgba(168,85,247,0.8);rgba(168,85,247,0.3)" dur="2s" repeatCount="indefinite"/></stop></linearGradient>
-              <linearGradient id="rpulse2" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(249,115,22,0.7)"><animate attributeName="stop-color" values="rgba(249,115,22,0.3);rgba(249,115,22,0.8);rgba(249,115,22,0.3)" dur="2.3s" repeatCount="indefinite"/></stop></linearGradient>
-              <linearGradient id="rpulse3" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(6,182,212,0.7)"><animate attributeName="stop-color" values="rgba(6,182,212,0.3);rgba(6,182,212,0.8);rgba(6,182,212,0.3)" dur="1.8s" repeatCount="indefinite"/></stop></linearGradient>
-              <linearGradient id="rpulse4" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.7)"><animate attributeName="stop-color" values="rgba(16,185,129,0.3);rgba(16,185,129,0.8);rgba(16,185,129,0.3)" dur="2.5s" repeatCount="indefinite"/></stop></linearGradient>
-            </defs>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/></line>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="url(#rpulse1)" stroke-width="2.5"/>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="url(#rpulse2)" stroke-width="2.5"/>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="url(#rpulse3)" stroke-width="2.5"/>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="url(#rpulse4)" stroke-width="2.5"/>
-          </svg>
-        </div>
-
-        <!-- C: Neon glow beam -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
-            <defs><filter id="rglow"><feGaussianBlur stdDeviation="2.5"/></filter></defs>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#rglow)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="#8B5CF6" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="#8B5CF6" stroke-width="1.5" opacity="0.7"/>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="1.5" opacity="0.7"/>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="1.5" opacity="0.7"/>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="1.5" opacity="0.7"/>
-          </svg>
-        </div>
-
-        <!-- D: Particle stream -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
-            <circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle>
-            <circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.2)" stroke-width="1"/>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
-            <circle r="3" fill="#8B5CF6" opacity="0.8"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1s" path="M145,20 Q220,8 290,8"/></circle>
-            <circle r="3" fill="#D97706" opacity="0.8"><animateMotion dur="3s" repeatCount="indefinite" begin="1.5s" path="M145,20 Q220,16 290,16"/></circle>
-            <circle r="3" fill="#06B6D4" opacity="0.8"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.5s" path="M145,20 Q220,24 290,24"/></circle>
-            <circle r="3" fill="#10B981" opacity="0.8"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s" path="M145,20 Q220,32 290,32"/></circle>
-          </svg>
-        </div>
-
-        <!-- E: Orbiting double line -->
-        <div class="hidden md:flex flex-1 items-center relative h-10">
-          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
-            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
-            <path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/></path>
-            <path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></path>
-            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.25)" stroke-width="1.5"/>
-            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.25)" stroke-width="1.5"/>
-            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.25)" stroke-width="1.5"/>
-            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.25)" stroke-width="1.5"/>
-            <circle r="4" fill="#8B5CF6" opacity="0.6"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/></circle>
-            <circle r="4" fill="#D97706" opacity="0.6" cx="180" cy="16"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.3s" repeatCount="indefinite"/></circle>
-            <circle r="4" fill="#06B6D4" opacity="0.6" cx="220" cy="24"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.8s" repeatCount="indefinite"/></circle>
-            <circle r="4" fill="#10B981" opacity="0.6" cx="260" cy="32"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite"/></circle>
-          </svg>
-        </div>
-
-        <!-- Mobile arrow -->
-        <div class="flex md:hidden text-2xl text-brand-gold animate-bounce">↓</div>
-
-        <!-- Right: AI Tools - clean list -->
-        <div class="flex flex-col gap-3 shrink-0">
-          <div class="flex items-center gap-3 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center transition-all group-hover:bg-purple-500/20 group-hover:scale-110">
-              <span class="text-purple-400 text-sm font-bold">Cu</span>
-            </div>
-            <div>
-              <div class="text-sm text-text-primary font-medium">Cursor</div>
-              <div class="text-[10px] text-text-muted">MCP 协议</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center transition-all group-hover:bg-orange-500/20 group-hover:scale-110">
-              <span class="text-orange-400 text-sm font-bold">Cl</span>
-            </div>
-            <div>
-              <div class="text-sm text-text-primary font-medium">Claude</div>
-              <div class="text-[10px] text-text-muted">MCP 协议</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center transition-all group-hover:bg-cyan-500/20 group-hover:scale-110">
-              <span class="text-cyan-400 text-sm font-bold">D</span>
-            </div>
-            <div>
-              <div class="text-sm text-text-primary font-medium">DeepSeek</div>
-              <div class="text-[10px] text-text-muted">API Key</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center transition-all group-hover:bg-emerald-500/20 group-hover:scale-110">
-              <span class="text-emerald-400 text-sm font-bold">O</span>
-            </div>
-            <div>
-              <div class="text-sm text-text-primary font-medium">OpenAI</div>
-              <div class="text-[10px] text-text-muted">API Key</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bottom note -->
-      <div class="text-center mt-10">
-        <p class="text-xs text-text-muted">
-          {isEn ? 'Standard MCP protocol endpoint — one memory source, all AIs can access. Open-source edition includes all VIP features.' : '标准 MCP 协议端点 — 一处记忆，全部 AI 共享读取。开源版解锁全部 VIP 功能。'}
-        </p>
-      </div>
+      ))}
     </div>
 
     <!-- Feature cards -->
@@ -257,7 +96,7 @@ const isEn = lang === 'en';
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Memory Write · Smart Archiving' : '记忆写入 · 智能沉淀'}</h3>
         <p class="text-text-secondary text-sm leading-relaxed">
-          {isEn ? 'AI auto-summarizes conversations, extracts key insights, and batch-archives them as personal memories. Supports local draft caching and offline retry — your memories are never lost.' : 'AI 可自动总结对话、提炼关键信息，批量归档为个人记忆。支持本地草稿缓存、断网续传，保证记忆不丢失。'}
+          {isEn ? 'AI auto-summarizes conversations, extracts key insights, and batch-archives them as personal memories. Supports local draft caching and offline retry.' : 'AI 可自动总结对话、提炼关键信息，批量归档为个人记忆。支持本地草稿缓存、断网续传，保证记忆不丢失。'}
         </p>
       </div>
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
@@ -275,7 +114,7 @@ const isEn = lang === 'en';
         </div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{isEn ? 'Secure & Controllable' : '安全可控机制'}</h3>
         <p class="text-text-secondary text-sm leading-relaxed">
-          {isEn ? 'Self-manage API keys with rotation support, rate limiting, and caching. Private and cloud data are fully isolated — absolutely private and secure.' : '自主管理 API 密钥，支持随时轮换、限流保护、缓存加速，私有化数据与云端数据完全隔离，绝对私密安全。'}
+          {isEn ? 'Self-manage API keys with rotation support, rate limiting, and caching. Private and cloud data are fully isolated.' : '自主管理 API 密钥，支持随时轮换、限流保护、缓存加速，私有化数据与云端数据完全隔离，绝对私密安全。'}
         </p>
       </div>
     </div>
