@@ -3,6 +3,7 @@ import { createT } from '../i18n/translations';
 export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
+const isEn = lang === 'en';
 ---
 <section class="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden pt-16">
   <div class="absolute inset-0 bg-gradient-to-b from-bg-deep via-bg-card to-bg-deep"></div>
@@ -38,17 +39,6 @@ const _ = createT(lang);
       {_('hero.subtitle')}
     </p>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-      <a href="#self-host" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-gold text-contrast-btn-text font-semibold hover:bg-brand-warm transition-colors">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
-        {_('hero.cta.deploy')}
-      </a>
-      <a href="#ai" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-surface-04 border border-surface-08 text-text-primary font-semibold hover:bg-surface-08 transition-colors">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        {_('hero.cta.ai')}
-      </a>
-    </div>
-
     <div class="w-full mx-auto">
       <div class="code-block text-left">
         <div class="code-header">
@@ -65,6 +55,9 @@ const _ = createT(lang);
           <div class="whitespace-nowrap text-xs md:text-sm"><span class="prompt">$</span> <span class="cmd" id="install-cmd">curl -fsSL https://raw.githubusercontent.com/Papafeiji/pathmemos/open/scripts/install.sh | bash</span></div>
         </div>
       </div>
+      <p class="text-xs md:text-sm text-text-muted mt-4 leading-relaxed">
+        {isEn ? 'Works on Linux and macOS. The one-liner installs everything for you. After installation, fill in your backend URL and API Key in the Mini Program settings — all data routes to your own server.' : '支持 Linux 和 macOS，一行命令完成全部安装。部署后在小程序设置页填写后端地址与 API Key，即可将所有数据路由至个人服务器。'}
+      </p>
     </div>
   </div>
 </section>
