@@ -8,7 +8,6 @@ const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 const isEn = lang === 'en';
 const home = isEn ? '/en/' : '/';
-const tutorial = isEn ? '/en/tutorial' : '/tutorial';
 const otherLang = isEn ? 'zh' : 'en';
 const otherLangUrl = isEn ? '/' : '/en/';
 const siteName = _('site.name');
@@ -22,11 +21,6 @@ const siteName = _('site.name');
     </a>
 
     <!-- Desktop -->
-    <nav class="hidden md:flex items-center gap-1">
-      <a href={`${home}#mcp`} class="px-3 py-2 rounded-lg text-sm text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('nav.features')}</a>
-      <a href={`${home}#self-host`} class="px-3 py-2 rounded-lg text-sm text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all">{_('nav.opensource')}</a>
-      <a href={tutorial} class="px-3 py-2 rounded-lg text-sm text-brand-gold hover:text-brand-warm transition-all">{_('nav.tutorial')}</a>
-    </nav>
     <div class="hidden md:flex items-center gap-2">
       <button class="theme-toggle" aria-pressed="true" aria-label="Switch to light theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -44,11 +38,7 @@ const siteName = _('site.name');
       <button id="mobile-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all cursor-pointer select-none bg-transparent border-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events:none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
-      <div id="mobile-menu" class="absolute right-0 top-16 w-72 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex-col gap-2 hidden opacity-0 scale-95 transition-all duration-200" role="menu">
-        <a href={`${home}#mcp`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.features')}</a>
-        <a href={`${home}#self-host`} class="block px-4 py-3 rounded-lg text-base text-text-secondary hover:text-text-primary hover:bg-surface-04 transition-all" role="menuitem">{_('nav.opensource')}</a>
-        <a href={tutorial} class="block px-4 py-3 rounded-lg text-base text-brand-gold" role="menuitem">{_('nav.tutorial')}</a>
-        <hr class="border-surface-06 my-2" />
+      <div id="mobile-menu" class="absolute right-0 top-16 w-64 bg-bg-card border border-surface-06 rounded-xl shadow-lg mx-4 p-4 flex-col gap-3 hidden opacity-0 scale-95 transition-all duration-200" role="menu">
         <div class="flex flex-col gap-3 px-4 py-2">
           <div class="flex items-center justify-between">
             <span class="text-sm text-text-secondary">{_('nav.theme')}</span>
