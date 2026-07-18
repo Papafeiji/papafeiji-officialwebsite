@@ -40,8 +40,6 @@ export const translations = {
     "ai.title.1": "全域记忆",
     "ai.title.2": "智能问答",
     "ai.subtitle": "依托你的全部日记与家庭记录，实现真正拥有长期记忆的 AI 交互体验",
-    "ai.modelNote": "支持 DeepSeek、OpenAI 等主流大模型接入，开源版解锁全部 VIP 对话能力。",
-
     // Location
     "location.badge": "全自动位置轨迹",
     "location.title.1": "无感记录",
@@ -118,7 +116,6 @@ export const translations = {
     "ai.title.1": "Universal Memory,",
     "ai.title.2": "Intelligent Q&A",
     "ai.subtitle": "Leverage your complete diaries and family records for AI interaction with true long-term memory",
-    "ai.modelNote": "Supports DeepSeek, OpenAI, and other mainstream LLMs. The open-source edition unlocks all VIP conversation features.",
 
     "location.badge": "Auto Location Tracking",
     "location.title.1": "Effortlessly Record",

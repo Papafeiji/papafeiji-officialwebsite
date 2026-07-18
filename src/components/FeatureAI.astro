@@ -8,8 +8,8 @@ const isEn = lang === 'en';
 <section id="ai" class="relative py-16 md:py-24 px-6 overflow-hidden" data-reveal>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(181,141,94,0.06),transparent)]"></div>
   <div class="relative max-w-5xl mx-auto">
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
+    <div class="text-center mb-12 md:mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-6">
         <span class="text-sm text-brand-gold font-medium">{_('ai.badge')}</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
@@ -18,7 +18,7 @@ const isEn = lang === 'en';
       <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('ai.subtitle')}</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-8">
+    <div class="grid md:grid-cols-2 gap-8">
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 hover:bg-surface-02 transition-all duration-300">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
@@ -61,10 +61,6 @@ const isEn = lang === 'en';
           </>}
         </ul>
       </div>
-    </div>
-
-    <div class="p-6 rounded-2xl bg-bg-card border border-surface-06 text-center">
-      <p class="text-text-secondary text-sm">{_('ai.modelNote')}</p>
     </div>
   </div>
 </section>
