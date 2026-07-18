@@ -42,7 +42,38 @@ const isEn = lang === 'en';
           </div>
         </div>
 
-        <!-- Animated flow stream → -->
+        <!-- Animated flow stream: Source → Hub -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="stream-in" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(181,141,94,0.6)"/>
+                <stop offset="100%" stop-color="rgba(181,141,94,0.8)"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="url(#stream-in)" stroke-width="2"/>
+            <circle r="2.5" fill="#B58D5E" opacity="0.8">
+              <animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,15 145,20"/>
+            </circle>
+            <circle r="2" fill="#B58D5E" opacity="0.5">
+              <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.6s" path="M0,20 Q75,25 145,20"/>
+            </circle>
+          </svg>
+        </div>
+
+        <!-- Center: PathMemos Hub -->
+        <div class="flex flex-col items-center gap-2 shrink-0">
+          <div class="relative">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg shadow-brand-gold/20">
+              <img src="/papafeiji.png" alt="PathMemos" width="36" height="36" class="w-9 h-9 md:w-11 md:h-11 rounded-lg" />
+            </div>
+            <div class="absolute inset-0 rounded-2xl bg-brand-gold/10 animate-ping" style="animation-duration:2.5s"></div>
+          </div>
+          <span class="text-sm md:text-base text-brand-gold font-semibold">PathMemos</span>
+          <span class="text-[10px] md:text-xs text-text-muted">{isEn ? 'MCP Memory Hub' : 'MCP 记忆中枢'}</span>
+        </div>
+
+        <!-- Animated flow stream: Hub → AI tools -->
         <div class="hidden md:flex flex-1 items-center relative h-10">
           <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
             <defs>
