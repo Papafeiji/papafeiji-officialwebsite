@@ -10,14 +10,12 @@ const members = isEn
   ? [{c:'#FCD34D',n:'Mom'},{c:'#93C5FD',n:'Dad'},{c:'#6EE7B7',n:'Baby'},{c:'#C4B5FD',n:'Grandpa'}]
   : [{c:'#FCD34D',n:'妈妈'},{c:'#93C5FD',n:'爸爸'},{c:'#6EE7B7',n:'宝宝'},{c:'#C4B5FD',n:'爷爷'}];
 
-// Each day has a set of members active on that day
 const dayMembers: Record<number, number[]> = {
   1:[0,1], 2:[2], 3:[0,3], 4:[1,2], 5:[0,1,2],
   6:[3], 7:[0,1], 8:[2,3], 9:[1], 10:[0,1,3],
   11:[2], 12:[0,1,2], 13:[3], 14:[0,1], 15:[2,3],
   16:[1], 17:[0,2], 18:[1,3]
 };
-// First day of month is Wednesday (index 2 in 0=Mon), so empty cells before
 const startOffset = 2;
 const totalCells = 35;
 ---
@@ -38,7 +36,6 @@ const totalCells = 35;
       <div class="absolute inset-0 cork-dots"></div>
       <div class="absolute inset-2 rounded-2xl border-4 cork-frame"></div>
       <div class="relative p-6 md:p-10">
-
         <!-- Sticky notes grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
           <div class="relative group" style="animation:stickFloat 4s ease-in-out infinite">
@@ -106,11 +103,13 @@ const totalCells = 35;
             <div class="flex justify-center gap-4 md:gap-6 mt-3 pt-3 border-t border-surface-06">
               {members.map(m => <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full" style={`background:${m.c}`}></div><span class="text-[10px] md:text-xs text-text-muted">{m.n}</span></div>)}
             </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="mt-10 md:mt-16 pt-10 md:pt-16 border-t border-surface-08">
-      <div class="grid md:grid-cols-3 gap-6">
+    <!-- Feature cards (outside cork board) -->
+    <div class="grid md:grid-cols-3 gap-6">
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06 hover:border-brand-gold/30 hover:bg-surface-02 transition-all duration-300">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
