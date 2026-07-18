@@ -123,50 +123,7 @@ const monthIndex = now.getMonth();
   </div>
 </section>
 
-<script>
-  (function() {
-    const colors = [{c:'#FCD34D'},{c:'#93C5FD'},{c:'#6EE7B7'},{c:'#C4B5FD'}];
-    const now = new Date();
-    const today = now.getDate();
-    const y = now.getFullYear();
-    const m = now.getMonth();
-    const mLabel = [{c:'#FCD34D'},{c:'#93C5FD'},{c:'#6EE7B7'},{c:'#C4B5FD'}];
-
-    // Update month name
-    const el = document.getElementById('cal-month');
-    if (el) {
-      const isEn = document.documentElement.lang === 'en';
-      el.textContent = isEn ? now.toLocaleString('en',{month:'long',year:'numeric'}) : `${y}年${m+1}月`;
-    }
-
-    // Update grid dots
-    const grid = document.getElementById('cal-grid');
-    if (!grid) return;
-    const cells = grid.querySelectorAll('.cal-cell');
-    cells.forEach(cell => {
-      const day = parseInt(cell.dataset.day);
-      if (!day || day > today) return;
-      // Deterministic mock: generate 1-4 active members per day
-      const count = 1 + ((day * 7 + 3) % 4);
-      const active = new Set();
-      for (let i = 0; i < count; i++) active.add((day * 3 + i * 2) % 4);
-      // Apply visual changes
-      cell.classList.add('bg-surface-03');
-      const num = cell.querySelector('span');
-      if (num) num.className = 'text-[9px] md:text-[10px] leading-none text-text-primary font-medium';
-      const dots = cell.querySelector('.cal-dots');
-      if (dots) {
-        dots.classList.remove('hidden');
-        active.forEach(mIdx => {
-          const dot = document.createElement('div');
-          dot.className = 'w-1 h-1 rounded-full';
-          dot.style.background = colors[mIdx].c;
-          dots.appendChild(dot);
-        });
-      }
-    });
-  })();
-</script>
+<script src="/scripts/family-calendar.js" defer></script>
 
 <style>
   @keyframes stickFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
@@ -182,4 +139,10 @@ const monthIndex = now.getMonth();
   .washi-tape-amber { background: linear-gradient(90deg,rgba(245,158,11,0.5),rgba(251,191,36,0.3)); transform: rotate(-2deg); }
   .washi-tape-pink { background: linear-gradient(90deg,rgba(236,72,153,0.4),rgba(244,114,182,0.25)); transform: rotate(3deg); }
   .hub-zone { border-color: rgba(181,141,94,0.35); background: rgba(181,141,94,0.06); }
+
+  /* Dark mode cork board overrides */
+  html.dark .cork-board { background: #1C1C14; }
+  html.dark .cork-dots { opacity: 0.04; background-image: radial-gradient(circle,rgba(181,141,94,0.6) 1px,transparent 1px); }
+  html.dark .cork-frame { border-color: rgba(139,105,20,0.25); }
+  html.dark .hub-zone { border-color: rgba(181,141,94,0.25); background: rgba(181,141,94,0.04); }
 </style>

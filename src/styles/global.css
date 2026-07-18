@@ -94,10 +94,6 @@ html:not(.dark) header.scrolled {
   box-shadow: 0 1px 0 rgba(0,0,0,0.06);
 }
 
-/* ── Cork board dark mode ── */
-html.dark .cork-board { background: #1C1C14; }
-html.dark .cork-dots { opacity: 0.04; background-image: radial-gradient(circle,rgba(181,141,94,0.6) 1px,transparent 1px); }
-html.dark .cork-frame { border-color: rgba(139,105,20,0.25); }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--color-bg-deep); }
 ::-webkit-scrollbar-thumb { background: rgba(181, 141, 94, 0.3); border-radius: 4px; }

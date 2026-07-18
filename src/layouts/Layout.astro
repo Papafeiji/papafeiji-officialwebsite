@@ -14,6 +14,8 @@ const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/papafei
 const isEn = lang === 'en';
 const htmlLang = isEn ? 'en' : 'zh-CN';
 const siteName = isEn ? 'PathMemos' : '爬爬记忆助手';
+// Avoid duplicated brand name when title already includes siteName
+const pageTitle = title.includes(siteName) ? title : `${title} · ${siteName}`;
 const currentUrl = Astro.url.href;
 const siteUrl = 'https://papafeiji.cn';
 const otherLangHref = isEn
@@ -37,25 +39,26 @@ const defaultHref = isEn
   <meta name="renderer" content="webkit" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>{title} · {siteName}</title>
+  <title>{pageTitle}</title>
   {description && <meta name="description" content={description} />}
-  <meta property="og:title" content={`${title} · ${siteName}`} />
+  <meta property="og:title" content={pageTitle} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:url" content={currentUrl} />
   <meta property="og:site_name" content={siteName} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:type" content={ogType} />
   <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
-  <link rel="icon" type="image/png" href="/papafeiji.png" />
-  <link rel="apple-touch-icon" href="/papafeiji.png" />
-  <link rel="preload" as="image" href="/papafeiji.png" />
+  <link rel="icon" type="image/png" href="/papafeiji-32.png" sizes="32x32" />
+  <link rel="icon" type="image/webp" href="/papafeiji-128.webp" sizes="128x128" />
+  <link rel="apple-touch-icon" href="/papafeiji-256.png" />
+  <link rel="preload" as="image" href="/papafeiji-128.webp" type="image/webp" />
   <link rel="canonical" href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'en' : 'zh'} href={currentUrl} />
   <link rel="alternate" hreflang={isEn ? 'zh' : 'en'} href={otherLangHref} />
   <link rel="alternate" hreflang="x-default" href={defaultHref} />
   <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} · ${siteName}`} />
+  <meta name="twitter:title" content={pageTitle} />
   {description && <meta name="twitter:description" content={description} />}
   <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://github.com" />
