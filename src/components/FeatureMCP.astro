@@ -7,13 +7,16 @@ const isEn = lang === 'en';
 ---
 
 <style>
-  @keyframes flowDot1 { 0%,100%{opacity:0.2;transform:scale(0.8)} 20%{opacity:1;transform:scale(1.2)} 40%{opacity:0.4;transform:scale(0.9)} }
-  @keyframes flowDot2 { 0%,100%{opacity:0.3;transform:scale(0.8)} 30%{opacity:1;transform:scale(1.2)} 50%{opacity:0.4;transform:scale(0.9)} }
-  @keyframes flowDot3 { 0%,100%{opacity:0.2;transform:scale(0.8)} 15%{opacity:1;transform:scale(1.2)} 35%{opacity:0.4;transform:scale(0.9)} }
-  @keyframes flowDot4 { 0%,100%{opacity:0.3;transform:scale(0.8)} 25%{opacity:1;transform:scale(1.2)} 45%{opacity:0.4;transform:scale(0.9)} }
-  @keyframes dataPulse { 0%,100%{opacity:0;transform:translateY(0)} 50%{opacity:1;transform:translateY(-4px)} }
+  @keyframes pulse { 0%,100%{opacity:0.4;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
   @keyframes hubPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.6} 50%{transform:translate(-50%,-50%) scale(1.3);opacity:0} }
   @keyframes nodeGlow { 0%,100%{opacity:0.5} 50%{opacity:1} }
+  @keyframes orbRotate { from {transform:rotate(0deg)} to {transform:rotate(360deg)} }
+  @keyframes dataPulse { 0%,100%{opacity:0;transform:translateY(0)} 50%{opacity:1;transform:translateY(-4px)} }
+  @keyframes dashFlow { to { stroke-dashoffset: -16; } }
+  @keyframes electronSpin1 { from {transform:rotate(0deg) translateX(70px) rotate(0deg)} to {transform:rotate(360deg) translateX(70px) rotate(-360deg)} }
+  @keyframes electronSpin2 { from {transform:rotate(120deg) translateX(85px) rotate(-120deg)} to {transform:rotate(480deg) translateX(85px) rotate(-480deg)} }
+  @keyframes electronSpin3 { from {transform:rotate(240deg) translateX(60px) rotate(-240deg)} to {transform:rotate(600deg) translateX(60px) rotate(-600deg)} }
+  @keyframes cardFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 </style>
 
 <section id="mcp" class="relative py-20 md:py-32 px-6 overflow-hidden">
@@ -28,112 +31,221 @@ const isEn = lang === 'en';
       <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('mcp.subtitle')}</p>
     </div>
 
-    <!-- Data flow illustration -->
-    <div class="relative mb-20 h-60 md:h-80 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
+    <!-- 5 design variants -->
+    <div class="space-y-12 mb-20">
 
-      <!-- Left: Data sources cluster -->
-      <div class="absolute z-10" style="left:5%;top:50%;transform:translateY(-50%)">
-        <div class="flex flex-col items-center gap-3">
-          <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <!-- A: Neuron Network -->
+      <div>
+        <p class="text-sm text-brand-gold font-medium mb-4 text-center">{isEn ? 'A. Neuron Network' : 'A. 神经元记忆网络'}</p>
+        <div class="relative h-52 md:h-64 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="absolute z-20" style="left:50%;top:50%;transform:translate(-50%,-50%)">
+              <div class="relative">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg shadow-brand-gold/20">
+                  <img src="/papafeiji.png" alt="" width="36" height="36" class="w-9 h-9 md:w-11 md:h-11 rounded-lg" />
+                </div>
+                <div class="absolute inset-0 rounded-full bg-brand-gold/10 animate-ping" style="animation-duration:2s"></div>
+              </div>
+            </div>
+            <svg class="absolute inset-0 w-full h-full z-10" viewBox="0 0 720 260" preserveAspectRatio="none">
+              <defs>
+                <radialGradient id="neur-n1"><stop offset="0%" stop-color="rgba(168,85,247,0.5)"/><stop offset="100%" stop-color="rgba(181,141,94,0.1)"/></radialGradient>
+                <radialGradient id="neur-n2"><stop offset="0%" stop-color="rgba(249,115,22,0.5)"/><stop offset="100%" stop-color="rgba(181,141,94,0.1)"/></radialGradient>
+                <radialGradient id="neur-n3"><stop offset="0%" stop-color="rgba(6,182,212,0.5)"/><stop offset="100%" stop-color="rgba(181,141,94,0.1)"/></radialGradient>
+                <radialGradient id="neur-n4"><stop offset="0%" stop-color="rgba(16,185,129,0.5)"/><stop offset="100%" stop-color="rgba(181,141,94,0.1)"/></radialGradient>
+              </defs>
+              <g opacity="0.5">
+                <line x1="110" y1="65" x2="360" y2="130" stroke="url(#neur-n1)" stroke-width="2" stroke-dasharray="4 4" style="animation:dashFlow 1.5s linear infinite"/>
+                <line x1="620" y1="70" x2="360" y2="130" stroke="url(#neur-n2)" stroke-width="2" stroke-dasharray="4 4" style="animation:dashFlow 2s linear infinite reverse"/>
+                <line x1="100" y1="200" x2="360" y2="130" stroke="url(#neur-n3)" stroke-width="2" stroke-dasharray="4 4" style="animation:dashFlow 1.8s linear infinite"/>
+                <line x1="630" y1="195" x2="360" y2="130" stroke="url(#neur-n4)" stroke-width="2" stroke-dasharray="4 4" style="animation:dashFlow 2.2s linear infinite reverse"/>
+              </g>
+            </svg>
+            <div class="absolute z-10" style="left:12%;top:20%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xs font-bold">Cu</div><span class="text-[10px] text-text-muted">Cursor</span></div></div>
+            <div class="absolute z-10" style="right:11%;top:20%"><div class="flex items-center gap-1.5"><span class="text-[10px] text-text-muted">Claude</span><div class="w-8 h-8 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xs font-bold">Cl</div></div></div>
+            <div class="absolute z-10" style="left:12%;bottom:25%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xs font-bold">D</div><span class="text-[10px] text-text-muted">DeepSeek</span></div></div>
+            <div class="absolute z-10" style="right:11%;bottom:25%"><div class="flex items-center gap-1.5"><span class="text-[10px] text-text-muted">OpenAI</span><div class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs font-bold">O</div></div></div>
+            <div class="absolute w-1.5 h-1.5 rounded-full bg-brand-gold/70" style="left:28%;top:40%;animation:pulse 2s ease-in-out infinite"></div>
+            <div class="absolute w-1.5 h-1.5 rounded-full bg-purple-400/60" style="left:42%;top:32%;animation:pulse 2.5s ease-in-out infinite 0.5s"></div>
+            <div class="absolute w-1.5 h-1.5 rounded-full bg-orange-400/60" style="right:38%;top:35%;animation:pulse 3s ease-in-out infinite 1s"></div>
+            <div class="absolute w-1.5 h-1.5 rounded-full bg-cyan-400/60" style="left:35%;bottom:32%;animation:pulse 2.8s ease-in-out infinite 0.8s"></div>
+            <div class="absolute w-1.5 h-1.5 rounded-full bg-emerald-400/60" style="right:40%;bottom:35%;animation:pulse 3.2s ease-in-out infinite 1.5s"></div>
           </div>
-          <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite 0.6s">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+      </div>
+
+      <!-- B: Constellation / Star Map -->
+      <div>
+        <p class="text-sm text-brand-gold font-medium mb-4 text-center">{isEn ? 'B. Constellation Star Map' : 'B. 星座星图'}</p>
+        <div class="relative h-52 md:h-64 overflow-hidden rounded-3xl bg-bg-card border border-surface-06" style="background:radial-gradient(ellipse at center,rgba(181,141,94,0.05) 0%,transparent 70%)">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 720 260" preserveAspectRatio="none">
+            <defs>
+              <filter id="star-glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Grid -->
+            <g opacity="0.08">
+              <line x1="0" y1="65" x2="720" y2="65" stroke="#B58D5E" stroke-width="0.5"/>
+              <line x1="0" y1="130" x2="720" y2="130" stroke="#B58D5E" stroke-width="0.5"/>
+              <line x1="0" y1="195" x2="720" y2="195" stroke="#B58D5E" stroke-width="0.5"/>
+              <line x1="120" y1="0" x2="120" y2="260" stroke="#B58D5E" stroke-width="0.5"/>
+              <line x1="360" y1="0" x2="360" y2="260" stroke="#B58D5E" stroke-width="0.5"/>
+              <line x1="600" y1="0" x2="600" y2="260" stroke="#B58D5E" stroke-width="0.5"/>
+            </g>
+            <!-- Constellation lines -->
+            <g opacity="0.3" stroke-dasharray="3 5">
+              <line x1="360" y1="130" x2="140" y2="80" stroke="#8B5CF6" stroke-width="1"/>
+              <line x1="140" y1="80" x2="200" y2="180" stroke="#8B5CF6" stroke-width="1"/>
+              <line x1="360" y1="130" x2="520" y2="70" stroke="#D97706" stroke-width="1"/>
+              <line x1="520" y1="70" x2="600" y2="150" stroke="#D97706" stroke-width="1"/>
+              <line x1="360" y1="130" x2="150" y2="200" stroke="#06B6D4" stroke-width="1"/>
+              <line x1="360" y1="130" x2="650" y2="210" stroke="#10B981" stroke-width="1"/>
+            </g>
+            <!-- Stars -->
+            <circle cx="360" cy="130" r="8" fill="#B58D5E" filter="url(#star-glow)" opacity="0.9"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="360" cy="130" r="14" fill="none" stroke="#B58D5E" stroke-width="0.5" opacity="0.3"/>
+            <circle cx="140" cy="80" r="5" fill="#8B5CF6" opacity="0.8"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/></circle>
+            <circle cx="520" cy="70" r="5" fill="#D97706" opacity="0.8"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.2s" repeatCount="indefinite"/></circle>
+            <circle cx="150" cy="200" r="5" fill="#06B6D4" opacity="0.8"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.8s" repeatCount="indefinite"/></circle>
+            <circle cx="650" cy="210" r="5" fill="#10B981" opacity="0.8"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite"/></circle>
+          </svg>
+          <div class="absolute z-10" style="left:17%;top:26%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 text-[10px] font-bold">Cu</div><span class="text-[10px] text-text-muted">Cursor</span></div></div>
+          <div class="absolute z-10" style="right:26%;top:22%"><div class="flex items-center gap-1.5"><span class="text-[10px] text-text-muted">Claude</span><div class="w-8 h-8 rounded-xl bg-orange-500/15 flex items-center justify-center text-orange-400 text-[10px] font-bold">Cl</div></div></div>
+          <div class="absolute z-10" style="left:18%;bottom:28%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-cyan-500/15 flex items-center justify-center text-cyan-400 text-[10px] font-bold">D</div><span class="text-[10px] text-text-muted">DeepSeek</span></div></div>
+          <div class="absolute z-10" style="right:8%;bottom:25%"><div class="flex items-center gap-1.5"><span class="text-[10px] text-text-muted">OpenAI</span><div class="w-8 h-8 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-[10px] font-bold">O</div></div></div>
+          <div class="absolute" style="left:50%;top:50%;transform:translate(-50%,-50%)"><span class="text-[10px] text-brand-gold font-medium">PathMemos</span></div>
+        </div>
+      </div>
+
+      <!-- C: Memory Card Shelves -->
+      <div>
+        <p class="text-sm text-brand-gold font-medium mb-4 text-center">{isEn ? 'C. Memory Card Shelves' : 'C. 记忆卡片架'}</p>
+        <div class="relative h-52 md:h-64 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
+          <div class="absolute inset-0 flex items-center">
+            <!-- Left: Card stack -->
+            <div class="absolute z-10 flex flex-col gap-1" style="left:6%;top:50%;transform:translateY(-50%)">
+              <div class="w-14 h-9 rounded bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-[8px] text-text-muted" style="animation:cardFloat 3s ease-in-out infinite">📝 日记</div>
+              <div class="w-14 h-9 rounded bg-brand-gold/8 border border-brand-gold/15 flex items-center justify-center text-[8px] text-text-muted" style="animation:cardFloat 3s ease-in-out infinite 0.5s">📍 行程</div>
+              <div class="w-14 h-9 rounded bg-brand-gold/6 border border-brand-gold/10 flex items-center justify-center text-[8px] text-text-muted" style="animation:cardFloat 3s ease-in-out infinite 1s">🖼 照片</div>
+            </div>
+            <!-- Center: Hub -->
+            <div class="absolute z-20" style="left:50%;top:50%;transform:translate(-50%,-50%)">
+              <div class="relative">
+                <div class="w-16 h-16 rounded-2xl bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg">
+                  <img src="/papafeiji.png" alt="" width="36" height="36" class="w-9 h-9 rounded-lg" />
+                </div>
+              </div>
+              <span class="text-[10px] text-brand-gold mt-2 block text-center">PathMemos</span>
+            </div>
+            <!-- Right: AI tools receiving cards -->
+            <div class="absolute z-10 flex flex-col gap-2" style="right:6%;top:50%;transform:translateY(-50%)">
+              <div class="flex items-center gap-1"><div class="w-7 h-7 rounded-lg bg-purple-500/15 flex items-center justify-center text-purple-400 text-[9px] font-bold">Cu</div><span class="text-[9px] text-text-muted">Cursor</span></div>
+              <div class="flex items-center gap-1"><div class="w-7 h-7 rounded-lg bg-orange-500/15 flex items-center justify-center text-orange-400 text-[9px] font-bold">Cl</div><span class="text-[9px] text-text-muted">Claude</span></div>
+              <div class="flex items-center gap-1"><div class="w-7 h-7 rounded-lg bg-cyan-500/15 flex items-center justify-center text-cyan-400 text-[9px] font-bold">D</div><span class="text-[9px] text-text-muted">DeepSeek</span></div>
+              <div class="flex items-center gap-1"><div class="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-[9px] font-bold">O</div><span class="text-[9px] text-text-muted">OpenAI</span></div>
+            </div>
+            <!-- Flow arrows -->
+            <svg class="absolute inset-0 w-full h-full z-0" viewBox="0 0 720 260" preserveAspectRatio="none">
+              <g opacity="0.3">
+                <line x1="100" y1="115" x2="300" y2="130" stroke="rgba(181,141,94,0.5)" stroke-width="2" stroke-dasharray="5 5"/>
+                <line x1="100" y1="145" x2="300" y2="130" stroke="rgba(181,141,94,0.4)" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <line x1="420" y1="85" x2="680" y2="80" stroke="rgba(168,85,247,0.3)" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <line x1="420" y1="120" x2="680" y2="115" stroke="rgba(249,115,22,0.3)" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <line x1="420" y1="155" x2="680" y2="150" stroke="rgba(6,182,212,0.3)" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <line x1="420" y1="190" x2="680" y2="185" stroke="rgba(16,185,129,0.3)" stroke-width="1.5" stroke-dasharray="5 5"/>
+              </g>
+              <!-- Arrow heads -->
+              <polygon points="310,125 325,130 310,135" fill="rgba(181,141,94,0.4)"/>
+              <polygon points="680,78 690,80 680,82" fill="rgba(168,85,247,0.4)"/>
+              <polygon points="680,113 690,115 680,117" fill="rgba(249,115,22,0.4)"/>
+              <polygon points="680,148 690,150 680,152" fill="rgba(6,182,212,0.4)"/>
+              <polygon points="680,183 690,185 680,187" fill="rgba(16,185,129,0.4)"/>
+            </svg>
           </div>
-          <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite 1.2s">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        </div>
+      </div>
+
+      <!-- D: Multi-Channel Data Flow -->
+      <div>
+        <p class="text-sm text-brand-gold font-medium mb-4 text-center">{isEn ? 'D. Multi-Channel Data Flow' : 'D. 多通道数据流'}</p>
+        <div class="relative h-52 md:h-64 overflow-hidden rounded-3xl bg-bg-card border border-surface-06">
+          <div class="absolute z-10" style="left:5%;top:50%;transform:translateY(-50%)">
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite 0.6s">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center" style="animation:dataPulse 3s ease-in-out infinite 1.2s">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              </div>
+              <span class="text-[10px] text-text-muted">{isEn ? 'Data' : '数据源'}</span>
+            </div>
           </div>
-          <span class="text-[10px] md:text-xs text-text-muted">{isEn ? 'Memories' : '记忆数据'}</span>
-        </div>
-      </div>
-
-      <!-- Center: PathMemos Hub -->
-      <div class="absolute z-20 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%)">
-        <div class="relative">
-          <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg shadow-brand-gold/20">
-            <img src="/papafeiji.png" alt="" width="48" height="48" class="w-10 h-10 md:w-14 md:h-14 rounded-xl" />
+          <div class="absolute z-20" style="left:50%;top:50%;transform:translate(-50%,-50%)">
+            <div class="relative">
+              <div class="w-16 h-16 rounded-2xl bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg shadow-brand-gold/20">
+                <img src="/papafeiji.png" alt="" width="36" height="36" class="w-9 h-9 rounded-lg" />
+              </div>
+              <div class="absolute w-16 h-16 rounded-2xl bg-brand-gold/15 border border-brand-gold/30" style="left:50%;top:50%;transform:translate(-50%,-50%);animation:hubPulse 2.5s ease-out infinite"></div>
+              <div class="absolute w-16 h-16 rounded-2xl bg-brand-gold/15 border border-brand-gold/30" style="left:50%;top:50%;transform:translate(-50%,-50%);animation:hubPulse 2.5s ease-out infinite 0.8s"></div>
+            </div>
+            <span class="text-[10px] text-brand-gold mt-2 block text-center font-medium">PathMemos</span>
           </div>
-          <!-- Pulse rings -->
-          <div class="absolute w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-brand-gold/15 border border-brand-gold/30" style="left:50%;top:50%;transform:translate(-50%,-50%);animation:hubPulse 2.5s ease-out infinite"></div>
-          <div class="absolute w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-brand-gold/15 border border-brand-gold/30" style="left:50%;top:50%;transform:translate(-50%,-50%);animation:hubPulse 2.5s ease-out infinite 0.8s"></div>
+          <svg class="absolute inset-0 w-full h-full z-0" viewBox="0 0 720 260" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="d-flow1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(168,85,247,0.4)"/></linearGradient>
+              <linearGradient id="d-flow2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(249,115,22,0.4)"/></linearGradient>
+              <linearGradient id="d-flow3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(6,182,212,0.4)"/></linearGradient>
+              <linearGradient id="d-flow4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.4)"/></linearGradient>
+            </defs>
+            <g opacity="0.5">
+              <line x1="45" y1="105" x2="310" y2="130" stroke="rgba(181,141,94,0.25)" stroke-width="1.5" stroke-dasharray="6 3"/>
+              <line x1="45" y1="135" x2="310" y2="130" stroke="rgba(181,141,94,0.2)" stroke-width="1.5" stroke-dasharray="6 3"/>
+              <line x1="45" y1="165" x2="310" y2="130" stroke="rgba(181,141,94,0.2)" stroke-width="1.5" stroke-dasharray="6 3"/>
+              <line x1="410" y1="100" x2="680" y2="60"  stroke="url(#d-flow1)" stroke-width="2" stroke-dasharray="6 3"/>
+              <line x1="410" y1="130" x2="680" y2="115" stroke="url(#d-flow2)" stroke-width="2" stroke-dasharray="6 3"/>
+              <line x1="410" y1="160" x2="680" y2="170" stroke="url(#d-flow3)" stroke-width="2" stroke-dasharray="6 3"/>
+              <line x1="410" y1="190" x2="680" y2="225" stroke="url(#d-flow4)" stroke-width="2" stroke-dasharray="6 3"/>
+            </g>
+          </svg>
+          <div class="absolute z-10" style="right:6%;top:16%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center text-purple-400 text-xs font-bold">Cu</div><span class="text-[10px] text-text-muted">Cursor</span></div></div>
+          <div class="absolute z-10" style="right:6%;top:38%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center text-orange-400 text-xs font-bold">Cl</div><span class="text-[10px] text-text-muted">Claude</span></div></div>
+          <div class="absolute z-10" style="right:6%;top:60%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center text-cyan-400 text-xs font-bold">D</div><span class="text-[10px] text-text-muted">DeepSeek</span></div></div>
+          <div class="absolute z-10" style="right:6%;top:82%"><div class="flex items-center gap-1.5"><div class="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-400 text-xs font-bold">O</div><span class="text-[10px] text-text-muted">OpenAI</span></div></div>
         </div>
-        <span class="text-xs md:text-sm text-brand-gold mt-3 font-semibold">PathMemos</span>
-        <span class="text-[10px] md:text-xs text-text-muted mt-0.5">{isEn ? 'Memory Hub' : '记忆中枢'}</span>
       </div>
 
-      <!-- Right: AI Tools -->
-      <svg class="absolute inset-0 w-full h-full z-0" viewBox="0 0 720 300" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="flow-to-hub" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(181,141,94,0.05)"/><stop offset="100%" stop-color="rgba(181,141,94,0.3)"/>
-          </linearGradient>
-          <linearGradient id="flow-to-ai1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(168,85,247,0.4)"/>
-          </linearGradient>
-          <linearGradient id="flow-to-ai2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(249,115,22,0.4)"/>
-          </linearGradient>
-          <linearGradient id="flow-to-ai3" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(6,182,212,0.4)"/>
-          </linearGradient>
-          <linearGradient id="flow-to-ai4" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.4)"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Left: Data sources → Hub (inbound flow lines) -->
-        <g opacity="0.5">
-          <line x1="40" y1="115" x2="310" y2="150" stroke="url(#flow-to-hub)" stroke-width="2" stroke-dasharray="6 3"/>
-          <line x1="40" y1="150" x2="310" y2="150" stroke="url(#flow-to-hub)" stroke-width="2" stroke-dasharray="6 3"/>
-          <line x1="40" y1="185" x2="310" y2="150" stroke="url(#flow-to-hub)" stroke-width="2" stroke-dasharray="6 3"/>
-        </g>
-
-        <!-- Hub → AI tools (outbound flow lines) -->
-        <g opacity="0.6">
-          <line x1="410" y1="105" x2="680" y2="60"  stroke="url(#flow-to-ai1)" stroke-width="2" stroke-dasharray="6 3"/>
-          <line x1="410" y1="140" x2="680" y2="120" stroke="url(#flow-to-ai2)" stroke-width="2" stroke-dasharray="6 3"/>
-          <line x1="410" y1="175" x2="680" y2="180" stroke="url(#flow-to-ai3)" stroke-width="2" stroke-dasharray="6 3"/>
-          <line x1="410" y1="210" x2="680" y2="240" stroke="url(#flow-to-ai4)" stroke-width="2" stroke-dasharray="6 3"/>
-        </g>
-      </svg>
-
-      <!-- Flowing data dots on paths -->
-      <div class="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-brand-gold/80 shadow-sm shadow-brand-gold/50 z-10"
-           style="left:12%;top:47%;animation:flowDot1 3s linear infinite"></div>
-      <div class="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-purple-400/80 shadow-sm shadow-purple-400/50 z-10"
-           style="left:62%;top:33%;animation:flowDot2 3s linear infinite"></div>
-      <div class="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-orange-400/80 shadow-sm shadow-orange-400/50 z-10"
-           style="left:62%;top:44%;animation:flowDot3 3.5s linear infinite"></div>
-      <div class="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-cyan-400/80 shadow-sm shadow-cyan-400/50 z-10"
-           style="left:62%;top:56%;animation:flowDot4 3s linear infinite"></div>
-
-      <!-- Right: AI tool nodes -->
-      <div class="absolute z-10 flex items-center gap-2" style="right:6%;top:14%">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center shadow-lg" style="animation:nodeGlow 2.5s ease-in-out infinite">
-          <span class="text-purple-400 text-xs md:text-sm font-bold">Cu</span>
+      <!-- E: Molecular Orbital -->
+      <div>
+        <p class="text-sm text-brand-gold font-medium mb-4 text-center">{isEn ? 'E. Molecular Orbital Model' : 'E. 分子轨道模型'}</p>
+        <div class="relative h-52 md:h-64 overflow-hidden rounded-3xl bg-bg-card border border-surface-06" style="background:radial-gradient(ellipse at center,rgba(181,141,94,0.04) 0%,transparent 60%)">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="absolute z-20" style="left:50%;top:50%;transform:translate(-50%,-50%)">
+              <div class="w-14 h-14 rounded-full bg-brand-gold/15 border-2 border-brand-gold/30 flex items-center justify-center shadow-lg shadow-brand-gold/20">
+                <img src="/papafeiji.png" alt="" width="32" height="32" class="w-8 h-8 rounded-lg" />
+              </div>
+            </div>
+            <!-- Electron orbits -->
+            <div class="absolute w-48 h-32 rounded-full border border-purple-500/15" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(-30deg)"></div>
+            <div class="absolute w-56 h-36 rounded-full border border-orange-500/12" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(20deg)"></div>
+            <div class="absolute w-40 h-40 rounded-full border border-cyan-500/15" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(70deg)"></div>
+            <!-- Electrons on orbits -->
+            <div class="absolute z-10 w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-[10px] font-bold" style="left:50%;top:50%;animation:electronSpin1 4s linear infinite">Cu</div>
+            <div class="absolute z-10 w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-[10px] font-bold" style="left:50%;top:50%;animation:electronSpin2 5s linear infinite">Cl</div>
+            <div class="absolute z-10 w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-[10px] font-bold" style="left:50%;top:50%;animation:electronSpin3 3.5s linear infinite">D</div>
+            <!-- Static outer node -->
+            <div class="absolute z-10" style="right:10%;bottom:18%">
+              <div class="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-400 text-[9px] font-bold">O</div>
+            </div>
+          </div>
+          <div class="absolute" style="left:50%;bottom:8%;transform:translateX(-50%)"><span class="text-[10px] text-brand-gold">PathMemos</span></div>
         </div>
-        <span class="text-[10px] md:text-xs text-text-muted">Cursor</span>
       </div>
-      <div class="absolute z-10 flex items-center gap-2" style="right:6%;top:34%">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center shadow-lg" style="animation:nodeGlow 3s ease-in-out infinite 0.5s">
-          <span class="text-orange-400 text-xs md:text-sm font-bold">Cl</span>
-        </div>
-        <span class="text-[10px] md:text-xs text-text-muted">Claude</span>
-      </div>
-      <div class="absolute z-10 flex items-center gap-2" style="right:6%;top:54%">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shadow-lg" style="animation:nodeGlow 3.5s ease-in-out infinite 1s">
-          <span class="text-cyan-400 text-xs md:text-sm font-bold">D</span>
-        </div>
-        <span class="text-[10px] md:text-xs text-text-muted">DeepSeek</span>
-      </div>
-      <div class="absolute z-10 flex items-center gap-2" style="right:6%;top:74%">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shadow-lg" style="animation:nodeGlow 4s ease-in-out infinite 1.5s">
-          <span class="text-emerald-400 text-xs md:text-sm font-bold">O</span>
-        </div>
-        <span class="text-[10px] md:text-xs text-text-muted">OpenAI</span>
-      </div>
+
     </div>
 
+    <!-- Feature cards unchanged -->
     <div class="grid md:grid-cols-3 gap-6">
       <div class="p-8 rounded-2xl bg-bg-card border border-surface-06">
         <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6">
