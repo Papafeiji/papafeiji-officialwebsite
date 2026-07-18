@@ -5,17 +5,17 @@ const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 const isEn = lang === 'en';
 ---
-<section id="family" class="relative py-32 px-6 overflow-hidden">
+<section id="family" class="relative py-20 md:py-32 px-6 overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(181,141,94,0.06),transparent)]"></div>
   <div class="relative max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
         <span class="text-sm text-brand-gold font-medium">{_('family.badge')}</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+      <h2 class="text-3xl md:text-5xl font-bold text-text-primary mb-6">
         {_('family.title.1')}<span class="gradient-text">{_('family.title.2')}</span>
       </h2>
-      <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('family.subtitle')}</p>
+      <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">{_('family.subtitle')}</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 mb-8">
