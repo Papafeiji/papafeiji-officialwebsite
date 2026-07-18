@@ -13,7 +13,7 @@ export interface Props {
 const { title, description, lang = 'zh', ogImage = 'https://papafeiji.cn/papafeiji.png', ogType = 'website' } = Astro.props;
 const isEn = lang === 'en';
 const htmlLang = isEn ? 'en' : 'zh-CN';
-const siteName = isEn ? 'PathMemo' : '爬爬记忆助手';
+const siteName = isEn ? 'PathMemos' : '爬爬记忆助手';
 const currentUrl = Astro.url.href;
 const siteUrl = 'https://papafeiji.cn';
 const otherLangHref = isEn

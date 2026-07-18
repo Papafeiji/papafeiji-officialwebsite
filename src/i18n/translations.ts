@@ -16,10 +16,9 @@ export const translations = {
     "hero.subtitle": "基于微信小程序的全自动时光记录工具，AI 智能留存生活轨迹与家庭回忆，支持云端 SaaS 与开源私有化部署，数据全权由你掌控。",
     "hero.cta.deploy": "私有化部署",
     "hero.cta.ai": "AI 记忆能力",
-
-    // Product Intro
-    "intro.badge": "产品简介",
-    "intro.content": "爬爬记忆助手，是面向个人与家庭的轻量化私密记忆记录系统。依托微信小程序与 AI 能力，全自动记录日记、照片、位置轨迹，智能沉淀生活回忆。产品提供云端 SaaS 与开源私有化双版本，兼顾便捷使用与隐私自主可控，满足普通用户与高阶隐私用户的双重需求。",
+    "hero.copy": "复制",
+    "hero.copied": "已复制",
+    "hero.terminal": "终端",
 
     // SelfHost
     "selfhost.badge": "私有化部署",
@@ -96,9 +95,9 @@ export const translations = {
     "hero.subtitle": "A fully automatic time recording tool powered by WeChat Mini Program. AI intelligently preserves your life trails and family memories. Available as cloud SaaS or self-hosted open-source — your data, fully under your control.",
     "hero.cta.deploy": "Self-Host",
     "hero.cta.ai": "AI Memory",
-
-    "intro.badge": "About",
-    "intro.content": "PathMemos is a lightweight private memory recording system for individuals and families. Powered by WeChat Mini Program and AI, it automatically records diaries, photos, and location trails, intelligently preserving your life memories. Available in cloud SaaS and open-source self-hosted editions, balancing convenience with complete privacy control for all users.",
+    "hero.copy": "Copy",
+    "hero.copied": "Copied",
+    "hero.terminal": "Terminal",
 
     "selfhost.badge": "Self-Hosted",
     "selfhost.title.1": "Your Data,",

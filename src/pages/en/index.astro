@@ -2,11 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import { createT } from '../../i18n/translations';
 import Hero from '../../components/Hero.astro';
+import SelfHost from '../../components/SelfHost.astro';
 import FeatureMCP from '../../components/FeatureMCP.astro';
 import FeatureLocation from '../../components/FeatureLocation.astro';
 import FeatureFamily from '../../components/FeatureFamily.astro';
 import FeatureAI from '../../components/FeatureAI.astro';
-import SelfHost from '../../components/SelfHost.astro';
 import Footer from '../../components/Footer.astro';
 
 const _ = createT('en');
@@ -21,17 +21,17 @@ const _ = createT('en');
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "PathMemo",
+    "name": "PathMemos",
     "alternateName": "爬爬记忆助手",
     "url": "https://papafeiji.cn",
     "logo": "https://papafeiji.cn/papafeiji.png",
-    "description": "Private & Controllable · AI Family Memory Hub - Fully automatic time recording tool powered by WeChat Mini Program",
+    "description": "Private & Controllable · AI Family Memory Hub",
     "sameAs": ["https://github.com/Papafeiji/pathmemos"]
   })} />
+  <SelfHost lang="en" />
   <FeatureMCP lang="en" />
   <FeatureLocation lang="en" />
   <FeatureFamily lang="en" />
   <FeatureAI lang="en" />
-  <SelfHost lang="en" />
   <Footer lang="en" />
 </Layout>

@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import { createT } from '../i18n/translations';
 import Hero from '../components/Hero.astro';
+import SelfHost from '../components/SelfHost.astro';
 import FeatureMCP from '../components/FeatureMCP.astro';
 import FeatureLocation from '../components/FeatureLocation.astro';
 import FeatureFamily from '../components/FeatureFamily.astro';
 import FeatureAI from '../components/FeatureAI.astro';
-import SelfHost from '../components/SelfHost.astro';
 import Footer from '../components/Footer.astro';
 
 const _ = createT('zh');
@@ -22,16 +22,16 @@ const _ = createT('zh');
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "爬爬记忆助手",
-    "alternateName": "PathMemo",
+    "alternateName": "PathMemos",
     "url": "https://papafeiji.cn",
     "logo": "https://papafeiji.cn/papafeiji.png",
-    "description": "私人可控 · AI 家庭记忆中枢 - 基于微信小程序的全自动时光记录工具",
+    "description": "私人可控 · AI 家庭记忆中枢",
     "sameAs": ["https://github.com/Papafeiji/pathmemos"]
   })} />
+  <SelfHost lang="zh" />
   <FeatureMCP lang="zh" />
   <FeatureLocation lang="zh" />
   <FeatureFamily lang="zh" />
   <FeatureAI lang="zh" />
-  <SelfHost lang="zh" />
   <Footer lang="zh" />
 </Layout>
