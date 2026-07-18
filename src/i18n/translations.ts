@@ -12,9 +12,9 @@ export const translations = {
     "site.copyright": "Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2",
 
     // Hero
-    "hero.title.part1": "私人可控 ·",
-    "hero.title.part2": "AI 家庭记忆中枢",
-    "hero.subtitle": "像记账一样，自动记录你和家人的每一天。",
+    "hero.title.part1": "自动收集 ·",
+    "hero.title.part2": "开源家庭记忆中枢",
+    "hero.subtitle": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
     "hero.bullet1": "无感记录位置轨迹",
     "hero.bullet2": "全家共享一份时光记忆",
     "hero.bullet3": "AI 随时帮你回忆往昔",
@@ -79,9 +79,9 @@ export const translations = {
     "page404.back": "返回首页",
 
     // Meta
-    "meta.title": "爬爬记忆助手 · 私人可控 · AI 家庭记忆中枢",
-    "meta.desc": "爬爬记忆助手是基于微信小程序的全自动时光记录工具，AI 智能留存生活轨迹与家庭回忆，支持云端 SaaS 与开源私有化部署，数据全权由你掌控。",
-    "meta.ogDesc": "基于微信小程序的全自动时光记录工具，AI 智能留存生活轨迹与家庭回忆，数据全权由你掌控。",
+    "meta.title": "自动收集 · 开源家庭记忆中枢",
+    "meta.desc": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
+    "meta.ogDesc": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
   },
 
   en: {
@@ -95,9 +95,9 @@ export const translations = {
     "site.tagline": "Private & Controllable · AI Family Memory Hub",
     "site.copyright": "Copyright © Hangzhou ChenLeLe Technology Co., Ltd.",
 
-    "hero.title.part1": "Private & Controllable ·",
-    "hero.title.part2": "AI Family Memory Hub",
-    "hero.subtitle": "Effortlessly capture every day for you and your family — like a journal that writes itself.",
+    "hero.title.part1": "Auto-Collect ·",
+    "hero.title.part2": "Open Source Family Memory Hub",
+    "hero.subtitle": "Open-source AI memory infrastructure. Gather your memories from both the physical and digital worlds, providing persistent memory for all your AI assistants.",
     "hero.bullet1": "Automatic location trail recording",
     "hero.bullet2": "One shared memory timeline for the family",
     "hero.bullet3": "AI ready to recall your past anytime",
@@ -153,9 +153,9 @@ export const translations = {
     "page404.message": "Page not found / 页面未找到",
     "page404.back": "Back to Home",
 
-    "meta.title": "PathMemos · Private & Controllable · AI Family Memory Hub",
-    "meta.desc": "PathMemos is a fully automatic time recording tool powered by WeChat Mini Program. AI intelligently preserves your life trails and family memories. Self-hosted or SaaS — your data, fully under your control.",
-    "meta.ogDesc": "Fully automatic time recording tool powered by WeChat Mini Program. AI preserves your life trails and family memories. Your data, fully under your control.",
+    "meta.title": "Auto-Collect · Open Source Family Memory Hub",
+    "meta.desc": "Open-source AI memory infrastructure. Gather your memories from both the physical and digital worlds, providing persistent memory for all your AI assistants.",
+    "meta.ogDesc": "Open-source AI memory infrastructure. Gather your memories from both the physical and digital worlds, providing persistent memory for all your AI assistants.",
   },
 } as const;
 
