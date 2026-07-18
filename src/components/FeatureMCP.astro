@@ -46,22 +46,64 @@ const isEn = lang === 'en';
           </div>
         </div>
 
-        <!-- Animated flow stream: Source → Hub -->
+        <!-- A: Dashed sequence -->
         <div class="hidden md:flex flex-1 items-center relative h-10">
+          <div class="text-[10px] text-text-muted absolute -top-4 left-4">A</div>
+          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6">
+              <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+            </line>
+          </svg>
+        </div>
+
+        <!-- B: Gradient pulse wave -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <div class="text-[10px] text-text-muted absolute -top-4 left-4">B</div>
           <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="stream-in" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(181,141,94,0.6)"/>
-                <stop offset="100%" stop-color="rgba(181,141,94,0.8)"/>
+              <linearGradient id="pulse-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(181,141,94,0.1)"><animate attributeName="stop-color" values="rgba(181,141,94,0.1);rgba(181,141,94,0.8);rgba(181,141,94,0.1)" dur="2.5s" repeatCount="indefinite"/></stop>
+                <stop offset="100%" stop-color="rgba(181,141,94,0.8)"><animate attributeName="stop-color" values="rgba(181,141,94,0.8);rgba(181,141,94,0.1);rgba(181,141,94,0.8)" dur="2.5s" repeatCount="indefinite"/></stop>
               </linearGradient>
             </defs>
-            <line x1="0" y1="20" x2="145" y2="20" stroke="url(#stream-in)" stroke-width="2"/>
-            <circle r="2.5" fill="#B58D5E" opacity="0.8">
-              <animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,15 145,20"/>
-            </circle>
-            <circle r="2" fill="#B58D5E" opacity="0.5">
-              <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.6s" path="M0,20 Q75,25 145,20"/>
-            </circle>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="url(#pulse-grad)" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <!-- C: Neon glow beam -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <div class="text-[10px] text-text-muted absolute -top-4 left-4">C</div>
+          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
+            <defs>
+              <filter id="glow"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#glow)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/>
+          </svg>
+        </div>
+
+        <!-- D: Particle stream (current) -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <div class="text-[10px] text-text-muted absolute -top-4 left-4">D</div>
+          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
+            <circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle>
+            <circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle>
+            <circle r="2" fill="#B58D5E" opacity="0.4"><animateMotion dur="3s" repeatCount="indefinite" begin="1.4s" path="M0,20 Q75,20 145,20"/></circle>
+          </svg>
+        </div>
+
+        <!-- E: Orbiting double line -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <div class="text-[10px] text-text-muted absolute -top-4 left-4">E</div>
+          <svg class="w-full h-full" viewBox="0 0 150 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
+            <path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7">
+              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7">
+              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+            </path>
           </svg>
         </div>
 
@@ -75,42 +117,82 @@ const isEn = lang === 'en';
           <span class="text-[10px] md:text-xs text-text-muted">{isEn ? 'MCP Memory Hub' : 'MCP 记忆中枢'}</span>
         </div>
 
-        <!-- Animated flow stream: Hub → AI tools -->
+        <!-- A: Dashed sequence -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/></line>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.8s" repeatCount="indefinite"/></line>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.6s" repeatCount="indefinite"/></line>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.4)" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2.2s" repeatCount="indefinite"/></line>
+          </svg>
+        </div>
+
+        <!-- B: Gradient pulse wave -->
         <div class="hidden md:flex flex-1 items-center relative h-10">
           <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="stream-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(181,141,94,0.5)"/>
-                <stop offset="50%" stop-color="rgba(181,141,94,0.8)"/>
-                <stop offset="100%" stop-color="rgba(181,141,94,0.2)"/>
-              </linearGradient>
+              <linearGradient id="rpulse1" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(168,85,247,0.7)"><animate attributeName="stop-color" values="rgba(168,85,247,0.3);rgba(168,85,247,0.8);rgba(168,85,247,0.3)" dur="2s" repeatCount="indefinite"/></stop></linearGradient>
+              <linearGradient id="rpulse2" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(249,115,22,0.7)"><animate attributeName="stop-color" values="rgba(249,115,22,0.3);rgba(249,115,22,0.8);rgba(249,115,22,0.3)" dur="2.3s" repeatCount="indefinite"/></stop></linearGradient>
+              <linearGradient id="rpulse3" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(6,182,212,0.7)"><animate attributeName="stop-color" values="rgba(6,182,212,0.3);rgba(6,182,212,0.8);rgba(6,182,212,0.3)" dur="1.8s" repeatCount="indefinite"/></stop></linearGradient>
+              <linearGradient id="rpulse4" x1="0%" x2="100%"><stop offset="0%" stop-color="rgba(181,141,94,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.7)"><animate attributeName="stop-color" values="rgba(16,185,129,0.3);rgba(16,185,129,0.8);rgba(16,185,129,0.3)" dur="2.5s" repeatCount="indefinite"/></stop></linearGradient>
             </defs>
-            <!-- Main stream -->
-            <line x1="0" y1="20" x2="290" y2="20" stroke="url(#stream-gradient)" stroke-width="2"/>
-            <!-- Secondary streams fanning out -->
-            <line x1="200" y1="20" x2="290" y2="8" stroke="rgba(168,85,247,0.4)" stroke-width="1.5"/>
-            <line x1="200" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.4)" stroke-width="1.5"/>
-            <line x1="200" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.4)" stroke-width="1.5"/>
-            <line x1="200" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
-            <!-- Flowing dots -->
-            <circle r="2.5" fill="#B58D5E" opacity="0.8">
-              <animateMotion dur="2.5s" repeatCount="indefinite" path="M0,20 Q150,15 290,20"/>
-            </circle>
-            <circle r="2" fill="#B58D5E" opacity="0.6">
-              <animateMotion dur="3s" repeatCount="indefinite" begin="0.8s" path="M0,20 Q150,25 290,20"/>
-            </circle>
-            <circle r="2.5" fill="#8B5CF6" opacity="0.7">
-              <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.5s" path="M200,20 Q240,10 290,8"/>
-            </circle>
-            <circle r="2.5" fill="#D97706" opacity="0.7">
-              <animateMotion dur="3.2s" repeatCount="indefinite" begin="2s" path="M200,20 Q240,18 290,16"/>
-            </circle>
-            <circle r="2.5" fill="#06B6D4" opacity="0.7">
-              <animateMotion dur="2.6s" repeatCount="indefinite" begin="1s" path="M200,20 Q240,24 290,24"/>
-            </circle>
-            <circle r="2.5" fill="#10B981" opacity="0.7">
-              <animateMotion dur="3s" repeatCount="indefinite" begin="2.5s" path="M200,20 Q240,30 290,32"/>
-            </circle>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.5)" stroke-width="3"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/></line>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="url(#rpulse1)" stroke-width="2.5"/>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="url(#rpulse2)" stroke-width="2.5"/>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="url(#rpulse3)" stroke-width="2.5"/>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="url(#rpulse4)" stroke-width="2.5"/>
+          </svg>
+        </div>
+
+        <!-- C: Neon glow beam -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
+            <defs><filter id="rglow"><feGaussianBlur stdDeviation="2.5"/></filter></defs>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="6" opacity="0.15" filter="url(#rglow)"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></line>
+            <line x1="0" y1="20" x2="145" y2="20" stroke="#B58D5E" stroke-width="1.5" opacity="0.8"/>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="#8B5CF6" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="#8B5CF6" stroke-width="1.5" opacity="0.7"/>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="#D97706" stroke-width="1.5" opacity="0.7"/>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="#06B6D4" stroke-width="1.5" opacity="0.7"/>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="5" opacity="0.12" filter="url(#rglow)"/>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="#10B981" stroke-width="1.5" opacity="0.7"/>
+          </svg>
+        </div>
+
+        <!-- D: Particle stream -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
+            <circle r="3" fill="#B58D5E" opacity="0.9"><animateMotion dur="2s" repeatCount="indefinite" path="M0,20 Q75,14 145,20"/></circle>
+            <circle r="2.5" fill="#B58D5E" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.7s" path="M0,20 Q75,26 145,20"/></circle>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.2)" stroke-width="1"/>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+            <circle r="3" fill="#8B5CF6" opacity="0.8"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1s" path="M145,20 Q220,8 290,8"/></circle>
+            <circle r="3" fill="#D97706" opacity="0.8"><animateMotion dur="3s" repeatCount="indefinite" begin="1.5s" path="M145,20 Q220,16 290,16"/></circle>
+            <circle r="3" fill="#06B6D4" opacity="0.8"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.5s" path="M145,20 Q220,24 290,24"/></circle>
+            <circle r="3" fill="#10B981" opacity="0.8"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s" path="M145,20 Q220,32 290,32"/></circle>
+          </svg>
+        </div>
+
+        <!-- E: Orbiting double line -->
+        <div class="hidden md:flex flex-1 items-center relative h-10">
+          <svg class="w-full h-full" viewBox="0 0 300 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="145" y2="20" stroke="rgba(181,141,94,0.3)" stroke-width="1.5"/>
+            <path d="M0,18 Q75,10 145,18" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/></path>
+            <path d="M0,22 Q75,30 145,22" fill="none" stroke="#B58D5E" stroke-width="2" opacity="0.7"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></path>
+            <line x1="145" y1="20" x2="290" y2="8"  stroke="rgba(168,85,247,0.25)" stroke-width="1.5"/>
+            <line x1="145" y1="20" x2="290" y2="16" stroke="rgba(249,115,22,0.25)" stroke-width="1.5"/>
+            <line x1="145" y1="20" x2="290" y2="24" stroke="rgba(6,182,212,0.25)" stroke-width="1.5"/>
+            <line x1="145" y1="20" x2="290" y2="32" stroke="rgba(16,185,129,0.25)" stroke-width="1.5"/>
+            <circle r="4" fill="#8B5CF6" opacity="0.6"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/></circle>
+            <circle r="4" fill="#D97706" opacity="0.6" cx="180" cy="16"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.3s" repeatCount="indefinite"/></circle>
+            <circle r="4" fill="#06B6D4" opacity="0.6" cx="220" cy="24"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle r="4" fill="#10B981" opacity="0.6" cx="260" cy="32"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite"/></circle>
           </svg>
         </div>
 
