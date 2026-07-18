@@ -5,49 +5,18 @@ const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 const isEn = lang === 'en';
 
-const tabs = isEn
-  ? [
-      { id: 'timeline', label: 'Timeline Diary' },
-      { id: 'phone', label: 'Mini Program UI' },
-      { id: 'ripple', label: 'Minimal Ripples' },
-      { id: 'flow', label: 'GPS → Diary Flow' },
-      { id: 'map', label: 'City Trajectory' },
-    ]
-  : [
-      { id: 'timeline', label: '时间轴日记' },
-      { id: 'phone', label: '小程序界面' },
-      { id: 'ripple', label: '极简涟漪' },
-      { id: 'flow', label: 'GPS→日记流程' },
-      { id: 'map', label: '城市轨迹' },
-    ];
-
-const timelineItems = isEn
-  ? [
-      { time: '08:00', title: 'Left home', desc: 'Morning commute started' },
-      { time: '10:30', title: 'Arrived at office', desc: 'Stayed for 3.5 hours' },
-      { time: '12:00', title: 'Lunch at noodle shop', desc: 'AI generated a diary entry' },
-      { time: '18:00', title: 'Grocery shopping', desc: 'Supermarket nearby' },
-      { time: '22:00', title: 'Back home', desc: 'End of the day' },
-    ]
-  : [
-      { time: '08:00', title: '从家出发', desc: '开始今日通勤' },
-      { time: '10:30', title: '抵达公司', desc: '停留 3.5 小时' },
-      { time: '12:00', title: '在面馆午餐', desc: 'AI 自动生成日记' },
-      { time: '18:00', title: '超市采购', desc: '附近生鲜超市' },
-      { time: '22:00', title: '回到家中', desc: '一天结束' },
-    ];
-
-const flowSteps = isEn
-  ? [
-      { title: 'Collect GPS', desc: 'Background location points' },
-      { title: 'AI Clustering', desc: 'Stays & routes recognized' },
-      { title: 'Generate Diary', desc: 'Human-like memory entry' },
-    ]
-  : [
-      { title: '采集 GPS', desc: '后台持续定位' },
-      { title: 'AI 聚合', desc: '识别停留与路线' },
-      { title: '生成日记', desc: '输出生活化记录' },
-    ];
+const pins = [
+  { left: 8, top: 72, delay: 0 },
+  { left: 18, top: 58, delay: 0.2 },
+  { left: 28, top: 68, delay: 0.4 },
+  { left: 38, top: 48, delay: 0.6 },
+  { left: 48, top: 62, delay: 0.8 },
+  { left: 56, top: 38, delay: 1.0 },
+  { left: 66, top: 52, delay: 1.2 },
+  { left: 74, top: 32, delay: 1.4 },
+  { left: 84, top: 46, delay: 1.6 },
+  { left: 92, top: 28, delay: 1.8 },
+];
 ---
 <section id="location" class="relative py-16 md:py-24 px-6 overflow-hidden" data-reveal>
   <div class="max-w-5xl mx-auto">
@@ -61,151 +30,47 @@ const flowSteps = isEn
       <p class="text-xl text-text-secondary max-w-2xl mx-auto">{_('location.subtitle')}</p>
     </div>
 
-    <!-- Tab navigation -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" data-location-tabs>
-      {tabs.map((tab, idx) => (
-        <button
-          type="button"
-          data-tab={tab.id}
-          class={`px-3 py-1.5 rounded-lg text-xs md:text-sm border transition-all ${idx === 0 ? 'bg-brand-gold text-contrast-btn-text border-brand-gold' : 'bg-surface-04 text-text-secondary border-surface-06 hover:text-text-primary hover:bg-surface-08'}`}
-        >
-          {tab.label}
-        </button>
+    <!-- City trajectory illustration -->
+    <div class="relative mb-14 md:mb-16 overflow-hidden rounded-3xl bg-bg-card border border-surface-06 h-72 md:h-96">
+      <!-- Map background -->
+      <img
+        src="/map-1024.webp"
+        srcset="/map-720.webp 720w, /map-1024.webp 1024w, /map-1440.webp 1440w"
+        sizes="(max-width: 768px) 100vw, 1024px"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-deep/30 via-transparent to-bg-deep/60"></div>
+
+      <!-- Trajectory line -->
+      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 720 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="city-trail" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(181,141,94,0.3)"/>
+            <stop offset="50%" stop-color="rgba(181,141,94,0.7)"/>
+            <stop offset="100%" stop-color="rgba(181,141,94,1)"/>
+          </linearGradient>
+        </defs>
+        <path
+          d="M40 240 Q100 210 160 230 Q220 250 280 200 Q340 150 400 180 Q460 210 520 160 Q580 110 640 130 Q700 150 760 80"
+          fill="none"
+          stroke="url(#city-trail)"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-dasharray="8 6"
+          style="animation: cityTrail 2.5s linear infinite"
+        />
+      </svg>
+
+      <!-- Location pins -->
+      {pins.map((pin) => (
+        <div
+          class="absolute z-10 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-brand-gold shadow-lg shadow-brand-gold/60 city-pin"
+          style={`left:${pin.left}%;top:${pin.top}%;animation-delay:${pin.delay}s`}
+        ></div>
       ))}
-    </div>
-
-    <!-- Demo canvases -->
-    <div class="relative mb-14 md:mb-16 overflow-hidden rounded-3xl bg-bg-card border border-surface-06 min-h-[320px] md:min-h-[360px]">
-
-      <!-- Scheme 1: Timeline diary cards -->
-      <div data-panel="timeline" class="location-panel absolute inset-0 p-6 md:p-10 overflow-y-auto">
-        <div class="max-w-2xl mx-auto">
-          <div class="relative pl-6 border-l border-surface-06 space-y-6">
-            {timelineItems.map((item, idx) => (
-              <div class="relative" style={`animation: timelineSlide 0.5s ease-out ${idx * 0.15}s both`}>
-                <span class="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-brand-gold border-4 border-bg-card"></span>
-                <div class="p-4 rounded-xl bg-surface-03 border border-surface-06 hover:border-brand-gold/30 transition-colors">
-                  <div class="flex items-center gap-3 mb-1">
-                    <span class="text-xs text-brand-gold font-semibold">{item.time}</span>
-                    <span class="text-sm text-text-primary font-medium">{item.title}</span>
-                  </div>
-                  <p class="text-xs text-text-secondary">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <!-- Scheme 2: Mini Program mockup -->
-      <div data-panel="phone" class="location-panel absolute inset-0 hidden p-6 md:p-10 flex items-center justify-center">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-header">
-              <span class="text-[10px] text-text-muted">{_('site.name')}</span>
-            </div>
-            <div class="phone-map">
-              <svg class="w-full h-full opacity-30" viewBox="0 0 200 280" preserveAspectRatio="none">
-                <pattern id="phone-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M20 0L0 0 0 20" fill="none" stroke="currentColor" class="text-brand-gold" stroke-width="0.5"/>
-                </pattern>
-                <rect width="100%" height="100%" fill="url(#phone-grid)"/>
-                <path d="M20 200 Q60 180 100 200 Q140 220 180 190" fill="none" stroke="#B58D5E" stroke-width="2"/>
-              </svg>
-              <div class="absolute left-[20%] top-[55%] w-2 h-2 rounded-full bg-brand-gold"></div>
-              <div class="absolute left-[55%] top-[45%] w-2 h-2 rounded-full bg-brand-gold"></div>
-              <div class="absolute left-[80%] top-[35%] w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
-            </div>
-            <div class="phone-cards">
-              <div class="phone-card">
-                <div class="text-[9px] text-text-muted mb-0.5">12:00</div>
-                <div class="text-[10px] text-text-primary">{isEn ? 'Lunch at noodle shop' : '在面馆午餐'}</div>
-              </div>
-              <div class="phone-card">
-                <div class="text-[9px] text-text-muted mb-0.5">18:00</div>
-                <div class="text-[10px] text-text-primary">{isEn ? 'Grocery shopping' : '超市采购'}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scheme 3: Minimal ripples -->
-      <div data-panel="ripple" class="location-panel absolute inset-0 hidden flex items-center justify-center">
-        <div class="relative w-full h-full">
-          <div class="ripple-point" style="left:25%;top:45%;">
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring" style="animation-delay:0.6s"></div>
-          </div>
-          <div class="ripple-point" style="left:55%;top:35%;">
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring" style="animation-delay:0.4s"></div>
-          </div>
-          <div class="ripple-point" style="left:75%;top:55%;">
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring" style="animation-delay:0.8s"></div>
-          </div>
-          <div class="ripple-point" style="left:40%;top:65%;">
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring" style="animation-delay:1s"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scheme 4: GPS → Diary flow -->
-      <div data-panel="flow" class="location-panel absolute inset-0 hidden p-6 md:p-10 flex items-center justify-center">
-        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 max-w-3xl w-full">
-          {flowSteps.map((step, idx) => (
-            <>
-              <div class="flex-1 w-full md:w-auto p-5 rounded-2xl bg-surface-03 border border-surface-06 text-center" style={`animation: flowStep 0.5s ease-out ${idx * 0.25}s both`}>
-                <div class="w-10 h-10 mx-auto rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-3">
-                  <span class="text-sm font-bold">{idx + 1}</span>
-                </div>
-                <h4 class="text-sm text-text-primary font-semibold mb-1">{step.title}</h4>
-                <p class="text-xs text-text-secondary">{step.desc}</p>
-              </div>
-              {idx < flowSteps.length - 1 && (
-                <div class="hidden md:block text-brand-gold text-xl">→</div>
-                <div class="md:hidden text-brand-gold text-xl rotate-90">→</div>
-              )}
-            </>
-          ))}
-        </div>
-      </div>
-
-      <!-- Scheme 5: City trajectory -->
-      <div data-panel="map" class="location-panel absolute inset-0 hidden">
-        <div class="absolute inset-0">
-          <svg class="w-full h-full opacity-40" viewBox="0 0 720 320" preserveAspectRatio="none">
-            <pattern id="city-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M40 0L0 0 0 40" fill="none" stroke="rgba(181,141,94,0.15)" stroke-width="1"/>
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#city-grid)"/>
-            <path d="M0 160 Q120 150 240 160 Q360 170 480 150 Q600 130 720 140" fill="none" stroke="rgba(181,141,94,0.15)" stroke-width="3"/>
-            <path d="M120 320 Q140 200 180 120 Q220 40 280 0" fill="none" stroke="rgba(181,141,94,0.12)" stroke-width="2"/>
-            <path d="M500 320 Q480 220 520 140 Q560 60 620 0" fill="none" stroke="rgba(181,141,94,0.12)" stroke-width="2"/>
-          </svg>
-        </div>
-        <div class="relative h-full">
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 720 320" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="city-trail" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(181,141,94,0.2)"/>
-                <stop offset="50%" stop-color="rgba(181,141,94,0.6)"/>
-                <stop offset="100%" stop-color="rgba(181,141,94,0.9)"/>
-              </linearGradient>
-            </defs>
-            <path d="M60 240 Q140 180 220 220 Q300 260 380 180 Q460 100 540 140 Q620 180 680 80"
-                  fill="none" stroke="url(#city-trail)" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4"
-                  style="animation: cityTrail 3s linear infinite"/>
-          </svg>
-          <div class="city-pin" style="left:8%;top:68%;"></div>
-          <div class="city-pin" style="left:30%;top:58%;animation-delay:0.3s"></div>
-          <div class="city-pin" style="left:52%;top:38%;animation-delay:0.6s"></div>
-          <div class="city-pin" style="left:75%;top:18%;animation-delay:0.9s"></div>
-        </div>
-      </div>
-
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
@@ -241,144 +106,22 @@ const flowSteps = isEn
 </section>
 
 <style>
-  @keyframes timelineSlide {
-    from { opacity: 0; transform: translateX(-12px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes flowStep {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes ripple {
-    0% { transform: scale(0.5); opacity: 0.8; }
-    100% { transform: scale(3); opacity: 0; }
-  }
-
   @keyframes cityTrail {
-    to { stroke-dashoffset: -20; }
+    to { stroke-dashoffset: -28; }
   }
 
   @keyframes pinPop {
-    0%, 100% { transform: scale(0.8); opacity: 0.4; }
-    50% { transform: scale(1.1); opacity: 1; }
-  }
-
-  .phone-frame {
-    width: 180px;
-    height: 320px;
-    border-radius: 28px;
-    padding: 8px;
-    background: linear-gradient(135deg, #2a2a35, #1a1a24);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    border-radius: 22px;
-    background: var(--color-bg-deep);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .phone-header {
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid var(--color-surface-06);
-  }
-
-  .phone-map {
-    position: relative;
-    height: 160px;
-    background: var(--color-bg-card);
-    border-bottom: 1px solid var(--color-surface-06);
-  }
-
-  .phone-cards {
-    flex: 1;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    overflow-y: auto;
-  }
-
-  .phone-card {
-    padding: 8px;
-    border-radius: 8px;
-    background: var(--color-surface-03);
-    border: 1px solid var(--color-surface-06);
-  }
-
-  .ripple-point {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-  }
-
-  .ripple-point::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: var(--color-brand-gold);
-  }
-
-  .ripple-ring {
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    border: 2px solid var(--color-brand-gold);
-    animation: ripple 2.5s ease-out infinite;
+    0%, 100% { transform: scale(0.7); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 1; }
   }
 
   .city-pin {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-brand-gold);
-    box-shadow: 0 0 12px rgba(181,141,94,0.6);
-    animation: pinPop 2s ease-in-out infinite;
+    animation: pinPop 2.2s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ripple-ring, .city-pin, [style*="animation"] {
+    .city-pin, [style*="animation: cityTrail"] {
       animation: none !important;
     }
   }
 </style>
-
-<script>
-  (function () {
-    const section = document.querySelector('[data-location-tabs]');
-    if (!section) return;
-    const buttons = section.querySelectorAll('[data-tab]');
-    const panels = document.querySelectorAll('.location-panel');
-
-    function activate(id) {
-      buttons.forEach((btn) => {
-        const active = btn.dataset.tab === id;
-        btn.className = active
-          ? 'px-3 py-1.5 rounded-lg text-xs md:text-sm border transition-all bg-brand-gold text-contrast-btn-text border-brand-gold'
-          : 'px-3 py-1.5 rounded-lg text-xs md:text-sm border transition-all bg-surface-04 text-text-secondary border-surface-06 hover:text-text-primary hover:bg-surface-08';
-      });
-      panels.forEach((panel) => {
-        const isTarget = panel.dataset.panel === id;
-        panel.classList.toggle('hidden', !isTarget);
-        if (isTarget) {
-          panel.classList.remove('hidden');
-        }
-      });
-    }
-
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => activate(btn.dataset.tab));
-    });
-  })();
-</script>
