@@ -15,7 +15,7 @@ const startOffset = firstDay === 0 ? 6 : firstDay - 1;
 const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
 const monthIndex = now.getMonth();
 ---
-<section id="family" class="relative py-20 md:py-32 px-6 overflow-hidden" data-reveal>
+<section id="family" class="relative py-16 md:py-24 px-6 overflow-hidden" data-reveal>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-03 border border-surface-06 mb-10">
@@ -28,7 +28,7 @@ const monthIndex = now.getMonth();
     </div>
 
     <!-- Blackboard + Sticky Notes -->
-    <div class="relative mb-20 overflow-hidden rounded-3xl border border-surface-06 cork-board">
+    <div class="relative mb-14 md:mb-16 overflow-hidden rounded-3xl border border-surface-06 cork-board">
       <div class="absolute inset-0 cork-dots"></div>
       <div class="absolute inset-2 rounded-2xl border-4 cork-frame"></div>
       <div class="relative p-6 md:p-10">
