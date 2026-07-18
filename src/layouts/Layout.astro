@@ -58,11 +58,24 @@ const defaultHref = isEn
   <meta name="twitter:title" content={`${title} · ${siteName}`} />
   {description && <meta name="twitter:description" content={description} />}
   <meta name="twitter:image" content={ogImage} />
-  <link rel="preconnect" href="https://github.com" />
-  <link rel="preconnect" href="https://beian.miit.gov.cn" />
-  <script is:inline>
-    (function(){var t=localStorage.getItem('theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.remove('dark');var l=localStorage.getItem('lang');if(!l&&navigator.language){var n=navigator.language.toLowerCase();var e=/^zh\b/.test(n);var u=window.location.pathname;if(e&&u.startsWith('/en/')){window.location.replace(u.replace(/^\/en/,'')||'/')}else if(!e&&!u.startsWith('/en/')){window.location.replace('/en'+u)}}})();
-  </script>
+    <link rel="preconnect" href="https://github.com" />
+    <link rel="preconnect" href="https://beian.miit.gov.cn" />
+    <script is:inline>
+      (function(){var t=localStorage.getItem('theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.remove('dark');var l=localStorage.getItem('lang');if(!l&&navigator.language){var n=navigator.language.toLowerCase();var e=/^zh\b/.test(n);var u=window.location.pathname;if(e&&u.startsWith('/en/')){window.location.replace(u.replace(/^\/en/,'')||'/')}else if(!e&&!u.startsWith('/en/')){window.location.replace('/en'+u)}}})();
+    </script>
+    <script is:inline>
+      // Scroll reveal
+      document.addEventListener('DOMContentLoaded', function(){
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); obs.unobserve(e.target); }});
+        }, {threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); });
+      });
+      // Navbar scroll effect
+      window.addEventListener('scroll', function(){
+        document.querySelector('header')?.classList.toggle('scrolled', window.scrollY > 20);
+      }, {passive:true});
+    </script>
 </head>
 <body>
   <Navbar lang={lang} />

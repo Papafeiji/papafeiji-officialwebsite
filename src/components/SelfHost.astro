@@ -4,7 +4,7 @@ export interface Props { lang?: string; }
 const { lang = 'zh' } = Astro.props;
 const _ = createT(lang);
 ---
-<section id="self-host" class="relative py-20 md:py-32 px-6 overflow-hidden">
+<section id="self-host" class="relative py-20 md:py-32 px-6 overflow-hidden" data-reveal>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(181,141,94,0.08),transparent)]"></div>
   <div class="relative max-w-5xl mx-auto">
     <div class="text-center mb-16">
