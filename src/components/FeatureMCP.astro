@@ -18,12 +18,12 @@ const isEn = lang === 'en';
     </div>
 
     <div class="relative mb-10 md:mb-12 overflow-hidden rounded-3xl bg-bg-card border border-surface-06 px-4 md:px-10 py-10 md:py-14">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-6">
 
         <!-- Left: Memory Source -->
-        <div class="flex flex-col items-center gap-3 shrink-0">
+        <div class="flex flex-col items-center gap-3 w-full md:w-56 shrink-0">
           <span class="text-sm md:text-base text-text-primary font-semibold">{isEn ? 'Your Memories' : '你的记忆'}</span>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 w-full">
             <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-gold/8 border border-brand-gold/15 hover:bg-brand-gold/12 transition-colors">
               <div class="w-9 h-9 rounded-lg bg-brand-gold/15 flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B58D5E" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -83,30 +83,33 @@ const isEn = lang === 'en';
         <div class="flex md:hidden text-2xl text-brand-gold animate-bounce">→</div>
 
         <!-- Right: AI Tools -->
-        <div class="flex flex-col gap-3 shrink-0">
-          <div class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
-              <img src="/openclaw.svg" alt="OpenClaw" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+        <div class="flex flex-col items-center gap-3 w-full md:w-56 shrink-0">
+          <span class="text-sm md:text-base text-text-primary font-semibold">{isEn ? 'Your AI Assistants' : '你的 AI 助手'}</span>
+          <div class="flex flex-col gap-3 w-full">
+            <div class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
+                <img src="/openclaw.svg" alt="OpenClaw" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <span class="text-sm text-text-primary font-medium">OpenClaw</span>
             </div>
-            <span class="text-sm text-text-primary font-medium">OpenClaw</span>
-          </div>
-          <div class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
-              <img src="/chatgpt.svg" alt="ChatGPT" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+            <div class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
+                <img src="/chatgpt.svg" alt="ChatGPT" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <span class="text-sm text-text-primary font-medium">ChatGPT</span>
             </div>
-            <span class="text-sm text-text-primary font-medium">ChatGPT</span>
-          </div>
-          <div class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
-              <img src="/claude.svg" alt="Claude" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+            <div class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
+                <img src="/claude.svg" alt="Claude" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <span class="text-sm text-text-primary font-medium">Claude</span>
             </div>
-            <span class="text-sm text-text-primary font-medium">Claude</span>
-          </div>
-          <div class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
-              <img src="/kimi.svg" alt="Kimi" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+            <div class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 transition-all group-hover:scale-110">
+                <img src="/kimi.svg" alt="Kimi" width="36" height="36" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <span class="text-sm text-text-primary font-medium">Kimi</span>
             </div>
-            <span class="text-sm text-text-primary font-medium">Kimi</span>
           </div>
         </div>
       </div>
