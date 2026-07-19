@@ -11,6 +11,12 @@ log_elapsed(){ echo "⏱ 耗时: ${1}s"; }
 
 LOCAL_DIR="$(dirname "$(readlink -f "$0")")"
 
+# VPS 旧服务器配置（用于同步到 papafeiji.cn）
+VPS_SERVER="root@47.98.121.243"
+VPS_PASSWORD="ppfj2025!"
+VPS_REMOTE_DIR="/var/www/papafeiji-officialwebsite"
+VPS_SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -o LogLevel=ERROR"
+
 check_env() {
   log_step "检查环境变量"
   : "${CLOUDFLARE_API_TOKEN:?请设置 CLOUDFLARE_API_TOKEN}"
@@ -75,17 +81,35 @@ bind_domain() {
   fi
 }
 
+sync_to_vps() {
+  log_step "同步到旧 VPS（papafeiji.cn）"
+  local sync_start=$(date +%s)
+
+  command -v sshpass >/dev/null 2>&1 || { log_warn "未安装 sshpass，跳过 VPS 同步"; return; }
+  command -v rsync  >/dev/null 2>&1 || { log_warn "未安装 rsync，跳过 VPS 同步"; return; }
+
+  sshpass -p "${VPS_PASSWORD}" rsync -av --delete \
+    -e "ssh ${VPS_SSH_OPTS}" \
+    "${LOCAL_DIR}/out/" \
+    "${VPS_SERVER}:${VPS_REMOTE_DIR}/"
+
+  log_info "已同步到 ${VPS_SERVER}:${VPS_REMOTE_DIR}"
+  log_elapsed $(($(date +%s) - sync_start))
+}
+
 verify() {
   log_step "验证部署"
-  local domain="pathmemos.com"
-  for path in "/" "/en/"; do
-    local code
-    code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${domain}${path}" || echo "000")
-    if [ "$code" = "200" ] || [ "$code" = "301" ] || [ "$code" = "302" ]; then
-      log_info "✔ https://${domain}${path} → ${code}"
-    else
-      log_error "✗ https://${domain}${path} → ${code}"
-    fi
+  for pair in "pathmemos.com" "papafeiji.cn"; do
+    local domain="$pair"
+    for path in "/" "/en/"; do
+      local code
+      code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://${domain}${path}" || echo "000")
+      if [ "$code" = "200" ] || [ "$code" = "301" ] || [ "$code" = "302" ]; then
+        log_info "✔ https://${domain}${path} → ${code}"
+      else
+        log_warn "✗ https://${domain}${path} → ${code}"
+      fi
+    done
   done
 }
 
@@ -95,6 +119,7 @@ main() {
   build_site
   deploy
   bind_domain
+  sync_to_vps
   verify
   echo ""
   log_elapsed $(($(date +%s) - START_TIME))
