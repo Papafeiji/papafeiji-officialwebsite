@@ -5,6 +5,7 @@ START_TIME=$(date +%s)
 
 log_step()   { echo ""; echo "=== $1 ==="; }
 log_info()   { echo "[INFO] $1"; }
+log_warn()   { echo "[WARN] $1" >&2; }
 log_error()  { echo "[ERROR] $1" >&2; }
 log_elapsed(){ echo "⏱ 耗时: ${1}s"; }
 
