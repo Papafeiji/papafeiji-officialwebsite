@@ -7,7 +7,7 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 export default defineConfig({
   output: 'static',
   outDir: 'out',
-  site: 'https://papafeiji.cn',
+  site: 'https://pathmemos.com',
   integrations: [
     sitemap({
       filter: (page) => !/\/(model|privacy-police|terms-of-use)\/$/.test(page),
