@@ -8,11 +8,10 @@
 
 ## 环境变量
 
-部署前请设置：
+部署所需的环境变量已配置在 `/root/.env.papafeiji`。执行部署时直接加载该文件即可，无需再询问或手动设置：
 
 ```bash
-export CLOUDFLARE_API_TOKEN="你的Cloudflare API Token"
-export CLOUDFLARE_ACCOUNT_ID="你的Cloudflare Account ID"
+set -a && source /root/.env.papafeiji && set +a && bash deploy.sh
 ```
 
-Token 需要以下权限：`#worker:edit`、`#dns_records:edit`、`#zone:edit`
+Token 需要以下权限：`#worker:edit`
