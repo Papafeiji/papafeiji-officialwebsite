@@ -14,9 +14,9 @@ export const translations = {
     // Hero
     "hero.title.part1": "开源 ·",
     "hero.title.part2": "AI 家庭记忆中枢",
-    "hero.subtitle": "自动整合日记、照片、位置与对话，构建你和家人的专属记忆库。为所有 AI 助手提供长期、连贯、可溯源的记忆能力。",
-    "hero.cta.miniprogram": "免费体验小程序",
-    "hero.cta.github": "查看 GitHub 源码",
+    "hero.subtitle": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
+    "hero.cta.miniprogram": "体验小程序",
+    "hero.cta.github": "GitHub 开源",
     "hero.copy": "复制",
     "hero.copied": "已复制",
     "hero.terminal": "终端",
@@ -39,7 +39,7 @@ export const translations = {
     "ai.badge": "AI 智能记忆",
     "ai.title.1": "全域记忆",
     "ai.title.2": "智能问答",
-    "ai.subtitle": "基于全部日记与家庭记录，构建长期记忆上下文。AI 能够回答涉及时间、地点、事件的复杂问题，避免幻觉与重复。",
+    "ai.subtitle": "存储你的生活与工作记忆，为所有 AI 助手提供持久、连贯、可溯源的个人上下文。",
     // Location
     "location.badge": "全自动位置轨迹",
     "location.title.1": "无感记录",
@@ -56,7 +56,7 @@ export const translations = {
     "mcp.badge": "MCP 开放记忆中枢",
     "mcp.title.1": "让所有 AI",
     "mcp.title.2": "拥有你的专属记忆",
-    "mcp.subtitle": "通过标准 MCP 接口，将个人记忆开放给 ChatGPT、Claude、Kimi 等 AI 工具。一次沉淀，多处复用，保持跨平台记忆一致。",
+    "mcp.subtitle": "开放标准 MCP 接口，对接 OpenClaw、ChatGPT、Claude、Kimi 等主流 AI 工具，将你的个人生活记忆变为所有 AI 的专属长期上下文。",
 
     // Footer
     "footer.tutorial": "教程",
@@ -75,8 +75,8 @@ export const translations = {
 
     // Meta
     "meta.title": "开源 · AI 家庭记忆中枢",
-    "meta.desc": "开源的 AI 记忆基础设施。自动整合日记、照片、位置与对话，为所有 AI 助手提供长期、连贯、可溯源的家庭记忆能力。",
-    "meta.ogDesc": "开源的 AI 记忆基础设施。自动整合日记、照片、位置与对话，为所有 AI 助手提供长期、连贯、可溯源的家庭记忆能力。",
+    "meta.desc": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
+    "meta.ogDesc": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
   },
 
   en: {
