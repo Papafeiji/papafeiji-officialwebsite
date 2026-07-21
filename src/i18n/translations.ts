@@ -90,8 +90,8 @@ export const translations = {
     "site.tagline": "Private & Controllable · AI Family Memory Hub",
     "site.copyright": "Copyright © Hangzhou ChenLeLe Technology Co., Ltd.",
 
-    "hero.title.part1": "Auto-Collect ·",
-    "hero.title.part2": "Open Source Family Memory Hub",
+    "hero.title.part1": "Open Source ·",
+    "hero.title.part2": "AI Family Memory Hub",
     "hero.subtitle": "Open-source AI memory infrastructure. Gather your memories from both the physical and digital worlds, providing persistent memory for all your AI assistants.",
     "hero.cta.miniprogram": "Try Mini Program",
     "hero.cta.github": "Open Source on GitHub",
