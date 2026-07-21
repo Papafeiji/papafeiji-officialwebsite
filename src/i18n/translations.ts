@@ -8,13 +8,13 @@ export const translations = {
     "nav.home": "首页",
     "nav.theme": "主题",
     "site.name": "爬爬记忆助手",
-    "site.tagline": "让 AI 记住你的家庭",
+    "site.tagline": "私人可控 · AI 家庭记忆中枢",
     "site.copyright": "Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2",
 
     // Hero
-    "hero.title.part1": "你的 AI 没有记忆，",
-    "hero.title.part2": "所以它永远不懂你",
-    "hero.subtitle": "日记、照片、位置、对话——自动汇聚成你和家人的专属记忆库。喂给所有 AI，让它真正懂你。",
+    "hero.title.part1": "开源 ·",
+    "hero.title.part2": "AI 家庭记忆中枢",
+    "hero.subtitle": "自动整合日记、照片、位置与对话，构建你和家人的专属记忆库。为所有 AI 助手提供长期、连贯、可溯源的记忆能力。",
     "hero.cta.miniprogram": "免费体验小程序",
     "hero.cta.github": "查看 GitHub 源码",
     "hero.copy": "复制",
@@ -22,41 +22,41 @@ export const translations = {
     "hero.terminal": "终端",
 
     // SelfHost
-    "selfhost.badge": "数据只归你",
-    "selfhost.title.1": "你的家庭数据，",
-    "selfhost.title.2": "凭什么交给别人保管？",
-    "selfhost.subtitle": "开源版一键部署，功能和官方版完全一致。不用改小程序，不用懂代码，5 分钟拥有自己的记忆中枢。",
-    "selfhost.card1.title": "全部数据本地存",
-    "selfhost.card1.desc": "日记、照片、轨迹只存在你的服务器上。没有第三方备份，没有数据外泄风险。",
-    "selfhost.card2.title": "5 分钟跑起来",
-    "selfhost.card2.desc": "一行命令完成部署，完整复用小程序体验。不需要开发，不需要运维。",
-    "selfhost.card3.title": "中转不存数据",
-    "selfhost.card3.desc": "中继节点只负责传数据，不存储任何内容。链路透明，随时可查。",
-    "selfhost.card4.title": "更新自动同步",
-    "selfhost.card4.desc": "官方 SaaS 迭代新功能，开源版自动跟进。一次部署，长期可用。",
+    "selfhost.badge": "私有化部署",
+    "selfhost.title.1": "数据自主",
+    "selfhost.title.2": "可控",
+    "selfhost.subtitle": "开源版完整复刻官方 SaaS 能力，支持一键自主部署。无需改动小程序前端，即可将数据完全托管至自有基础设施。",
+    "selfhost.card1.title": "全量数据自留",
+    "selfhost.card1.desc": "日记、照片、轨迹等数据存储于自有服务器，无第三方留存，无外泄风险。",
+    "selfhost.card2.title": "零门槛部署",
+    "selfhost.card2.desc": "一条命令完成部署，复用完整小程序体验，无需额外开发。",
+    "selfhost.card3.title": "透明中转链路",
+    "selfhost.card3.desc": "中转节点仅路由请求，不存储任何用户数据，链路可审计、可追溯。",
+    "selfhost.card4.title": "永久同步更新",
+    "selfhost.card4.desc": "官方 SaaS 功能持续迭代，开源版自动同步更新，长期可用。",
 
     // AI Assistant
-    "ai.badge": "AI 真的记得",
-    "ai.title.1": "问 AI 任何事，",
-    "ai.title.2": "它都记得答案",
-    "ai.subtitle": "去年夏天去了哪？宝宝第一次走路是哪天？基于你和家人的真实记忆，AI 能给出具体回答，而不是瞎编。",
+    "ai.badge": "AI 智能记忆",
+    "ai.title.1": "全域记忆",
+    "ai.title.2": "智能问答",
+    "ai.subtitle": "基于全部日记与家庭记录，构建长期记忆上下文。AI 能够回答涉及时间、地点、事件的复杂问题，避免幻觉与重复。",
     // Location
-    "location.badge": "自动记录生活",
-    "location.title.1": "不用打卡，",
-    "location.title.2": "AI 自动写生活日记",
-    "location.subtitle": "后台自动记录位置，识别你去过的地方。每天自动生成带时间地点的生活记录，你不用动手。",
+    "location.badge": "全自动位置轨迹",
+    "location.title.1": "无感记录",
+    "location.title.2": "生活每一步",
+    "location.subtitle": "无需手动打卡或手动写日记，AI 自动识别停留、聚合轨迹，并生成结构化生活记录。",
 
     // Family
-    "family.badge": "全家人一起记",
-    "family.title.1": "孩子的第一次，",
-    "family.title.2": "全家的旅行日",
-    "family.subtitle": "家人各自记录，自动汇入同一条时间线。不再散在微信聊天记录里，不再问'那张照片放哪了'。",
+    "family.badge": "多人家庭共享",
+    "family.title.1": "一家人",
+    "family.title.2": "共享一份时光记忆",
+    "family.subtitle": "搭建家庭共享空间，聚合全员生活轨迹。各自记录、统一呈现，构建完整的家庭记忆时间线。",
 
     // MCP
-    "mcp.badge": "一个记忆库喂所有 AI",
-    "mcp.title.1": "一次记录，",
-    "mcp.title.2": "处处可用",
-    "mcp.subtitle": "通过 MCP 标准接口，把你的记忆同步给 ChatGPT、Claude、Kimi。每个 AI 都能基于你的真实经历回答你，而不是每次从零开始。",
+    "mcp.badge": "MCP 开放记忆中枢",
+    "mcp.title.1": "让所有 AI",
+    "mcp.title.2": "拥有你的专属记忆",
+    "mcp.subtitle": "通过标准 MCP 接口，将个人记忆开放给 ChatGPT、Claude、Kimi 等 AI 工具。一次沉淀，多处复用，保持跨平台记忆一致。",
 
     // Footer
     "footer.tutorial": "教程",
@@ -74,9 +74,9 @@ export const translations = {
     "page404.back": "返回首页",
 
     // Meta
-    "meta.title": "爬爬记忆助手 · 让 AI 记住你的家庭",
-    "meta.desc": "日记、照片、位置、对话自动汇聚成你和家人的专属记忆库。喂给所有 AI，让它真正懂你。开源，支持私有部署。",
-    "meta.ogDesc": "日记、照片、位置、对话自动汇聚成你和家人的专属记忆库。喂给所有 AI，让它真正懂你。开源，支持私有部署。",
+    "meta.title": "开源 · AI 家庭记忆中枢",
+    "meta.desc": "开源的 AI 记忆基础设施。自动整合日记、照片、位置与对话，为所有 AI 助手提供长期、连贯、可溯源的家庭记忆能力。",
+    "meta.ogDesc": "开源的 AI 记忆基础设施。自动整合日记、照片、位置与对话，为所有 AI 助手提供长期、连贯、可溯源的家庭记忆能力。",
   },
 
   en: {
