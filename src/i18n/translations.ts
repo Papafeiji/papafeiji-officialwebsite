@@ -12,8 +12,8 @@ export const translations = {
     "site.copyright": "Copyright © 杭州陈乐乐科技有限公司 浙 ICP 备 2024085343号-2",
 
     // Hero
-    "hero.title.part1": "自动收集 ·",
-    "hero.title.part2": "开源家庭记忆中枢",
+    "hero.title.part1": "开源 ·",
+    "hero.title.part2": "AI 家庭记忆中枢",
     "hero.subtitle": "开源的 AI 记忆基础设施。汇集你在物理与网络世界的记忆，为你所有的 AI 助手提供持久记忆能力。",
     "hero.cta.miniprogram": "体验小程序",
     "hero.cta.github": "GitHub 开源",
