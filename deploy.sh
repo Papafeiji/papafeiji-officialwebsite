@@ -20,9 +20,8 @@ VPS_SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o Con
 check_env() {
   log_step "检查环境变量"
   : "${CLOUDFLARE_API_TOKEN:?请设置 CLOUDFLARE_API_TOKEN}"
-  # CLOUDFLARE_ACCOUNT_ID 仅 bind_domain 需要，已停用
-  # : "${CLOUDFLARE_ACCOUNT_ID:?请设置 CLOUDFLARE_ACCOUNT_ID}"
-  # log_info "CLOUDFLARE_ACCOUNT_ID = ${CLOUDFLARE_ACCOUNT_ID}"
+  : "${CLOUDFLARE_ACCOUNT_ID:?请设置 CLOUDFLARE_ACCOUNT_ID}"
+  log_info "CLOUDFLARE_ACCOUNT_ID = ${CLOUDFLARE_ACCOUNT_ID}"
   command -v node >/dev/null 2>&1   || { log_error "未安装 Node.js"; exit 1; }
   command -v npx  >/dev/null 2>&1   || { log_error "未安装 npx"; exit 1; }
 }
@@ -119,7 +118,7 @@ main() {
   install_deps
   build_site
   deploy
-  # bind_domain  # 已停用，域名在 Dashboard 手动配置
+  bind_domain
   sync_to_vps
   verify
   echo ""
